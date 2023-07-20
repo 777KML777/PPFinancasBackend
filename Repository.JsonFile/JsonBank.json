@@ -1,0 +1,17 @@
+[
+    {
+        "Name": "Mercado Pago",
+        "Balance": 850.25,
+        "Id": 1
+    },
+    {
+        "Name": "Santander",
+        "Balance": 9181.96,
+        "Id": 2
+    },
+    {
+        "Name": "C6 Bank",
+        "Balance": 290.01,
+        "Id": 6
+    }
+]

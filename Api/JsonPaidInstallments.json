@@ -1,0 +1,632 @@
+[
+    {
+        "Id": 1,
+        "PaymentDate": "2022-03-11T17:00:00",
+        "IdExpenses": 2
+    },
+    {
+        "Id": 2,
+        "PaymentDate": "2022-04-11T17:00:00",
+        "IdExpenses": 2
+    },
+    {
+        "Id": 3,
+        "PaymentDate": "2022-05-11T17:00:00",
+        "IdExpenses": 2
+    },
+    {
+        "Id": 4,
+        "PaymentDate": "2022-06-11T17:00:00",
+        "IdExpenses": 2
+    },
+    {
+        "Id": 5,
+        "PaymentDate": "2022-07-11T17:00:00",
+        "IdExpenses": 2
+    },
+    {
+        "Id": 6,
+        "PaymentDate": "2022-08-11T17:00:00",
+        "IdExpenses": 2
+    },
+    {
+        "Id": 7,
+        "PaymentDate": "2022-07-17T17:00:00",
+        "IdExpenses": 3
+    },
+    {
+        "Id": 8,
+        "PaymentDate": "2022-08-17T17:00:00",
+        "IdExpenses": 3
+    },
+    {
+        "Id": 26,
+        "PaymentDate": "2022-07-07T17:00:00",
+        "IdExpenses": 10
+    },
+    {
+        "Id": 27,
+        "PaymentDate": "2022-08-07T17:00:00",
+        "IdExpenses": 10
+    },
+    {
+        "Id": 28,
+        "PaymentDate": "2022-09-02T17:00:00",
+        "IdExpenses": 10
+    },
+    {
+        "Id": 29,
+        "PaymentDate": "2022-07-07T17:00:00",
+        "IdExpenses": 12
+    },
+    {
+        "Id": 30,
+        "PaymentDate": "2022-08-07T17:00:00",
+        "IdExpenses": 12
+    },
+    {
+        "Id": 31,
+        "PaymentDate": "2022-09-02T17:00:00",
+        "IdExpenses": 12
+    },
+    {
+        "Id": 32,
+        "PaymentDate": "2022-07-07T17:00:00",
+        "IdExpenses": 11
+    },
+    {
+        "Id": 33,
+        "PaymentDate": "2022-08-07T17:00:00",
+        "IdExpenses": 11
+    },
+    {
+        "Id": 34,
+        "PaymentDate": "2022-09-02T17:00:00",
+        "IdExpenses": 11
+    },
+    {
+        "Id": 35,
+        "PaymentDate": "2022-09-02T17:00:00",
+        "IdExpenses": 17
+    },
+    {
+        "Id": 36,
+        "PaymentDate": "2022-09-02T17:00:00",
+        "IdExpenses": 16
+    },
+    {
+        "Id": 37,
+        "PaymentDate": "2022-09-02T17:00:00",
+        "IdExpenses": 15
+    },
+    {
+        "Id": 38,
+        "PaymentDate": "2022-09-02T17:00:00",
+        "IdExpenses": 13
+    },
+    {
+        "Id": 39,
+        "PaymentDate": "2022-09-02T17:00:00",
+        "IdExpenses": 14
+    },
+    {
+        "Id": 40,
+        "PaymentDate": "2022-09-02T17:00:00",
+        "IdExpenses": 18
+    },
+    {
+        "Id": 41,
+        "PaymentDate": "2022-08-20T17:00:00",
+        "IdExpenses": 20
+    },
+    {
+        "Id": 42,
+        "PaymentDate": "2022-09-07T17:00:00",
+        "IdExpenses": 20
+    },
+    {
+        "Id": 43,
+        "PaymentDate": "2022-09-11T17:00:00",
+        "IdExpenses": 2
+    },
+    {
+        "Id": 44,
+        "PaymentDate": "2022-09-01T07:00:00",
+        "IdExpenses": 3
+    },
+    {
+        "Id": 47,
+        "PaymentDate": "2022-10-07T17:00:00",
+        "IdExpenses": 10
+    },
+    {
+        "Id": 48,
+        "PaymentDate": "2022-10-07T17:00:00",
+        "IdExpenses": 11
+    },
+    {
+        "Id": 49,
+        "PaymentDate": "2022-10-07T17:00:00",
+        "IdExpenses": 13
+    },
+    {
+        "Id": 50,
+        "PaymentDate": "2022-10-07T17:00:00",
+        "IdExpenses": 14
+    },
+    {
+        "Id": 51,
+        "PaymentDate": "2022-10-07T17:00:00",
+        "IdExpenses": 15
+    },
+    {
+        "Id": 52,
+        "PaymentDate": "2022-10-07T17:00:00",
+        "IdExpenses": 16
+    },
+    {
+        "Id": 53,
+        "PaymentDate": "2022-10-07T17:00:00",
+        "IdExpenses": 17
+    },
+    {
+        "Id": 54,
+        "PaymentDate": "2022-10-07T17:00:00",
+        "IdExpenses": 19
+    },
+    {
+        "Id": 55,
+        "PaymentDate": "2022-10-07T17:00:00",
+        "IdExpenses": 20
+    },
+    {
+        "Id": 56,
+        "PaymentDate": "2022-10-07T17:00:00",
+        "IdExpenses": 21
+    },
+    {
+        "Id": 57,
+        "PaymentDate": "2022-10-07T17:00:00",
+        "IdExpenses": 22
+    },
+    {
+        "Id": 60,
+        "PaymentDate": "2022-11-03T19:25:47.9353773",
+        "IdExpenses": 2
+    },
+    {
+        "Id": 61,
+        "PaymentDate": "2022-11-03T19:33:18.3527761",
+        "IdExpenses": 10
+    },
+    {
+        "Id": 62,
+        "PaymentDate": "2022-11-03T23:49:58.1043889",
+        "IdExpenses": 11
+    },
+    {
+        "Id": 63,
+        "PaymentDate": "2022-11-03T23:50:18.2381568",
+        "IdExpenses": 3
+    },
+    {
+        "Id": 64,
+        "PaymentDate": "2022-11-03T23:50:59.7652483",
+        "IdExpenses": 13
+    },
+    {
+        "Id": 65,
+        "PaymentDate": "2022-11-03T23:51:07.6218454",
+        "IdExpenses": 14
+    },
+    {
+        "Id": 66,
+        "PaymentDate": "2022-11-03T23:51:07.6478304",
+        "IdExpenses": 14
+    },
+    {
+        "Id": 67,
+        "PaymentDate": "2022-11-03T23:51:14.056141",
+        "IdExpenses": 15
+    },
+    {
+        "Id": 68,
+        "PaymentDate": "2022-11-03T23:51:21.0918811",
+        "IdExpenses": 16
+    },
+    {
+        "Id": 69,
+        "PaymentDate": "2022-11-03T23:51:26.214318",
+        "IdExpenses": 17
+    },
+    {
+        "Id": 70,
+        "PaymentDate": "2022-11-03T23:51:32.2115394",
+        "IdExpenses": 19
+    },
+    {
+        "Id": 71,
+        "PaymentDate": "2022-11-03T23:51:40.9273238",
+        "IdExpenses": 22
+    },
+    {
+        "Id": 72,
+        "PaymentDate": "2022-11-05T18:20:44.1153854",
+        "IdExpenses": 20
+    },
+    {
+        "Id": 73,
+        "PaymentDate": "2022-11-05T18:21:04.748042",
+        "IdExpenses": 21
+    },
+    {
+        "Id": 74,
+        "PaymentDate": "2022-11-08T22:37:56.2305187",
+        "IdExpenses": 23
+    },
+    {
+        "Id": 75,
+        "PaymentDate": "2022-12-01T18:51:07.5326994",
+        "IdExpenses": 19
+    },
+    {
+        "Id": 76,
+        "PaymentDate": "2022-12-01T18:54:15.2567114",
+        "IdExpenses": 11
+    },
+    {
+        "Id": 77,
+        "PaymentDate": "2022-12-02T10:41:25.7718705",
+        "IdExpenses": 16
+    },
+    {
+        "Id": 78,
+        "PaymentDate": "2022-12-02T10:42:08.362829",
+        "IdExpenses": 10
+    },
+    {
+        "Id": 79,
+        "PaymentDate": "2022-12-02T10:44:04.3010086",
+        "IdExpenses": 13
+    },
+    {
+        "Id": 80,
+        "PaymentDate": "2022-12-02T10:45:00.5112952",
+        "IdExpenses": 14
+    },
+    {
+        "Id": 81,
+        "PaymentDate": "2022-12-02T10:45:46.7006898",
+        "IdExpenses": 15
+    },
+    {
+        "Id": 82,
+        "PaymentDate": "2022-12-02T10:49:17.5448927",
+        "IdExpenses": 17
+    },
+    {
+        "Id": 83,
+        "PaymentDate": "2022-12-02T10:49:42.6200115",
+        "IdExpenses": 22
+    },
+    {
+        "Id": 84,
+        "PaymentDate": "2022-12-02T10:50:14.9509538",
+        "IdExpenses": 23
+    },
+    {
+        "Id": 85,
+        "PaymentDate": "2022-12-02T10:51:53.101709",
+        "IdExpenses": 2
+    },
+    {
+        "Id": 86,
+        "PaymentDate": "2022-12-02T10:52:35.1482415",
+        "IdExpenses": 3
+    },
+    {
+        "Id": 89,
+        "PaymentDate": "2022-12-01T17:00:00",
+        "IdExpenses": 24
+    },
+    {
+        "Id": 90,
+        "PaymentDate": "2022-12-07T01:27:08.6270548",
+        "IdExpenses": 21
+    },
+    {
+        "Id": 91,
+        "PaymentDate": "2022-12-07T01:28:48.7287202",
+        "IdExpenses": 20
+    },
+    {
+        "Id": 92,
+        "PaymentDate": "2022-12-17T22:25:08.9097862",
+        "IdExpenses": 3
+    },
+    {
+        "Id": 93,
+        "PaymentDate": "2022-12-17T22:57:24.1049497",
+        "IdExpenses": 2
+    },
+    {
+        "Id": 94,
+        "PaymentDate": "2023-01-06T15:46:23.40541",
+        "IdExpenses": 21
+    },
+    {
+        "Id": 96,
+        "PaymentDate": "2023-01-06T15:49:24.3445248",
+        "IdExpenses": 23
+    },
+    {
+        "Id": 97,
+        "PaymentDate": "2023-01-06T15:49:36.2226871",
+        "IdExpenses": 10
+    },
+    {
+        "Id": 98,
+        "PaymentDate": "2023-01-06T15:49:56.1381209",
+        "IdExpenses": 16
+    },
+    {
+        "Id": 99,
+        "PaymentDate": "2023-01-06T15:56:00.9786619",
+        "IdExpenses": 11
+    },
+    {
+        "Id": 100,
+        "PaymentDate": "2023-01-06T15:56:28.4995848",
+        "IdExpenses": 19
+    },
+    {
+        "Id": 101,
+        "PaymentDate": "2023-01-06T16:46:22.9551856",
+        "IdExpenses": 4
+    },
+    {
+        "Id": 102,
+        "PaymentDate": "2023-01-06T16:46:33.9624277",
+        "IdExpenses": 20
+    },
+    {
+        "Id": 103,
+        "PaymentDate": "2023-01-06T16:46:34.00265",
+        "IdExpenses": 20
+    },
+    {
+        "Id": 104,
+        "PaymentDate": "2023-01-06T16:47:01.9923357",
+        "IdExpenses": 22
+    },
+    {
+        "Id": 105,
+        "PaymentDate": "2023-01-06T16:47:17.2678551",
+        "IdExpenses": 17
+    },
+    {
+        "Id": 106,
+        "PaymentDate": "2023-01-06T16:47:26.3184376",
+        "IdExpenses": 15
+    },
+    {
+        "Id": 107,
+        "PaymentDate": "2023-01-06T16:47:58.9497715",
+        "IdExpenses": 14
+    },
+    {
+        "Id": 108,
+        "PaymentDate": "2023-01-06T16:48:13.0684114",
+        "IdExpenses": 13
+    },
+    {
+        "Id": 109,
+        "PaymentDate": "2023-01-06T16:48:27.8090756",
+        "IdExpenses": 24
+    },
+    {
+        "Id": 110,
+        "PaymentDate": "2023-03-02T09:11:25.4286468",
+        "IdExpenses": 4
+    },
+    {
+        "Id": 111,
+        "PaymentDate": "2023-03-02T09:11:42.677369",
+        "IdExpenses": 4
+    },
+    {
+        "Id": 112,
+        "PaymentDate": "2023-03-02T09:17:03.2430228",
+        "IdExpenses": 6
+    },
+    {
+        "Id": 113,
+        "PaymentDate": "2023-03-02T09:17:15.0248939",
+        "IdExpenses": 6
+    },
+    {
+        "Id": 114,
+        "PaymentDate": "2023-03-02T09:22:00.0867977",
+        "IdExpenses": 19
+    },
+    {
+        "Id": 115,
+        "PaymentDate": "2023-03-02T09:22:08.890786",
+        "IdExpenses": 19
+    },
+    {
+        "Id": 116,
+        "PaymentDate": "2023-03-02T09:29:09.6682932",
+        "IdExpenses": 10
+    },
+    {
+        "Id": 117,
+        "PaymentDate": "2023-03-02T09:29:25.9810864",
+        "IdExpenses": 10
+    },
+    {
+        "Id": 118,
+        "PaymentDate": "2023-03-02T09:49:19.7583849",
+        "IdExpenses": 11
+    },
+    {
+        "Id": 119,
+        "PaymentDate": "2023-03-02T09:49:31.1693663",
+        "IdExpenses": 11
+    },
+    {
+        "Id": 120,
+        "PaymentDate": "2023-03-02T09:51:20.0725854",
+        "IdExpenses": 13
+    },
+    {
+        "Id": 121,
+        "PaymentDate": "2023-03-02T09:51:49.266779",
+        "IdExpenses": 13
+    },
+    {
+        "Id": 122,
+        "PaymentDate": "2023-03-02T09:52:47.287854",
+        "IdExpenses": 14
+    },
+    {
+        "Id": 123,
+        "PaymentDate": "2023-03-02T09:52:58.0100531",
+        "IdExpenses": 14
+    },
+    {
+        "Id": 124,
+        "PaymentDate": "2023-03-02T09:53:42.4081573",
+        "IdExpenses": 15
+    },
+    {
+        "Id": 125,
+        "PaymentDate": "2023-03-02T09:53:55.1305015",
+        "IdExpenses": 15
+    },
+    {
+        "Id": 126,
+        "PaymentDate": "2023-03-02T09:59:24.7950467",
+        "IdExpenses": 17
+    },
+    {
+        "Id": 127,
+        "PaymentDate": "2023-03-02T10:02:43.0524525",
+        "IdExpenses": 23
+    },
+    {
+        "Id": 128,
+        "PaymentDate": "2023-03-02T10:02:51.4655053",
+        "IdExpenses": 23
+    },
+    {
+        "Id": 129,
+        "PaymentDate": "2023-03-02T10:03:07.9057831",
+        "IdExpenses": 24
+    },
+    {
+        "Id": 130,
+        "PaymentDate": "2023-03-02T10:03:18.1385894",
+        "IdExpenses": 24
+    },
+    {
+        "Id": 131,
+        "PaymentDate": "2023-03-02T10:17:58.1579899",
+        "IdExpenses": 21
+    },
+    {
+        "Id": 132,
+        "PaymentDate": "2023-03-02T10:18:12.4008389",
+        "IdExpenses": 20
+    },
+    {
+        "Id": 133,
+        "PaymentDate": "2023-03-02T10:19:19.2744142",
+        "IdExpenses": 2
+    },
+    {
+        "Id": 134,
+        "PaymentDate": "2023-03-02T10:19:39.0495659",
+        "IdExpenses": 2
+    },
+    {
+        "Id": 135,
+        "PaymentDate": "2023-03-02T10:50:56.7955127",
+        "IdExpenses": 25
+    },
+    {
+        "Id": 136,
+        "PaymentDate": "2023-03-02T10:51:25.875168",
+        "IdExpenses": 25
+    },
+    {
+        "Id": 137,
+        "PaymentDate": "2023-03-02T10:51:45.2231185",
+        "IdExpenses": 26
+    },
+    {
+        "Id": 138,
+        "PaymentDate": "2023-03-02T10:51:50.3285966",
+        "IdExpenses": 26
+    },
+    {
+        "Id": 139,
+        "PaymentDate": "2023-03-02T10:52:04.2209736",
+        "IdExpenses": 28
+    },
+    {
+        "Id": 140,
+        "PaymentDate": "2023-03-02T10:52:08.6877007",
+        "IdExpenses": 28
+    },
+    {
+        "Id": 141,
+        "PaymentDate": "2023-03-02T10:52:22.2422297",
+        "IdExpenses": 27
+    },
+    {
+        "Id": 142,
+        "PaymentDate": "2023-03-02T10:52:28.9291319",
+        "IdExpenses": 27
+    },
+    {
+        "Id": 143,
+        "PaymentDate": "2023-03-14T10:56:47.9457975",
+        "IdExpenses": 21
+    },
+    {
+        "Id": 144,
+        "PaymentDate": "2023-05-03T16:47:05.4167247",
+        "IdExpenses": 10
+    },
+    {
+        "Id": 145,
+        "PaymentDate": "2023-05-03T16:48:10.5324231",
+        "IdExpenses": 4
+    },
+    {
+        "Id": 146,
+        "PaymentDate": "2023-05-03T16:48:34.8184402",
+        "IdExpenses": 4
+    },
+    {
+        "Id": 147,
+        "PaymentDate": "2023-05-03T16:49:20.0770634",
+        "IdExpenses": 6
+    },
+    {
+        "Id": 148,
+        "PaymentDate": "2023-05-03T16:50:41.4972722",
+        "IdExpenses": 6
+    },
+    {
+        "Id": 149,
+        "PaymentDate": "2023-05-03T16:52:30.0727392",
+        "IdExpenses": 11
+    },
+    {
+        "Id": 150,
+        "PaymentDate": "2023-05-03T16:52:51.1902696",
+        "IdExpenses": 13
+    }
+]
