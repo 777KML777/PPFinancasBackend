@@ -42,7 +42,7 @@ public class PaidInstallmentsRepository : IPaidInstallmentsRepository
         return paidInstallments;
     }
 
-    public void Update(int id)
+    public void Update(PaidInstallmentsEntity id)
     {
         throw new NotImplementedException();
     }

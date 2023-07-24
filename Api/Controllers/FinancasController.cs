@@ -4,7 +4,7 @@ using Application;
 namespace Api.Controllers
 {
     [ApiController]
-    [Route("[controller]")]
+    [Route("api/[controller]")]
     public class DetailController : ControllerBase
     {
 

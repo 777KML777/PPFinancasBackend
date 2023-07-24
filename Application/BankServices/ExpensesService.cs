@@ -54,4 +54,20 @@ public class ExpensesService : IExpensesService
         };
 
     }
+
+    public void Update (int id, ExpenseDto expense)
+    {
+        // Get Max Id de PaidInstallments 
+        // Fazer o mapeamento completo de ExpenseDto para ExpenseEntity 
+        // Posso colocar o Mapeamento também em uma classe estática 
+
+        expense.paidInstallments.Add(new PaidInstallmentsDto
+         { 
+            Id = 20, 
+            PaymentDate = DateTime.Now, 
+            IdExpenses = expense.Id
+         }); 
+
+         _expensesRepository.Update(MappingDtoToEntity(expense));
+    }
 }

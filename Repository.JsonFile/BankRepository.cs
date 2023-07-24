@@ -56,7 +56,7 @@ namespace Repository.JsonFile
             return banks;
         }
 
-        public void Update(int id)
+        public void Update(BankEntity id)
         {
             // Mesma coisa do Create. Porém irei atualizar e sobreescrever o arquivo
             throw new NotImplementedException();

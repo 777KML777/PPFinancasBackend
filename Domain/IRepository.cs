@@ -5,7 +5,9 @@ public interface IRepository <T>
     // C - R - U - D -- Operations
     void Create (T bank);
     IList<T> ReadAll ();
-    void Update (int id); 
+    
+    // Antes tava o Id
+    void Update (T obj); 
     void Delete (int id);
 
     // Commons Operations

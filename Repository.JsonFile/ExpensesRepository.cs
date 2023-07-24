@@ -28,25 +28,25 @@ public class ExpensesRepository : IExpensesRepository
 
     public IList<ExpensesEntity> ReadAll()
     {
-        // string jsonExpensesOrigin = File.ReadAllText($"C:\\Users\\KleberM2\\Videos\\Captures\\JsonExpenses.json");
+        string enviroment = Environment.CurrentDirectory;
+        string replaceProject = enviroment.Replace("Api", "Repository.JsonFile");
+        string fullPath = replaceProject + MachineExplorer.ExpensesFileMac;
 
-        string enviroment = Environment.CurrentDirectory; // "C:\\Projects\\PessoalFinancasBackend\\Api"
-        string secondTest = enviroment.Replace("Api", "Repository.JsonFile");
-        // Mudando para Windows
-        // string x = secondTest + @"\JsonExpenses.json";
-        // Mudando para MAC
-        string x = secondTest + @"/JsonExpenses.json";
-        string jsonExpenses = File.ReadAllText(x);
+        string jsonExpenses = File.ReadAllText(fullPath);
+        var formatJson = jsonExpenses.Replace(@"\", "");
 
-        var teste = jsonExpenses.Replace(@"\", "");
-
-
-        List<ExpensesEntity> expenses = JsonSerializer.Deserialize<List<ExpensesEntity>>(teste);
+        List<ExpensesEntity> expenses = JsonSerializer.Deserialize<List<ExpensesEntity>>(formatJson);
         return expenses;
     }
 
-    public void Update(int id)
+    public void Update(ExpensesEntity expense)
     {
-        throw new NotImplementedException();
+        var lst = ReadAll();
+        var json = JsonSerializer.Serialize<List<ExpensesEntity>>(lst.ToList());
+        string enviroment = Environment.CurrentDirectory;
+        string replaceProject = enviroment.Replace("Api", "Repository.JsonFile");
+        string fullPath = replaceProject + MachineExplorer.ExpensesFileMac;
+
+        File.WriteAllText(fullPath, json.ToString());
     }
 }
