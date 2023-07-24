@@ -49,4 +49,6 @@ public class ExpensesRepository : IExpensesRepository
 
         File.WriteAllText(fullPath, json.ToString());
     }
+
+    public int GetLastId() => 99;
 }

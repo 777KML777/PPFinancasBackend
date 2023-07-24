@@ -1,3 +1,5 @@
+using System.ComponentModel.DataAnnotations.Schema;
+
 namespace Domain;
 
 public class PaidInstallmentsEntity : Entity
@@ -6,10 +8,11 @@ public class PaidInstallmentsEntity : Entity
     {
 
     }
-
     public DateTime PaymentDate { get; set; }
 
     // Relational 
     public int IdExpenses { get; set; }
+    
+    [NotMapped]
     public ExpensesEntity Expenses { get; set; }
 }

@@ -69,4 +69,6 @@ public class BankService : IBankService
     // public void UpdateBank(int id) => 
     //     _bankRepository.Update(MappingDtoToEntity())
 
+    public int GetNextId () => 99;
+
 }

@@ -71,5 +71,7 @@ namespace Repository.JsonFile
         public BankEntity GetById(int id) =>
             ReadAll().SingleOrDefault(x => x.Id == id);
 
+        public int GetLastId() => 10; 
+
     }
 }

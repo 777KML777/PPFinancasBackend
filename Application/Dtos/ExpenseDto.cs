@@ -5,6 +5,7 @@ public class ExpenseDto
     public int Id { get; set; }
     public bool Separeted { get; set; }
     public bool Inactive { get; set; }
+    public bool AddPayment { get; set; }
     public DateTime DateLastInstallments { get; set; }
     public DateTime DateFirstInstallments { get; set; }
     public decimal Amount { get; set; }

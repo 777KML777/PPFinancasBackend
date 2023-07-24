@@ -12,4 +12,5 @@ public interface IRepository <T>
 
     // Commons Operations
     T GetById (int id);
+    int GetLastId();
 }

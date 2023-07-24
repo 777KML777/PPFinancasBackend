@@ -28,9 +28,34 @@ public class ExpensesService : IExpensesService
 
     public ExpensesEntity MappingDtoToEntity(ExpenseDto obj)
     {
-        throw new NotImplementedException();
+        ExpensesEntity expenseEntity = new ExpensesEntity
+        {
+            Id = obj.Id,
+            Separeted = obj.Separeted,
+            Inactive = obj.Inactive,
+            DateLastInstallments = obj.DateLastInstallments,
+            DateFirstInstallments = obj.DateFirstInstallments,
+            Amount = obj.Amount,
+            CountInstallments = obj.CountInstallments,
+            Describe = obj.Describe,
+            ExpenseName = obj.ExpenseName,
+            PaymentType = obj.PaymentType,
+            TotalExpensesItem = obj.TotalExpensesItem,
+            TotalExpensesItemRemaining = obj.TotalExpensesItemRemaining,
+            PayedInstallments = obj.PayedInstallments,
+            RemainingInstallments = obj.RemainingInstallments,
+            
+            // relational maps
+            IdBank = obj.IdBank
+        };
+
+        obj.paidInstallments.ForEach(x =>
+            expenseEntity.AddPaymentsToInstallments(_paidInstallmentsService.MappingDtoToEntity(x)));
+
+        return expenseEntity;
     }
 
+    public int GetNextId() => 5;
     public ExpenseDto MappingEntityToDto(ExpensesEntity obj)
     {
         return new ExpenseDto()
@@ -49,25 +74,32 @@ public class ExpensesService : IExpensesService
             TotalExpensesItemRemaining = obj.TotalExpensesItemRemaining,
             PayedInstallments = obj.PayedInstallments,
             RemainingInstallments = obj.RemainingInstallments,
+
             // relational maps
             IdBank = obj.IdBank
         };
 
     }
 
-    public void Update (int id, ExpenseDto expense)
+    public void Update(int id, ExpenseDto expense)
     {
-        // Get Max Id de PaidInstallments 
-        // Fazer o mapeamento completo de ExpenseDto para ExpenseEntity 
-        // Posso colocar o Mapeamento também em uma classe estática 
+        // Por enquanto o update do expenses entity consiste em criar um novo pagamento
+        if (expense.AddPayment)
+        {
+            expense.paidInstallments.Add(new PaidInstallmentsDto
+            {
+                Id = _paidInstallmentsService.GetNextId(),
+                PaymentDate = DateTime.Now,
+                IdExpenses = expense.Id
+            });
 
-        expense.paidInstallments.Add(new PaidInstallmentsDto
-         { 
-            Id = 20, 
-            PaymentDate = DateTime.Now, 
-            IdExpenses = expense.Id
-         }); 
+            _paidInstallmentsService.Create(expense.paidInstallments.Last());
 
-         _expensesRepository.Update(MappingDtoToEntity(expense));
+            // _expensesRepository.Update(MappingDtoToEntity(expense));
+        }
+        else 
+        {
+            // _expensesRepository.Update(MappingDtoToEntity(expense));
+        }
     }
 }
