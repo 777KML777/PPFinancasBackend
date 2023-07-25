@@ -2,6 +2,8 @@
 
 public static class MachineExplorer
 {
+    public static string BankFileWindows { get; set; } = @"\JsonBank.json";
+    public static string BankFileMac { get; set; } = @"/JsonBank.json";
     public static string ExpensesFileWindows { get; set; } = @"\JsonExpenses.json";
     public static string ExpensesFileMac { get; set; } = @"/JsonExpenses.json";
     public static string PaidInstallmentsFileWindows { get; set; } = @"\JsonPaidInstallments.json";
