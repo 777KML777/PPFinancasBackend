@@ -1,16 +1,17 @@
-namespace Domain; 
+namespace Domain;
 
-public interface IRepository <T>
+public interface IRepository<T>
 {
-    // C - R - U - D -- Operations
-    void Create (T bank);
-    IList<T> ReadAll ();
-    
-    // Antes tava o Id
-    void Update (T obj); 
-    void Delete (int id);
+    #region CRUD OPERATION
+    void Create(T bank);
+    IList<T> ReadAll();
+    void Update(T obj);
+    void Delete(int id);
+    #endregion
 
-    // Commons Operations
-    T GetById (int id);
+    #region COMMOM OPERATION 
+    T GetById(int id);
     int GetLastId();
+    #endregion
+
 }

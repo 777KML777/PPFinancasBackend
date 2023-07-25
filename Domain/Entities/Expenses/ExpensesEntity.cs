@@ -8,7 +8,6 @@ public class ExpensesEntity : Entity
     public ExpensesEntity()
     {
         _paidInstallments = new List<PaidInstallmentsEntity>();
-        //AddPaymentsToInstallments();
     }
 
     public bool Separeted { get; set; }

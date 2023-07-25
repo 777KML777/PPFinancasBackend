@@ -6,7 +6,7 @@ public class PaidInstallmentsEntity : Entity
 {
     public PaidInstallmentsEntity()
     {
-
+        
     }
     public DateTime PaymentDate { get; set; }
 
