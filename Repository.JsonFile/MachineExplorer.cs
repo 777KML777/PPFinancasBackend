@@ -6,4 +6,15 @@ public static class MachineExplorer
     public static string ExpensesFileMac { get; set; } = @"/JsonExpenses.json";
     public static string PaidInstallmentsFileWindows { get; set; } = @"\JsonPaidInstallments.json";
     public static string PaidInstallmentsFileMac { get; set; } = @"/JsonPaidInstallments.json";
+
+    // Poderia ficar em um repositório genérico
+    public static string PegarCaminhoDoArquivo (string repositoryFileMachine)
+    {
+        string enviroment = Environment.CurrentDirectory;
+        string replaceProject = enviroment.Replace("Api", "Repository.JsonFile");
+        string fullPath = replaceProject + repositoryFileMachine;
+
+        return fullPath;
+    }
+    
 }
