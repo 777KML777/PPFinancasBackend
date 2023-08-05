@@ -17,10 +17,11 @@ namespace Api.Controllers
         [HttpGet]
         public string Get()
         {
+            var x = "Já posso pensar em trazer um relatório completo!!!";
             return "Agora sim. Este é o pequeno passo para alguém mas um grande salto para mim!!!";
         }
 
-        [HttpGet("UniqueDetail/{id}")]
+        [HttpGet("{id}")]
         public DetailDto Detail(int id) =>
             _detailService.GetAllDetails(id);
 

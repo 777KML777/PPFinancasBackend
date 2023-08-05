@@ -13,7 +13,7 @@ public class ExpensesRepository : IExpensesRepository
 
     public IList<ExpensesEntity> ReadAll()
     {
-        string jsonExpenses = File.ReadAllText(MachineExplorer.PegarCaminhoDoArquivo(MachineExplorer.ExpensesFileWindows));
+        string jsonExpenses = File.ReadAllText(MachineExplorer.PegarCaminhoDoArquivo(MachineExplorer.ExpensesFileMac));
         var formatJson = jsonExpenses.Replace(@"\", "");
 
         List<ExpensesEntity> expenses = JsonSerializer.Deserialize<List<ExpensesEntity>>(formatJson) ??
@@ -32,7 +32,7 @@ public class ExpensesRepository : IExpensesRepository
 
         var collectionExpensesJson = JsonSerializer.Serialize(newCollectionExpenses.ToList());
 
-        File.WriteAllText(MachineExplorer.PegarCaminhoDoArquivo(MachineExplorer.ExpensesFileWindows), collectionExpensesJson.ToString());
+        File.WriteAllText(MachineExplorer.PegarCaminhoDoArquivo(MachineExplorer.ExpensesFileMac), collectionExpensesJson.ToString());
     }
     public void Delete(int id)
     {

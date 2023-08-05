@@ -10,9 +10,12 @@ public class DetailService
     }
     public DetailDto GetAllDetails (int bankId)
     {
-        DetailDto detail = new DetailDto();
-        detail.Bank = _bankService.GetBankById(bankId);
-        detail.Bank.Calculate();
+        DetailDto detail = new()
+        {
+            DetailBank = _bankService.GetBankById(bankId)
+        };
+        
+        detail.DetailBank.Calculate();
 
         return detail;
     }
