@@ -18,32 +18,35 @@ public class BankService : IBankService
     //     _bankRepository = bankRepository;
     // }
 
-
-    public List<BankDto> GetAllBanks()
+    public void Create(BankSelectedDto obj)
     {
-        var lstBanks = new List<BankDto>();
+        _bankRepository.Create(MappingDtoToEntity(obj));
+    }
+    public List<BankSelectedDto> GetAllBanks()
+    {
+        var lstBanks = new List<BankSelectedDto>();
         var teste = _bankRepository.ReadAll();
 
-        _bankRepository.ReadAll().ToList().ForEach(x => lstBanks.Add(new BankDto { Id = x.Id })); // Passaria por parâmetro.
+        _bankRepository.ReadAll().ToList().ForEach(x => lstBanks.Add(new BankSelectedDto { Id = x.Id, BankName = x.Name })); // Passaria por parâmetro.
         return lstBanks;
 
-        // public List<BankDto> GetAllBanks => 
-        //     new List<BankDto>() {  new BankDto { Id = _bankRepository.ReadAll().Select(x => x.Id).ToList()[0]}};
-        // new List<BankDto>() {  _bankRepository.ReadAll().ToList().ForEach(x => new BankDto {Id = x.Id}) };
+        // public List<BankSelectedDto> GetAllBanks => 
+        //     new List<BankSelectedDto>() {  new BankSelectedDto { Id = _bankRepository.ReadAll().Select(x => x.Id).ToList()[0]}};
+        // new List<BankSelectedDto>() {  _bankRepository.ReadAll().ToList().ForEach(x => new BankSelectedDto {Id = x.Id}) };
     }
 
-    public BankDto GetBankById(int id)
+    public BankSelectedDto GetBankById(int id)
     {
         // Vai primeiro pegar o banco 
         BankEntity bankEntity = _bankRepository.GetById(id);
 
-        BankDto bank = MappingEntityToDto(bankEntity);
+        BankSelectedDto bank = MappingEntityToDto(bankEntity);
 
 
         // Irá chamar o serviço de expenses somente para passar a lista já com tudo calculado
         List<ExpenseDto> lstExpensesDto = _expenseServices.GetExpenseByIdBank(bank.Id)
             .OrderBy(x => x.Inactive).ThenBy(x => x.ExpenseName).ToList();
-        
+
         bank.Expenses = new List<ExpenseDto>();
         lstExpensesDto.ForEach(x => bank.Expenses.Add(x));
 
@@ -51,24 +54,25 @@ public class BankService : IBankService
     }
 
     //Para ser sincero Serialização tem que ficar aqui
-    public void AddBank(BankDto bank) =>
+    public void AddBank(BankSelectedDto bank) =>
         _bankRepository.Create(MappingDtoToEntity(bank));
 
-    public BankDto MappingEntityToDto(BankEntity obj)
+    public BankSelectedDto MappingEntityToDto(BankEntity obj)
     {
-        return new BankDto
+        return new BankSelectedDto
         {
             Id = obj.Id,
             Balance = obj.Balance,
             BankName = obj.Name
         };
     }
-    public BankEntity MappingDtoToEntity(BankDto obj) =>
-        new BankEntity(obj.BankName, obj.Balance) { Id = obj.Id };
+    public BankEntity MappingDtoToEntity(BankSelectedDto obj) =>
+        new BankEntity { Id = obj.Id, Balance = obj.Balance, Name = obj.BankName };
 
     // public void UpdateBank(int id) => 
     //     _bankRepository.Update(MappingDtoToEntity())
 
-    public int GetNextId () => 99;
+    public int GetNextId() => 99;
+
 
 }
