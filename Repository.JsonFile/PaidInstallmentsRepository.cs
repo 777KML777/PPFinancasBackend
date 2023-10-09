@@ -14,11 +14,11 @@ public class PaidInstallmentsRepository : IPaidInstallmentsRepository
         string collectionPaidInstallmentsJson = JsonSerializer.Serialize(newCollectionPaidInstallments);
 
         // Reescrevo o arquivo
-        File.WriteAllText(MachineExplorer.PegarCaminhoDoArquivo(MachineExplorer.PaidInstallmentsFileWindows), collectionPaidInstallmentsJson);
+        File.WriteAllText(MachineExplorer.PegarCaminhoDoArquivo(MachineExplorer.PaidInstallmentsFileMac), collectionPaidInstallmentsJson);
     }
     public IList<PaidInstallmentsEntity> ReadAll()
     {
-        string collectionPaidInstallmentsJson = File.ReadAllText(MachineExplorer.PegarCaminhoDoArquivo(MachineExplorer.PaidInstallmentsFileWindows));
+        string collectionPaidInstallmentsJson = File.ReadAllText(MachineExplorer.PegarCaminhoDoArquivo(MachineExplorer.PaidInstallmentsFileMac));
         var formatJson = collectionPaidInstallmentsJson.Replace(@"\", "");
 
         List<PaidInstallmentsEntity> paidInstallments = JsonSerializer.Deserialize<List<PaidInstallmentsEntity>>(formatJson) ??
@@ -44,7 +44,7 @@ public class PaidInstallmentsRepository : IPaidInstallmentsRepository
 
         var collectionPaidInstallmentsJson = JsonSerializer.Serialize(newCollectionPaidInstallments.ToList());
 
-        File.WriteAllText(MachineExplorer.PegarCaminhoDoArquivo(MachineExplorer.PaidInstallmentsFileWindows), collectionPaidInstallmentsJson.ToString());
+        File.WriteAllText(MachineExplorer.PegarCaminhoDoArquivo(MachineExplorer.PaidInstallmentsFileMac), collectionPaidInstallmentsJson.ToString());
     }
     #endregion
 

@@ -7,7 +7,7 @@
         public BankEntity () 
         {
             // Quando conectar com o banco, provavelmente irá precisar instanciar o Expenses.
-
+            
         }
 
         public BankEntity (string name, decimal balance)
