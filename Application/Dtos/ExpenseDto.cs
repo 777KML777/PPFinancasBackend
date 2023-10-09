@@ -2,6 +2,10 @@ namespace Application;
 
 public class ExpenseDto
 {
+    public ExpenseDto()
+    {
+        
+    }
     public int Id { get; set; }
     public bool Separeted { get; set; }
     public bool Inactive { get; set; }
