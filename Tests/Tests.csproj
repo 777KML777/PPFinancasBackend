@@ -22,4 +22,9 @@
     </PackageReference>
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Domain\Domain.csproj" />
+    <ProjectReference Include="..\Repository.JsonFile\Repository.JsonFile.csproj" />
+  </ItemGroup>
+
 </Project>
