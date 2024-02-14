@@ -1,4 +1,5 @@
 using System.ComponentModel.DataAnnotations.Schema;
+using Microsoft.VisualBasic;
 
 namespace Domain;
 
@@ -55,3 +56,16 @@ public class ExpensesEntity : Entity
             TotalExpensesItemRemaining = RemainingInstallments > 0 ? TotalExpensesItem - (Amount * PayedInstallments) : TotalExpensesItem;
     }
 }
+
+/* 
+    Os pagamentos em atraso após a confirmação de pagamento serão sistematizados com a data do último pagamento por padrão. 
+    O usuário se quiser depois poderá atualizar a data para ficar correto. PaymentDate, SystemPaymentDate, ter um UpdatePaymentDate? 
+
+    Quem deve verificar quantos pagamentos faltam? Entidade, repositório ou serviço?
+        Se for a entidade ela terá que ser puxada com include, por conta dos pagamentos serem outra entidade.
+         Caso o include não seja realizado, será impossível saber a última data de pagamento. 
+
+    Afinal, fazer uma consulta no banco e buscar tudo de uma única vez. Ou ir por etapas? 
+    Afinal, inserir no banco tudo de uma vez ou ir em parcela? Para esta eu acredito que inserir tudo de uma vez é a melhor 
+     opção. 
+*/
