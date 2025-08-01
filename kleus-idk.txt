@@ -1,0 +1,7 @@
+
+
+08/07/2025 - 20:00 - 20:20 
+    Inserido datas adicionais. 
+
+08/07/2025 - 19:30 - 19:50 
+    Inserido classe fatura no Dto.  

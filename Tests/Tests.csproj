@@ -25,6 +25,8 @@
   <ItemGroup>
     <ProjectReference Include="..\Domain\Domain.csproj" />
     <ProjectReference Include="..\Repository.JsonFile\Repository.JsonFile.csproj" />
+    <ProjectReference Include="..\Repository.Json\Repository.Json.csproj" />
+    <ProjectReference Include="..\Application\Application.csproj" />
   </ItemGroup>
 
 </Project>

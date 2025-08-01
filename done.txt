@@ -1,0 +1,11 @@
+Terça Feira 15 de Julho de 2025
+
+1 - 00:30 - 00:50
+    * Nomenclatura de propriedade 
+        Alterei o nome de uma propriedade da entidade do banco que estava escrita errada. 
+
+    * Definindo Próximos Passos 
+        Defini o que fazer para os próximos capítulos de desenvolvimento do sistema de finanças. 
+
+    * Problemas Com Set 
+        Corrigindo os problemas que surgiram ao corrigir o nome da propriedade Available. 

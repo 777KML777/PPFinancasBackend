@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
-using Application;
+using Application.Services;
+using Application.Models;
 
 namespace Api.Controllers;
 
@@ -7,16 +8,16 @@ namespace Api.Controllers;
 [Route("api/[controller]")]
 public class ExpenseController : ControllerBase
 {
-    private readonly ExpensesService _expenseService; 
+    private readonly ExpenseServices _expenseServices; 
 
     public ExpenseController()
     {
-        _expenseService = new ExpensesService();
+        _expenseServices = new ExpenseServices();
     }
 
     [HttpPut("{id}")]
-    public void Update (int id, ExpenseDto expense)
+    public void Update (int id, ExpenseInputModel expense)
     {
-        _expenseService.Update(id, expense);
+        _expenseServices.Update(expense);
     }
 }

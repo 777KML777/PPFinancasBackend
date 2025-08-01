@@ -1,0 +1,165 @@
+
+    Atualizar as documentações. 
+        Informar que tem que trocar o caminho do projeto toda hora. 
+        Documentar comandos para o projeto finanças. 
+        Como o frontend será? 
+        Diminuir comentários. 
+
+    Pensar no front. Para a tarefa das fatura esse seria o principal. 
+        Como agrupar no front? 
+    Manter o sono em dia. 
+    E plano para dar início à recuperação de Agosto. 
+    Julho - Operação Um Passo Atrás 
+    Agosto - Operação Recuperando fôlego 
+    Setembro - Dois Passos Á frente. 
+        Leitura técnica. 
+        Leitura sábia. 
+        Leitura persuasiva. 
+        Leitura histórica. 
+        Leitura fictícia. 
+
+OBJETIVO: Exibir Fatura Do Banco (Me achei para dar continuidade)
+    
+    O ReadInclude foi idealizado porque eu tenho que pegar os valores que estão salvos em banco de alguma 
+     maneira. Porém implementa-lo por agora talvez não seria muito viável por questão de prazo. 
+     A dúvida é: COMO PEGAR O VALOR DO BANCO SEM ELE PROCESSAR AS PARCELAS? O read de alguma maneira eu 
+      teria que setar o valor sem um construtor. E também para comparar o que existe no banco com o que 
+      não existe.
+
+    REGISTRAR A DECISÃO ACIMA NO KLEUS. 
+
+    Fazendo a abordagem acima de uma maneira mais comum eu posso agora atualizar as despesas individualmente. 
+     Pelo teste e ver se funciona ok. 
+
+    Dando tudo certo eu posso já ver o app e inclusive ler coisas para aprender melhor o front. 
+     
+    DataDePagamento do banco para se basear em marcar uma despesa paga ou não. 
+    Preparar front para receber a fatura do banco. Com base na data de pagamento pagar o item da despesa como verde ou vermelho.     
+    Verificar os testes unitário. Está dobrando a quantidade de parcelas.
+     Eu posso contabilizar também o tanto de parcelas pagas. 
+    Mostrar a quantidade de item da fatura mensal. 
+    Eu realmente necessito do InstallmentEntityData? 
+        Pergunto pois as despesas são calculados com base no tipo de pagamento da despesa, data compra e no número de parcelas. 
+        
+
+    (X) Todos os meses com base no total de meses tem que ter alguma despesa na fatura? NÃO. Mencionar o exemplo pensado.  
+    (X) Ficar ligeiro se o print também não está exibindo errado.
+
+
+PRIMEIRO FAÇA FUNCIONAR. 
+Amar você. 
+
+Sabe... eu tenho que parar de ficar me mordendo e aprender que o dedo que tem que se movimentar e não a mão. O ponto é que o meu dedo mindinho é bem curto servindo melhor o anelar para deletar em caso de erro e deixar o mindinho na margem baixa para acentuação. Digos os [] respectivamente ou as chaves {}.     
+
+O plano é atualizar a despesa para conseguir calcular a fatura corretamente. 
+Depois o interessante seria poder criar despesas. Em especial a Nubank. 
+    Ver abordagem pela web uma vez que a API está calculando perfeitamente a fatura do banco. 
+    Tem muitos detalhes aqui. Mas o plano é esse. Será que antes de Agosto sai alguma coisa? 
+        Eu tenho mais dois dias para fazer algo... Querendo ou não a fatura ja´está quase pronta. 
+
+Enquanto eu vou construíndo alguns testes já vão sendo realizados. 
+Criar um projeto referência para testes e um arquivo de documentação. 
+    Calcular probabilidade de testes para ter uma cobertura de testes ainda maior. Sim testar é neuróse. 
+
+Na hora do include ou eu salvo os objetos em um arquivo json apenas. 
+Ou eu tento implementar um include genérico. 
+
+    // Todo - Transformar BankDto em Record. 
+
+
+Como irá funcionar o userPaymentDate? 
+
+Sobrescrever métodos ToString para não deixar o Printer cheio de linhas repetidas.
+
+
+18:00 - 18:20 
+    * Mudança de namespace 
+        Atualizado o namespace Domain para Domain.Entities.Bank para todos os arquivos que se encontram nessa estrutura de pastas. 
+    * Consertando Build 
+        Arrumando vários arquivos após a atualização dos namespaces incorretos. 
+
+18:30 - 18:50 
+    
+    
+
+
+=== COBERTURA DE TESTES 
+    Eu consigo cobrir os testes individualmente o interessante seria cobrir o mesmo dinamicamente. Mas para isso eu teria que montar um cenário muito mais complexo. Seria como criar um roteiro de testes. 
+    Os testes oferecem mais segurança a longo prazo. 
+    A verdade é que todos os testes de sucesso e validação que existe na menor camada existirá na maior. 
+=== COBERTURA DE TESTES 
+
+Criar uma classe baseada na entidade para o RepositoryJson. O interessante talvez seja essa classe ser criada dinamicamente. E de alguma maneira eu teria que passar os valores para o construtor da classe original. Talvez num serviço mas de qualquer maneira todas as propriedades que foram replicadas para a classe de mapeameamento eu teria disponível. Pensar nisso futuramente. 
+
+// TODO - Remover método CalculateFinalBalance 
+    de BankDto e jogar no BankServices. 
+
+// TODO - Arrumar depois o BankDto. Ele não está usando o Record.  
+
+
+// TODO - Passar tudo via construtor (x)
+// TODO - Métodos includes no serviço incluindo apenas os filhos. 
+    (POR ENQUANTO) (x)
+// TODO - Dtos sem métodos. 
+// TODO - Include no serviço. 
+// TODO - Arrumar Mapeamento para ficarem perfeitos. (Dtos inclusive)
+// TODO - É interessante os métodos genéricos retornarem o próprio objeto salvo no banco. Melhor na hora dos testes.
+// TODO - Deixar o include no serviço por enquanto é o mais aceitavel no momento. 
+
+
+
+Arrumando os construtores pelo menos irá quebrar
+Passar propriedades por construtor. A princípio todas. A não ser que eu implementasse um novo entity framework. 
+    Mas aí seria reinventar a roda. O Mapping deles que talvez seja o segredo. Pensar a titutlo de curiosidade como é que seria. 
+GenericRepository ter uma maneira de passar os valores do json mesmo sendo as propriedades privadas. 
+
+Para a aplicação funcionar perfeitamente irá depender do CRUD estar perfeitamente criado. 
+
+Implementar FaturaController 
+    Get (Por Agora)
+        Mostrar o máximo de fatura disponível com 1 a frente com 
+         base na despesa com a maior data do último pagamento.
+    Pagar 
+        Pagar a fatura do mês atual é atualizar todas as despesas 
+         da fatura com uma data de pagamento. 
+        [Futuramente] - Validar se a fatura atual ou anterior está 
+         paga. 
+        [Futuramente] - O usuário poderá informar a data de pagamento da fatura. 
+
+Incluir despesa corretamente para a fatura ser exibida corretamente. 
+Ideia do Cartão de crédito. 
+
+Dia 13 de Julho. Semana 28 último. 
+    Eu hoje levo um versículo bíblico a sério. De não confiar nos Homens porque eles podem te trair. Cara o que ocorreu hoje entre PSG e Chelsea foi inadmissível. Para mim é certeza que as coisas em pleno 2025 são tudo mainpuladas. Tudo. 
+
+    Junta também que eu acabei me rendendo a abordagem mais fácil pois estou demandando muito tempo tentando fazer de uma maneira foda o Repository.Json. 
+
+    Essa semana que vai entrar 29. Eu vou mirar na Elegância ver se consigo ter alguma reanimada no ânimo... 
+        Ler a bíblia 
+        Tirar o anel. 
+        Esperar o dinheiro chegar. E juntar metade do esperado. 
+        Retomada das coisas. 
+
+    Imagina ler um livro sem poder voltar a página? Pois é assim é a vida. E melhor do que dizer que a vida é 
+     assim, assim é o momento. Então se dedique ao máximo para o que está fazendo. 
+
+    Presta atenção no que se materializa na sua frente. 
+    A vida é um livro e ficar sentando em casa é ler apenas a primeira página. 
+    Junta com a frase acima. Essas 3 frases, podem ser as frases do dia 13 de Julho. Isso e o momento em família talvez essas duas coisas tenham sido a parte boa do meu dia hoje. 
+
+    Eu decidi que no dia 14 de julho é sobre contornar os obstacúlos. E tem que ser assim porque senão, não vai sair.  
+
+    O que seria testar todos os cenário? Tipo a atualização de uma propriedade. 
+        Criar métodos para testar a alteração de uma única propriedade. 
+        Duplas de propriedades. 
+        Trios, quartetos e assim por diante? Seria até difícil calcular (embora seria um desafio matemático). 
+        Vale a pena gastar tempo com isso para manter a mente ocupada quando as principais obrigações estiverem concluídas. 
+
+    Atualizar a documentação do Repository.Json, informando que eu agora retorno o objeto criado. 
+    E que tenho uma pendência para não ter que criar classes espelhos como NomeClasseEntityData que tem as mesmas propriedades de uma classe NomeClasseEntity. Que fita hein. Tive que deixar isso assim por enquanto para não ter que ficar empacado e perdendo muito tempo com algo que eu posso contornar. 
+
+    Caralho simplesmente hoje. 14/07 eu passei quase duas horas vendo vídeos no instagram que nao me levaram a lugar algum. 
+    Poderia ter feito algo mais útil. Mas enfim né. É a vida. Por que querem nossa atenção? 
+
+
+    Porra tudo o que c vai assistir tem viadagem ou empoderamento. Estou cansado dessa narrativa de merda já. 

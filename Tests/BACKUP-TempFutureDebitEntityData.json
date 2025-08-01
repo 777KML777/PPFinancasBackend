@@ -1,0 +1,27 @@
+[
+    {
+        "Name": "Cartão Way", 
+        "Amount": 4554.44,
+        "IdBank": 2
+    }, 
+    {
+        "Name": "Cartão C6 Bank", 
+        "Amount": 578.96,
+        "IdBank": 1
+    }, 
+    {
+        "Name": "Cartão Mercado Pago", 
+        "Amount": 1468.58,
+        "IdBank": 1
+    }, 
+    {
+        "Name": "Cartão Nubank", 
+        "Amount": 7006.06,
+        "IdBank": 1
+    }, 
+    {
+        "Name": "Cartão PicPay", 
+        "Amount": 1111,
+        "IdBank": 1
+    }
+]

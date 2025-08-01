@@ -1,0 +1,387 @@
+[
+    {
+        "Number": 0,
+        "PaymentDate": "2023-03-07T00:00:00",
+        "IdExpenses": 2,
+        "Expenses": null,
+        "Id": 1
+    },
+    {
+        "Number": 0,
+        "PaymentDate": "2023-04-07T00:00:00",
+        "IdExpenses": 2,
+        "Expenses": null,
+        "Id": 2
+    },
+    {
+        "Number": 0,
+        "PaymentDate": "2023-05-07T00:00:00",
+        "IdExpenses": 2,
+        "Expenses": null,
+        "Id": 3
+    },
+    {
+        "Number": 0,
+        "PaymentDate": "2023-06-07T00:00:00",
+        "IdExpenses": 2,
+        "Expenses": null,
+        "Id": 4
+    },
+    {
+        "Number": 0,
+        "PaymentDate": "2022-12-22T00:00:00",
+        "IdExpenses": 4,
+        "Expenses": null,
+        "Id": 5
+    },
+    {
+        "Number": 0,
+        "PaymentDate": "2023-01-22T00:00:00",
+        "IdExpenses": 4,
+        "Expenses": null,
+        "Id": 6
+    },
+    {
+        "Number": 0,
+        "PaymentDate": "2023-02-22T00:00:00",
+        "IdExpenses": 4,
+        "Expenses": null,
+        "Id": 7
+    },
+    {
+        "Number": 0,
+        "PaymentDate": "2023-03-22T00:00:00",
+        "IdExpenses": 4,
+        "Expenses": null,
+        "Id": 8
+    },
+    {
+        "Number": 0,
+        "PaymentDate": "2023-04-22T00:00:00",
+        "IdExpenses": 4,
+        "Expenses": null,
+        "Id": 9
+    },
+    {
+        "Number": 0,
+        "PaymentDate": "2023-05-22T00:00:00",
+        "IdExpenses": 4,
+        "Expenses": null,
+        "Id": 10
+    },
+    {
+        "Number": 0,
+        "PaymentDate": "2023-06-02T00:00:00",
+        "IdExpenses": 6,
+        "Expenses": null,
+        "Id": 11
+    },
+    {
+        "Number": 0,
+        "PaymentDate": "2022-12-07T00:00:00",
+        "IdExpenses": 15,
+        "Expenses": null,
+        "Id": 12
+    },
+    {
+        "Number": 0,
+        "PaymentDate": "2022-01-07T00:00:00",
+        "IdExpenses": 15,
+        "Expenses": null,
+        "Id": 13
+    },
+    {
+        "Number": 0,
+        "PaymentDate": "2022-02-07T00:00:00",
+        "IdExpenses": 15,
+        "Expenses": null,
+        "Id": 14
+    },
+    {
+        "Number": 0,
+        "PaymentDate": "2022-03-07T00:00:00",
+        "IdExpenses": 15,
+        "Expenses": null,
+        "Id": 15
+    },
+    {
+        "Number": 0,
+        "PaymentDate": "2022-04-07T00:00:00",
+        "IdExpenses": 15,
+        "Expenses": null,
+        "Id": 16
+    },
+    {
+        "Number": 0,
+        "PaymentDate": "2022-05-07T00:00:00",
+        "IdExpenses": 15,
+        "Expenses": null,
+        "Id": 17
+    },
+    {
+        "Number": 0,
+        "PaymentDate": "2022-06-07T00:00:00",
+        "IdExpenses": 15,
+        "Expenses": null,
+        "Id": 18
+    },
+    {
+        "Number": 0,
+        "PaymentDate": "2022-02-07T00:00:00",
+        "IdExpenses": 16,
+        "Expenses": null,
+        "Id": 19
+    },
+    {
+        "Number": 0,
+        "PaymentDate": "2022-03-07T00:00:00",
+        "IdExpenses": 16,
+        "Expenses": null,
+        "Id": 20
+    },
+    {
+        "Number": 0,
+        "PaymentDate": "2022-04-07T00:00:00",
+        "IdExpenses": 16,
+        "Expenses": null,
+        "Id": 21
+    },
+    {
+        "Number": 0,
+        "PaymentDate": "2022-05-07T00:00:00",
+        "IdExpenses": 16,
+        "Expenses": null,
+        "Id": 22
+    },
+    {
+        "Number": 0,
+        "PaymentDate": "2022-06-07T00:00:00",
+        "IdExpenses": 16,
+        "Expenses": null,
+        "Id": 23
+    },
+    {
+        "Number": 0,
+        "PaymentDate": "2023-03-07T00:00:00",
+        "IdExpenses": 17,
+        "Expenses": null,
+        "Id": 24
+    },
+    {
+        "Number": 0,
+        "PaymentDate": "2023-04-07T00:00:00",
+        "IdExpenses": 17,
+        "Expenses": null,
+        "Id": 25
+    },
+    {
+        "Number": 0,
+        "PaymentDate": "2023-05-07T00:00:00",
+        "IdExpenses": 17,
+        "Expenses": null,
+        "Id": 26
+    },
+    {
+        "Number": 0,
+        "PaymentDate": "2023-06-07T00:00:00",
+        "IdExpenses": 17,
+        "Expenses": null,
+        "Id": 27
+    },
+    {
+        "Number": 0,
+        "PaymentDate": "2023-03-07T00:00:00",
+        "IdExpenses": 18,
+        "Expenses": null,
+        "Id": 28
+    },
+    {
+        "Number": 0,
+        "PaymentDate": "2023-04-07T00:00:00",
+        "IdExpenses": 18,
+        "Expenses": null,
+        "Id": 29
+    },
+    {
+        "Number": 0,
+        "PaymentDate": "2023-05-07T00:00:00",
+        "IdExpenses": 18,
+        "Expenses": null,
+        "Id": 30
+    },
+    {
+        "Number": 0,
+        "PaymentDate": "2023-06-07T00:00:00",
+        "IdExpenses": 18,
+        "Expenses": null,
+        "Id": 31
+    },
+    {
+        "Number": 0,
+        "PaymentDate": "2023-02-07T00:00:00",
+        "IdExpenses": 19,
+        "Expenses": null,
+        "Id": 32
+    },
+    {
+        "Number": 0,
+        "PaymentDate": "2023-02-17T00:00:00",
+        "IdExpenses": 19,
+        "Expenses": null,
+        "Id": 33
+    },
+    {
+        "Number": 0,
+        "PaymentDate": "2023-03-07T00:00:00",
+        "IdExpenses": 19,
+        "Expenses": null,
+        "Id": 34
+    },
+    {
+        "Number": 0,
+        "PaymentDate": "2023-04-07T00:00:00",
+        "IdExpenses": 19,
+        "Expenses": null,
+        "Id": 35
+    },
+    {
+        "Number": 0,
+        "PaymentDate": "2023-05-17T00:00:00",
+        "IdExpenses": 19,
+        "Expenses": null,
+        "Id": 36
+    },
+    {
+        "Number": 0,
+        "PaymentDate": "2023-06-17T00:00:00",
+        "IdExpenses": 19,
+        "Expenses": null,
+        "Id": 37
+    },
+    {
+        "Number": 0,
+        "PaymentDate": "2022-10-07T00:00:00",
+        "IdExpenses": 14,
+        "Expenses": null,
+        "Id": 38
+    },
+    {
+        "Number": 0,
+        "PaymentDate": "2022-11-07T00:00:00",
+        "IdExpenses": 14,
+        "Expenses": null,
+        "Id": 39
+    },
+    {
+        "Number": 0,
+        "PaymentDate": "2022-12-07T00:00:00",
+        "IdExpenses": 14,
+        "Expenses": null,
+        "Id": 40
+    },
+    {
+        "Number": 0,
+        "PaymentDate": "2022-01-07T00:00:00",
+        "IdExpenses": 14,
+        "Expenses": null,
+        "Id": 41
+    },
+    {
+        "Number": 0,
+        "PaymentDate": "2022-02-07T00:00:00",
+        "IdExpenses": 14,
+        "Expenses": null,
+        "Id": 42
+    },
+    {
+        "Number": 0,
+        "PaymentDate": "2022-03-07T00:00:00",
+        "IdExpenses": 14,
+        "Expenses": null,
+        "Id": 43
+    },
+    {
+        "Number": 0,
+        "PaymentDate": "2022-04-07T00:00:00",
+        "IdExpenses": 14,
+        "Expenses": null,
+        "Id": 44
+    },
+    {
+        "Number": 0,
+        "PaymentDate": "2022-05-07T00:00:00",
+        "IdExpenses": 14,
+        "Expenses": null,
+        "Id": 45
+    },
+    {
+        "Number": 0,
+        "PaymentDate": "2022-06-07T00:00:00",
+        "IdExpenses": 14,
+        "Expenses": null,
+        "Id": 46
+    },
+    {
+        "Number": 1,
+        "PaymentDate": null,
+        "IdExpenses": 20,
+        "Expenses": null,
+        "Id": 47
+    },
+    {
+        "Number": 2,
+        "PaymentDate": null,
+        "IdExpenses": 20,
+        "Expenses": null,
+        "Id": 48
+    },
+    {
+        "Number": 3,
+        "PaymentDate": null,
+        "IdExpenses": 20,
+        "Expenses": null,
+        "Id": 49
+    },
+    {
+        "Number": 4,
+        "PaymentDate": null,
+        "IdExpenses": 20,
+        "Expenses": null,
+        "Id": 50
+    },
+    {
+        "Number": 5,
+        "PaymentDate": null,
+        "IdExpenses": 20,
+        "Expenses": null,
+        "Id": 51
+    },
+    {
+        "Number": 6,
+        "PaymentDate": null,
+        "IdExpenses": 20,
+        "Expenses": null,
+        "Id": 52
+    },
+    {
+        "Number": 7,
+        "PaymentDate": null,
+        "IdExpenses": 20,
+        "Expenses": null,
+        "Id": 53
+    },
+    {
+        "Number": 8,
+        "PaymentDate": null,
+        "IdExpenses": 20,
+        "Expenses": null,
+        "Id": 54
+    },
+    {
+        "Number": 9,
+        "PaymentDate": null,
+        "IdExpenses": 20,
+        "Expenses": null,
+        "Id": 55
+    }
+]

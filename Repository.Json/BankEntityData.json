@@ -1,0 +1,50 @@
+[
+    {
+        "Name": "Mercado Pago",
+        "Balance": 420.69,
+        "Available": true,
+        "Id": 1
+    },
+    {
+        "Name": "Santander",
+        "Balance": 7358.98,
+        "Available": true,
+        "Id": 2
+    },
+    {
+        "Name": "Nubank",
+        "Balance": 252.30,
+        "Available": true,
+        "Id": 3
+    },
+    {
+        "Name": "PicPay",
+        "Balance": 574.24,
+        "Available": true,
+        "Id": 4
+    },
+    {
+        "Name": "C6 Bank Cartão Ren",
+        "Balance": 36924.47,
+        "Available": true,
+        "Id": 5
+    },
+    {
+        "Name": "C6 Bank",
+        "Balance": 516.18,
+        "Available": true,
+        "Id": 6
+    },
+    {
+        "Name": "PagSeguro",
+        "Balance": 9875.29,
+        "Available": true,
+        "Id": 7
+    },
+    {
+        "Name": "FGTS",
+        "Balance": 35022.16,
+        "Available": false,
+        "Id": 8
+    }
+]

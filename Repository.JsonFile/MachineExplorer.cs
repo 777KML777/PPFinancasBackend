@@ -6,8 +6,8 @@ public static class MachineExplorer
     public static string BankFileMac { get; set; } = @"/JsonBank.json";
     public static string ExpensesFileWindows { get; set; } = @"\JsonExpenses.json";
     public static string ExpensesFileMac { get; set; } = @"/JsonExpenses.json";
-    public static string PaidInstallmentsFileWindows { get; set; } = @"\JsonPaidInstallments.json";
-    public static string PaidInstallmentsFileMac { get; set; } = @"/JsonPaidInstallments.json";
+    public static string InstallmentsFileWindows { get; set; } = @"\JsonInstallments.json";
+    public static string InstallmentsFileMac { get; set; } = @"/JsonInstallments.json";
 
     // Poderia ficar em um repositório genérico
     public static string PegarCaminhoDoArquivo (string repositoryFileMachine)
