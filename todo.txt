@@ -1,16 +1,7 @@
-
-    Atualizar as documentações. 
-        Informar que tem que trocar o caminho do projeto toda hora. 
-        Documentar comandos para o projeto finanças. 
-        Como o frontend será? 
-        Diminuir comentários. 
-
-    Pensar no front. Para a tarefa das fatura esse seria o principal. 
-        Como agrupar no front? 
     Manter o sono em dia. 
     E plano para dar início à recuperação de Agosto. 
     Julho - Operação Um Passo Atrás 
-    Agosto - Operação Recuperando fôlego 
+    Agosto - Operação Recuperando fôlego - Elegância
     Setembro - Dois Passos Á frente. 
         Leitura técnica. 
         Leitura sábia. 
