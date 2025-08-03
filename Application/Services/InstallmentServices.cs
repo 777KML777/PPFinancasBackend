@@ -6,7 +6,7 @@ using Repository.JsonFile;
 
 namespace Application.Services;
 
-public class InstallmentService : IInstallmentServices
+public class InstallmentServices : IInstallmentServices
 {
 
     // A filosofia é que o de fora sempre valida o de dentro. 
@@ -14,7 +14,7 @@ public class InstallmentService : IInstallmentServices
     // Com Get e private set; 
     private readonly IInstallmentRepository _installmentRepository = new InstallmentRepository();
 
-    public InstallmentService()
+    public InstallmentServices()
     {
 
     }

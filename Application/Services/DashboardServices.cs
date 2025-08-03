@@ -10,18 +10,41 @@ namespace Application.Services;
 public class DashboardServices
 {
 
+    IBankServices _bankServices = new BankServices();
+    IExpenseServices _expenseServices = new ExpenseServices();
+    IInstallmentServices _installmentServices = new InstallmentServices();
+    // ITempFutureDebitsRepository _tempRepo = new TempFutureDebitsRepository();
     IBankRepository _bankRepo = new BankRepository();
     IExpenseRepository _expenseRepo = new ExpenseRepository();
-    IInstallmentRepository _installmentsRepo = new InstallmentRepository();
+    IInstallmentRepository _installmentRepo = new InstallmentRepository();
     ITempFutureDebitsRepository _tempRepo = new TempFutureDebitsRepository();
+
+
     public DashboardDto DashData()
     {
         // Total de todos os bancos separadamente. 
         DashboardDto dash = new DashboardDto();
 
-        List<BankEntity> lstBanks = _bankRepo.ReadAll<BankEntity>().ToList();
-        List<ExpenseEntity> lstExpenses = _expenseRepo.ReadAll<ExpenseEntity>().ToList();
-        List<InstallmentEntity> lstInstallments = _installmentsRepo.ReadAll<InstallmentEntity>().ToList();
+        // Só chamar os respectivos MappingList
+        List<BankEntity> lstBanks =
+        _bankServices.MappingListEntityDataToListEntity
+        (
+            _bankRepo.ReadAll<BankEntityData>().ToList()
+        );
+
+        List<ExpenseEntity> lstExpenses =
+        _expenseServices.MappingListEntityDataToListEntity
+        (
+            _expenseRepo.ReadAll<ExpenseEntityData>().ToList()
+
+        );
+
+        List<InstallmentEntity> lstInstallments =
+        _installmentServices.MappingListEntityDataToListEntity
+        (
+            _installmentRepo.ReadAll<InstallmentEntityData>().ToList()
+        );
+        
         List<TempFutureDebitsEntity> lstTemp = _tempRepo.ReadAll<TempFutureDebitsEntity>().ToList();
 
         // O que acontece se eu tentar passar uma entidade da diferente que tem que ser mapeada? 

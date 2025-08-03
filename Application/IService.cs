@@ -33,8 +33,9 @@ public interface IService<TInputModel, TDto, TEntity, TEntityData>
     /// </summary>
     /// <param name="obj">Objeto do repositório JSON</param>
     /// <returns>Entidade de domínio TEntity</returns>
-    List<TEntity> MappingListEntityDataToListEntity(List<TEntityData> obj); 
+    List<TEntity> MappingListEntityDataToListEntity(List<TEntityData> obj);
 
+    List<TDto> MappingListEntityToListDto(List<TEntity> obj);
     
     bool Create(TInputModel obj, bool include = false);
     List<TDto> Read(bool include = false);

@@ -14,7 +14,7 @@ public class BankServices : IBankServices
     {
         _bankRepository = new BankRepository();
         _expenseServices = new ExpenseServices();
-        _installmentServices = new InstallmentService();
+        _installmentServices = new InstallmentServices();
     }
 
     public bool Create(BankInputModel obj, bool include = false) => false;
@@ -48,7 +48,7 @@ public class BankServices : IBankServices
                 _bankRepository.GetById<BankEntityData>(id)
             )
         ) ?? throw new Exception($"Nenhum banco com o Id {id} encontrado!");
-        
+
         if (include)
         {
             bank.Expenses = _expenseServices.GetExpenseByIdBank(bank.Id);
@@ -125,7 +125,8 @@ public class BankServices : IBankServices
                                                                Nome = expense.Name,
                                                                NumeroParcela = item.Number,
                                                                QuantidadeTotalParcelas = expense.CountInstallments,
-                                                               ValorParcela = expense.Amount
+                                                               ValorParcela = expense.Amount,
+                                                               MesLancamento = iteracao+1
                                                            }
                                                        )
                                                    );
@@ -133,12 +134,12 @@ public class BankServices : IBankServices
 
                         else
                         {
-                                var dataAnterior = bank.DataPagamento.AddMonths(iteracao - 1);
-                            
+                            var dataAnterior = bank.DataPagamento.AddMonths(iteracao - 1);
+
                             expense.Installments
                                                    .Where
                                                    (
-                                                       e => Convert.ToDateTime(e.ExpectedDate).Date  <= bank.DataPagamento.AddMonths(iteracao).Date && Convert.ToDateTime(e.ExpectedDate).Date >= dataAnterior.Date
+                                                       e => Convert.ToDateTime(e.ExpectedDate).Date <= bank.DataPagamento.AddMonths(iteracao).Date && Convert.ToDateTime(e.ExpectedDate).Date >= dataAnterior.Date
                                                    )
                                                    .ToList()
                                                    .ForEach
@@ -151,7 +152,8 @@ public class BankServices : IBankServices
                                                                Nome = expense.Name,
                                                                NumeroParcela = item.Number,
                                                                QuantidadeTotalParcelas = expense.CountInstallments,
-                                                               ValorParcela = expense.Amount
+                                                               ValorParcela = expense.Amount,
+                                                               MesLancamento = iteracao+1
                                                            }
                                                        )
                                                    );
@@ -171,6 +173,9 @@ public class BankServices : IBankServices
             //     // TODO: Desenvolver recursos para o sistema ir se consertando
 
         }
+
+        bank.CalculaLancamento();
+
         return bank;
     }
 
@@ -223,14 +228,25 @@ public class BankServices : IBankServices
     public BankEntity MappingInputModelToEntity(BankInputModel obj) =>
         new BankEntity();
 
+    public List<BankDto> MappingListEntityToListDto(List<BankEntity> obj)
+    {
+        List<BankDto> lst = new();
+        obj.ForEach(item => lst.Add(MappingEntityToDto(item)));
+        return lst;
+    }
+
     public List<BankEntityData> MappingListEntityToListEntityData(List<BankEntity> obj)
     {
-        throw new NotImplementedException();
+        List<BankEntityData> lst = new();
+        obj.ForEach(item => lst.Add(MappingEntityToEntityData(item)));
+        return lst;
     }
 
     public List<BankEntity> MappingListEntityDataToListEntity(List<BankEntityData> obj)
     {
-        throw new NotImplementedException();
+        List<BankEntity> lst = new();
+        obj.ForEach(item => lst.Add(MappingEntityDataToEntity(item)));
+        return lst;
     }
 
 }

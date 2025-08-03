@@ -12,7 +12,7 @@ public class SuccessExpenseRepository
     static IExpenseServices _services = new ExpenseServices();
     static IExpenseRepository _repository = new ExpenseRepository();
     static IInstallmentRepository _installmentRepository = new InstallmentRepository();
-    static IInstallmentServices _installmentServices = new InstallmentService();
+    static IInstallmentServices _installmentServices = new InstallmentServices();
 
     [Fact]
     public void CreateExpense()

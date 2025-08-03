@@ -9,7 +9,7 @@ namespace Application.Services;
 public class ExpenseServices : IExpenseServices
 {
     private readonly IExpenseRepository _expenseRepository = new ExpenseRepository();
-    private readonly IInstallmentServices _installmentServices = new InstallmentService();
+    private readonly IInstallmentServices _installmentServices = new InstallmentServices();
     public ExpenseServices()
     {
 
@@ -216,13 +216,24 @@ public class ExpenseServices : IExpenseServices
         return entidade;
     }
 
-   public List<ExpenseEntityData> MappingListEntityToListEntityData(List<ExpenseEntity> obj)
+    public List<ExpenseDto> MappingListEntityToListDto(List<ExpenseEntity> obj)
     {
-        throw new NotImplementedException();
+        List<ExpenseDto> lst = new();
+        obj.ForEach(item => lst.Add(MappingEntityToDto(item)));
+        return lst;
+    }
+
+    public List<ExpenseEntityData> MappingListEntityToListEntityData(List<ExpenseEntity> obj)
+    {
+        List<ExpenseEntityData> lst = new();
+        obj.ForEach(item => lst.Add(MappingEntityToEntityData(item)));
+        return lst;
     }
 
     public List<ExpenseEntity> MappingListEntityDataToListEntity(List<ExpenseEntityData> obj)
     {
-        throw new NotImplementedException();
+        List<ExpenseEntity> lst = new();
+        obj.ForEach(item => lst.Add(MappingEntityDataToEntity(item)));
+        return lst;
     }
 }

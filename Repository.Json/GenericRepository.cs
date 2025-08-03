@@ -217,7 +217,7 @@ public abstract class GenericRepository : IGenericRepository/* <EntityData> */
             }
             else
                 throw new Exception($"Nenhuma ocorrência com o identificador {id} foi encontrada.");
-        }
+        }   
         catch (System.Exception)
         {
 
