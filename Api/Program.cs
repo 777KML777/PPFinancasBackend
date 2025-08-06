@@ -32,4 +32,4 @@ app.UseAuthorization();
 app.MapControllers();
 
 app.Run();
-// app.Run("http://0.0.0.0:5002"); Funcionou isso aqui também.
+// app.Run("http://0.0.0.0:5002");/*  Funcionou isso aqui também. */
