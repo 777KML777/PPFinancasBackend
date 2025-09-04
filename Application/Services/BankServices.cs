@@ -1,7 +1,7 @@
 using Application.Dtos;
 using Application.Models;
+using Application.Services.Extrato;
 using Domain.Entities.Bank;
-using Domain.Entities.Extrato;
 using Domain.Enums;
 using Repository.JsonFile.Repositories.Bank;
 
@@ -10,11 +10,13 @@ namespace Application.Services;
 public class BankServices : IBankServices
 {
     private readonly IBankRepository _repository;
+    private readonly IExtratoServices _extratoServices;
     private readonly IExpenseServices _expenseServices;
     private readonly IInstallmentServices _installmentServices;
     public BankServices()
     {
         _repository = new BankRepository();
+        _extratoServices = new ExtratoServices();
         _expenseServices = new ExpenseServices();
         _installmentServices = new InstallmentServices();
     }
@@ -206,16 +208,46 @@ public class BankServices : IBankServices
         var extrato =
             entity.Extrato
                 .MaxBy(ext => ext.DataTransacaoSistema);
-        
+
         //TODO: O ideal é chamar o include 
         //TODO: Ver no teste como que se usa ele
         //TODO: Talvez eu devesso usar async aqui. 
-        
-        // _repository.Update
-        // (
-        //     MappingEntityToEntityData(entity)
-        // );
 
+        // if (extrato != null)
+        //     _extratoServices.Create
+        //     (
+        //         new ExtratoInputModel
+        //         {
+        //             IdBank = extrato.IdBank,
+        //             Operacao = extrato.Operacao.ToString(),
+        //             SaldoAtual = extrato.SaldoAtual,
+        //             SaldoAnterior = extrato.SaldoAnterior,
+        //             ValorTransacao = extrato.ValorTransacao,
+        //             DataUsuarioAlteracao = extrato.DataUsuarioAlteracao,
+        //             DataTransacaoSistema = extrato.DataTransacaoSistema,
+        //         }
+        //     );
+
+        
+        // include no próprio parâmetro, sei lá. 
+        _repository.Update
+        (
+            MappingEntityToEntityData(entity)
+
+        ).IncludeRange
+        (
+            MappingEntityToEntityData(entity),
+            _extratoServices.MappingListEntityToListEntityData
+            (
+                entity.Extrato
+            )
+        );
+
+        //  _services.MappingEntityToEntityData(entity),
+        //             _installmentServices.MappingListEntityToListEntityData(entity.Installments.ToList())
+
+        // Eu teria que retornar um bank dto. A princípio 
+        // eu vou fazer por aqui mesmo. 
 
         return true;
     }
