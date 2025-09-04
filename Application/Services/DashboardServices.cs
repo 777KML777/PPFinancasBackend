@@ -4,6 +4,7 @@ using Domain.Entities.Expense;
 using Domain.Entities.Installment;
 using Repository.JsonFile;
 using Domain.Entities.TempFutureDebit;
+using Repository.JsonFile.Repositories.Bank;
 
 namespace Application.Services;
 

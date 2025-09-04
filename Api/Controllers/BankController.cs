@@ -27,6 +27,10 @@ public class BankController : ControllerBase
         _bankServices.Create(obj);
     }
 
+    [HttpPut()]
+    public void Update(BankInputModel obj) =>
+        _bankServices.Update(obj);
+
     [HttpGet("{id}")]
     public BankDto Get(int id) =>
         _bankServices.GetById(id, true);

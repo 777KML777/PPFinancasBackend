@@ -2,6 +2,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Domain\Domain.csproj" />
+    <ProjectReference Include="..\Repository.Json\Repository.Json.csproj" />
   </ItemGroup>
 
   <PropertyGroup>

@@ -1,4 +1,3 @@
-using Domain.Entities.Bank;
 using Domain.Entities.Installment;
 using Repository.Json;
 
@@ -19,7 +18,7 @@ public class ExpenseEntityData : EntityData
     public decimal Amount { get; set; }
     public string Describe { get; set; }
     public string PaymentType { get; set; }
-    public BankEntityData Bank { get; set; }
+    // public BankEntityData Bank { get; set; }
     public int CountInstallments { get; set; }
     public DateTime DatePurchase { get; set; }
     public DateTime DateLastInstallment { get; set; }

@@ -1,13 +1,14 @@
-using Domain;
-
 namespace Application.Models;
 
 public class BankInputModel
 {
     public int Id { get; set; }
     public string Name { get; set; }
+    public bool Available { get; set; }
+    public int PaymentDay { get; set; }
+    public string Operacao { get; set; }
     public decimal Balance { get; set; }
-    public List<ExpenseInputModel> Expenses { get; set; }
+    // public List<ExpenseInputModel> Expenses { get; set; }
 
     // public void Calculate()
     // {
@@ -86,64 +87,64 @@ public class BankInputModel
     //     FinalBalance = Balance - (TotalSepareted + TotalToSeparete);
     // }
 
-    public int TotalActiveExpenses { get; set; }
-    public decimal SecuryBalance { get; set; }
-    public decimal FinalBalance {get ; set; }
-    public decimal TotalAllExpensesActive { get; set; }
-    public decimal TotalAllExpensesRemainingActive { get; set; }
-    public decimal Fatura { get; set; } // só é valido para crédito
-    public decimal TotalMensalActive { get; set; }
-    public decimal TotalSeparetedActive { get; set; }
-    public decimal TotalAllCountInstallments { get; set; }
-    public decimal TotalAllCountInstallmentsRemaining { get; set; }
+    // public int TotalActiveExpenses { get; set; }
+    // public decimal SecuryBalance { get; set; }
+    // public decimal FinalBalance {get ; set; }
+    // public decimal TotalAllExpensesActive { get; set; }
+    // public decimal TotalAllExpensesRemainingActive { get; set; }
+    // public decimal Fatura { get; set; } // só é valido para crédito
+    // public decimal TotalMensalActive { get; set; }
+    // public decimal TotalSeparetedActive { get; set; }
+    // public decimal TotalAllCountInstallments { get; set; }
+    // public decimal TotalAllCountInstallmentsRemaining { get; set; }
 
-    #region To Separete
-    // Total to separete Boleto 
-    public decimal TotalToSepareteBoletoMonthly { get; set; }
-    public decimal TotalToSepareteBoleto { get; set; }
+    // #region To Separete
+    // // Total to separete Boleto 
+    // public decimal TotalToSepareteBoletoMonthly { get; set; }
+    // public decimal TotalToSepareteBoleto { get; set; }
 
-    // Total a separar Debito 
-    public decimal TotalToSepareteDebitCardMonthly { get; set; }
-    public decimal TotalToSepareteDebitCard { get; set; }
-    
-    // Total a separar credito 
-    public decimal TotalToSepareteCreditCardMonthly { get; set; }
-    public decimal TotalToSepareteCreditCard { get; set; }
+    // // Total a separar Debito 
+    // public decimal TotalToSepareteDebitCardMonthly { get; set; }
+    // public decimal TotalToSepareteDebitCard { get; set; }
 
-    // Total a separar Pix 
-    public decimal TotalToSeparetePixMonthly { get; set; }
-    public decimal TotalToSeparetePix { get; set; }
+    // // Total a separar credito 
+    // public decimal TotalToSepareteCreditCardMonthly { get; set; }
+    // public decimal TotalToSepareteCreditCard { get; set; }
 
-    // Real Total To Separete
-    public decimal TotalMonthly() =>
-        TotalToSepareteCreditCardMonthly + TotalToSeparetePixMonthly;
-    public decimal TotalToSeparete { get; set; }
-    public decimal TotalToSepareteMonthly { get; set; }
-    #endregion
+    // // Total a separar Pix 
+    // public decimal TotalToSeparetePixMonthly { get; set; }
+    // public decimal TotalToSeparetePix { get; set; }
 
-    #region Total Separeted
-    // Total Separeted Boleto 
-    public decimal TotalSeparetedBoletoMonthly { get; set; }
-    public decimal TotalSeparetedBoleto { get; set; }
+    // // Real Total To Separete
+    // public decimal TotalMonthly() =>
+    //     TotalToSepareteCreditCardMonthly + TotalToSeparetePixMonthly;
+    // public decimal TotalToSeparete { get; set; }
+    // public decimal TotalToSepareteMonthly { get; set; }
+    // #endregion
 
-    // Total Separeted Debito 
-    public decimal TotalSeparetedDebitMonthly { get; set; }
-    public decimal TotalSeparetedDebit { get; set; }
+    // #region Total Separeted
+    // // Total Separeted Boleto 
+    // public decimal TotalSeparetedBoletoMonthly { get; set; }
+    // public decimal TotalSeparetedBoleto { get; set; }
 
-    // Total Separeted Credit card
-    public decimal TotalSeparetedCreditCardMonthly { get; set; }
-    public decimal TotalSeparetedCreditCard { get; set; }
+    // // Total Separeted Debito 
+    // public decimal TotalSeparetedDebitMonthly { get; set; }
+    // public decimal TotalSeparetedDebit { get; set; }
 
-    // Total Separeted Pix
-    public decimal TotalSeparetedPixMonthly { get; set; }
-    public decimal TotalSeparetedPix { get; set; }
+    // // Total Separeted Credit card
+    // public decimal TotalSeparetedCreditCardMonthly { get; set; }
+    // public decimal TotalSeparetedCreditCard { get; set; }
 
-    // Real Total Separeted
-    public decimal TotalSeparetedMonthly { get; set; }
-    public decimal TotalSepareted { get; set; }
-    public decimal CalcTotalSeparetedMonthly() =>
-        TotalSeparetedDebitMonthly + TotalSeparetedCreditCardMonthly + TotalSeparetedPixMonthly + TotalSeparetedBoletoMonthly;
-    public decimal CalcTotalSepareted() =>
-        TotalSeparetedDebit + TotalSeparetedCreditCard + TotalSeparetedPix + TotalSeparetedBoleto;
-    #endregion
+    // // Total Separeted Pix
+    // public decimal TotalSeparetedPixMonthly { get; set; }
+    // public decimal TotalSeparetedPix { get; set; }
+
+    // // Real Total Separeted
+    // public decimal TotalSeparetedMonthly { get; set; }
+    // public decimal TotalSepareted { get; set; }
+    // public decimal CalcTotalSeparetedMonthly() =>
+    //     TotalSeparetedDebitMonthly + TotalSeparetedCreditCardMonthly + TotalSeparetedPixMonthly + TotalSeparetedBoletoMonthly;
+    // public decimal CalcTotalSepareted() =>
+    //     TotalSeparetedDebit + TotalSeparetedCreditCard + TotalSeparetedPix + TotalSeparetedBoleto;
+    // #endregion
 }

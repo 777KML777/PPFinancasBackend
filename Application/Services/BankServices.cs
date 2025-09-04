@@ -1,30 +1,32 @@
 using Application.Dtos;
 using Application.Models;
 using Domain.Entities.Bank;
-using Repository.JsonFile;
+using Domain.Entities.Extrato;
+using Domain.Enums;
+using Repository.JsonFile.Repositories.Bank;
 
 namespace Application.Services;
 
 public class BankServices : IBankServices
 {
-    private readonly IBankRepository _bankRepository;
+    private readonly IBankRepository _repository;
     private readonly IExpenseServices _expenseServices;
     private readonly IInstallmentServices _installmentServices;
     public BankServices()
     {
-        _bankRepository = new BankRepository();
+        _repository = new BankRepository();
         _expenseServices = new ExpenseServices();
         _installmentServices = new InstallmentServices();
     }
 
     public bool Create(BankInputModel obj, bool include = false) => false;
-    // _bankRepository.Create(MappingInputModelToEntity(obj));
+    // _repository.Create(MappingInputModelToEntity(obj));
     public List<BankDto> Read(bool include = false)
     {
         var lstBanks = new List<BankDto>();
-        var teste = _bankRepository.ReadAll<BankEntity>();
+        var teste = _repository.ReadAll<BankEntity>();
 
-        _bankRepository.ReadAll<BankEntity>()
+        _repository.ReadAll<BankEntity>()
             .ToList()
             .ForEach(x => lstBanks.Add(
                 new BankDto { Id = x.Id, Name = x.Name }
@@ -33,8 +35,8 @@ public class BankServices : IBankServices
         return lstBanks;
 
         // public List<BankInputModel> GetAllBanks => 
-        //     new List<BankInputModel>() {  new BankInputModel { Id = _bankRepository.ReadAll().Select(x => x.Id).ToList()[0]}};
-        // new List<BankInputModel>() {  _bankRepository.ReadAll().ToList().ForEach(x => new BankInputModel {Id = x.Id}) };
+        //     new List<BankInputModel>() {  new BankInputModel { Id = _repository.ReadAll().Select(x => x.Id).ToList()[0]}};
+        // new List<BankInputModel>() {  _repository.ReadAll().ToList().ForEach(x => new BankInputModel {Id = x.Id}) };
     }
 
     public BankDto GetById(int id, bool include = false)
@@ -45,7 +47,7 @@ public class BankServices : IBankServices
         (
             MappingEntityDataToEntity
             (
-                _bankRepository.GetById<BankEntityData>(id)
+                _repository.GetById<BankEntityData>(id)
             )
         ) ?? throw new Exception($"Nenhum banco com o Id {id} encontrado!");
 
@@ -126,7 +128,7 @@ public class BankServices : IBankServices
                                                                NumeroParcela = item.Number,
                                                                QuantidadeTotalParcelas = expense.CountInstallments,
                                                                ValorParcela = expense.Amount,
-                                                               MesLancamento = iteracao+1
+                                                               MesLancamento = iteracao + 1
                                                            }
                                                        )
                                                    );
@@ -153,7 +155,7 @@ public class BankServices : IBankServices
                                                                NumeroParcela = item.Number,
                                                                QuantidadeTotalParcelas = expense.CountInstallments,
                                                                ValorParcela = expense.Amount,
-                                                               MesLancamento = iteracao+1
+                                                               MesLancamento = iteracao + 1
                                                            }
                                                        )
                                                    );
@@ -181,18 +183,40 @@ public class BankServices : IBankServices
 
     //Para ser sincero Serialização tem que ficar aqui
     public void AddBank(BankInputModel bank) =>
-        _bankRepository.Create(MappingInputModelToEntity(bank));
+        _repository.Create(MappingInputModelToEntity(bank));
 
-    public bool Update(BankInputModel dto, bool include = false)
+    public bool Update(BankInputModel input, bool include = false)
     {
-        BankEntity banco = _bankRepository.GetById<BankEntity>(dto.Id) ??
-            throw new Exception($"Não existe um banco com o id {dto.Id}");
+        BankEntity entity = MappingEntityDataToEntity
+        (
+            _repository.GetById<BankEntityData>(input.Id)
+        );
 
-        // if (dto.Expenses.Count != 0)
+        entity.AlterBankEntity
+        (
+            input.Id,
+            input.Name,
+            input.Balance,
+            input.PaymentDay,
+            input.Available,
+            (EOperacao)Enum.Parse(typeof(EOperacao), input.Operacao)
+        );
 
-        banco = MappingInputModelToEntity(dto);
+        // Chamar serviço de criar extrato. 
+        var extrato =
+            entity.Extrato
+                .MaxBy(ext => ext.DataTransacaoSistema);
+        
+        //TODO: O ideal é chamar o include 
+        //TODO: Ver no teste como que se usa ele
+        //TODO: Talvez eu devesso usar async aqui. 
+        
+        // _repository.Update
+        // (
+        //     MappingEntityToEntityData(entity)
+        // );
 
-        _bankRepository.Update(banco);
+
         return true;
     }
 
@@ -209,10 +233,17 @@ public class BankServices : IBankServices
         };
     }
 
-    public BankEntity MappingEntityDataToEntity(BankEntityData obj)
+    public BankEntity MappingEntityDataToEntity(BankEntityData data)
     {
         BankEntity entity = new();
-        entity.AlterBankEntity(obj.Id, obj.Name, obj.Balance, obj.PaymentDay);
+        entity.AlterBankEntity
+        (
+            data.Id,
+            data.Name,
+            data.Balance,
+            data.PaymentDay,
+            data.Avalaible
+        );
         return entity;
     }
 

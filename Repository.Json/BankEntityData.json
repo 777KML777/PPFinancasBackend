@@ -3,6 +3,7 @@
         "Balance": 420.69,
         "Name": "Mercado Pago",
         "Available": true,
+        "PaymentDay": 10,
         "Expenses": [],
         "Id": 1
     },
@@ -10,6 +11,7 @@
         "Balance": 7358.98,
         "Name": "Santander",
         "Available": true,
+        "PaymentDay": 10,
         "Expenses": [],
         "Id": 2
     },
@@ -17,6 +19,7 @@
         "Balance": 252.30,
         "Name": "Nubank",
         "Available": true,
+        "PaymentDay": 10,
         "Expenses": [],
         "Id": 3
     },
@@ -24,6 +27,7 @@
         "Balance": 574.24,
         "Name": "PicPay",
         "Available": true,
+        "PaymentDay": 10,
         "Expenses": [],
         "Id": 4
     },
@@ -31,6 +35,7 @@
         "Balance": 36924.47,
         "Name": "C6 Bank Cart\u00E3o Ren",
         "Available": true,
+        "PaymentDay": 10,
         "Expenses": [],
         "Id": 5
     },
@@ -38,6 +43,7 @@
         "Balance": 516.18,
         "Name": "C6 Bank",
         "Available": true,
+        "PaymentDay": 10,
         "Expenses": [],
         "Id": 6
     },
@@ -45,6 +51,7 @@
         "Balance": 9875.29,
         "Name": "PagSeguro",
         "Available": true,
+        "PaymentDay": 10,
         "Expenses": [],
         "Id": 7
     },
@@ -52,6 +59,7 @@
         "Balance": 35022.16,
         "Name": "FGTS",
         "Available": false,
+        "PaymentDay": 10,
         "Expenses": [],
         "Id": 8
     },
@@ -59,6 +67,7 @@
         "Balance": 0.01,
         "Name": "BankOfTestUpgraded",
         "Available": false,
+        "PaymentDay": 10,
         "Expenses": [],
         "Id": 777
     }

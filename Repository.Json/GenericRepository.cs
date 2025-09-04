@@ -266,6 +266,16 @@ public abstract class GenericRepository : IGenericRepository/* <EntityData> */
         // o inlcude normal utilizando de um ForEach
 
     }
+
+    /// <summary>
+    /// 
+    /// </summary>
+    /// <typeparam name="T"></typeparam>
+    /// <typeparam name="TInclude"></typeparam>
+    /// <param name="data">Main Entity</param>
+    /// <param name="toInclude">Entity To Include</param>
+    /// <param name="repository"></param>
+    /// <returns></returns>
     internal T IncludeRange<T, TInclude>(T data, List<TInclude> toInclude, bool repository = false)
     {
         toInclude.ForEach(item => Include(data, item));
