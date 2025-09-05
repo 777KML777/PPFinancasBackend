@@ -4,7 +4,7 @@ public class ExtratoInputModel
 {
     public int IdBank { get; set; }
     public string Operacao { get; set; }
-    public decimal SaldoAtual { get; set; }
+    public decimal SaldoDoDia { get; set; }
     public decimal SaldoAnterior { get; set; }
     public decimal ValorTransacao { get; set; }
     public DateTime DataUsuarioAlteracao { get; set; }

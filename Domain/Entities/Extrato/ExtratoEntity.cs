@@ -18,7 +18,7 @@ public class ExtratoEntity : EntityData
         ValorTransacao = valorTransacao;
 
         DataTransacaoSistema = DateTime.Now;
-        SaldoAtual = SaldoAnterior + ValorTransacao;
+        SaldoDoDia = SaldoAnterior + ValorTransacao;
 
         if (dataUsuarioAlteracao != null)
             DataUsuarioAlteracao = (DateTime)dataUsuarioAlteracao;
@@ -26,7 +26,7 @@ public class ExtratoEntity : EntityData
             DataUsuarioAlteracao = DataTransacaoSistema;
 
     }
-    public decimal SaldoAtual { get; private set; }
+    public decimal SaldoDoDia { get; private set; }
     public EOperacao Operacao { get; private set; }
     public decimal SaldoAnterior { get; private set; }
     public decimal ValorTransacao { get; private set; }

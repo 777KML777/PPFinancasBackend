@@ -21,9 +21,9 @@ public class BankServices : IBankServices
         _installmentServices = new InstallmentServices();
     }
 
-    public bool Create(BankInputModel obj, bool include = false) => false;
+    public bool Create(BankInputModel obj) => false;
     // _repository.Create(MappingInputModelToEntity(obj));
-    public List<BankDto> Read(bool include = false)
+    public List<BankDto> Read()
     {
         var lstBanks = new List<BankDto>();
         var teste = _repository.ReadAll<BankEntity>();
@@ -41,7 +41,7 @@ public class BankServices : IBankServices
         // new List<BankInputModel>() {  _repository.ReadAll().ToList().ForEach(x => new BankInputModel {Id = x.Id}) };
     }
 
-    public BankDto GetById(int id, bool include = false)
+    public BankDto GetById(int id)
     {
         // Sim o repositório tem que trazer aqui a lista dos pagamentos na própria entidade que representa 
         // o banco de dados
@@ -53,8 +53,11 @@ public class BankServices : IBankServices
             )
         ) ?? throw new Exception($"Nenhum banco com o Id {id} encontrado!");
 
-        if (include)
-        {
+        bank.Extratos = _extratoServices
+            .GetExtratosByIdBank(bank.Id);
+
+        // if (include)
+        // {
             bank.Expenses = _expenseServices.GetExpenseByIdBank(bank.Id);
             // Aqui para simular o funcionamento correto eu tenho que adicionar essas despesas do banco ao Installment da entidade da linha 
             // 46 que não existe ainda. Mesmo aqui não sendo um updtate da despesa. 
@@ -176,7 +179,7 @@ public class BankServices : IBankServices
             //     // TODO: Passa do dia 10 é fatura em atraso
             //     // TODO: Desenvolver recursos para o sistema ir se consertando
 
-        }
+        // }
 
         bank.CalculaLancamento();
 
@@ -187,7 +190,7 @@ public class BankServices : IBankServices
     public void AddBank(BankInputModel bank) =>
         _repository.Create(MappingInputModelToEntity(bank));
 
-    public bool Update(BankInputModel input, bool include = false)
+    public bool Update(BankInputModel input)
     {
         BankEntity entity = MappingEntityDataToEntity
         (
@@ -220,7 +223,7 @@ public class BankServices : IBankServices
         //         {
         //             IdBank = extrato.IdBank,
         //             Operacao = extrato.Operacao.ToString(),
-        //             SaldoAtual = extrato.SaldoAtual,
+        //             SaldoDoDia = extrato.SaldoDoDia,
         //             SaldoAnterior = extrato.SaldoAnterior,
         //             ValorTransacao = extrato.ValorTransacao,
         //             DataUsuarioAlteracao = extrato.DataUsuarioAlteracao,
@@ -252,7 +255,7 @@ public class BankServices : IBankServices
         return true;
     }
 
-    public bool Delete(BankInputModel dto, bool include = false) =>
+    public bool Delete(BankInputModel dto) =>
         throw new NotImplementedException();
 
     public BankEntityData MappingEntityToEntityData(BankEntity obj)

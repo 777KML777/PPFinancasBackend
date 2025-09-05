@@ -22,12 +22,12 @@ public class InstallmentServices : IInstallmentServices
     // Validar se o IdExpense é maior que zero. 
     // Validar a sequência de número
 
-    public bool Create(InstallmentInputModel obj, bool include = false) => false;
+    public bool Create(InstallmentInputModel obj) => false;
     // obj.IdExpense > 0 ? _installmentRepository.Create(MappingInputModelToEntity(obj)) :
     //     throw new Exception("Parcela precisa estar vinculada a uma despesa.");
     // obj.IdExpenses > 0 && _installmentRepository.Create(MappingInputModelInstallmentInputModelToEntity(obj)); // Sem exception. 
 
-    public List<InstallmentDto> Read(bool include = false)
+    public List<InstallmentDto> Read()
     {
         List<InstallmentDto> installments = new();
         List<InstallmentEntity> lsEntity = MappingListEntityDataToListEntity(_installmentRepository.ReadAll<InstallmentEntityData>().ToList());
@@ -36,7 +36,7 @@ public class InstallmentServices : IInstallmentServices
         return installments;
     }
 
-    public bool Update(InstallmentInputModel dto, bool include = false)
+    public bool Update(InstallmentInputModel dto)
     {
         var installment = _installmentRepository
             .GetById<InstallmentEntity>(dto.Id) ?? throw new Exception("Nenhuma parcela encontrada!");
@@ -48,7 +48,7 @@ public class InstallmentServices : IInstallmentServices
         return true;
     }
 
-    public bool Delete(InstallmentInputModel obj, bool include = false)
+    public bool Delete(InstallmentInputModel obj)
     {
         throw new NotImplementedException();
     }
@@ -75,7 +75,7 @@ public class InstallmentServices : IInstallmentServices
     public InstallmentDto MappingEntityToDto(InstallmentEntity entity) =>
         new InstallmentDto(entity.Id, entity.IdExpense, entity.Number, entity.ExpectedDate, entity.PaymentDate);
 
-    public InstallmentDto GetById(int id, bool include = false)
+    public InstallmentDto GetById(int id)
     {
         throw new NotImplementedException();
     }

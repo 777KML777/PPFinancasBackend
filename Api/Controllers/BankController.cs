@@ -33,6 +33,6 @@ public class BankController : ControllerBase
 
     [HttpGet("{id}")]
     public BankDto Get(int id) =>
-        _bankServices.GetById(id, true);
+        _bankServices.GetById(id);
 
 }

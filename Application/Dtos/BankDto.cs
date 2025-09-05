@@ -12,10 +12,9 @@ public class BankDto
     public decimal FinalBalance { get; set; }
     public decimal TotalExpenses { get; set; }
     public DateTime DataPagamento { get; set; }
-
+    public List<ExtratoDto> Extratos { get; set; } = new();
     public List<ExpenseDto> Expenses { get; set; } = new List<ExpenseDto>();
     public FaturaDoBancoDto FaturaDoBanco { get; set; } = new FaturaDoBancoDto();
-    
     public List<LancamentoDto> Lancamentos { get; set; } = new List<LancamentoDto>();
     public void CalculateFinalBalance() =>
         FinalBalance = Balance - TotalExpenses;

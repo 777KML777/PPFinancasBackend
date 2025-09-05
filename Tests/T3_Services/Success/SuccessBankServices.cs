@@ -79,7 +79,7 @@ public class SuccessBankServices
     [Fact]
     public void GetByIdInclude()
     {
-        BankDto bank = _services.GetById(2, true); // Id = 2 Banco Santander.
+        BankDto bank = _services.GetById(2); // Id = 2 Banco Santander.
         // Mostrar as faturas funcionando aqui. 
 
         Printer.PrinterSuccessBankServices.GetByIdInclude(bank);
