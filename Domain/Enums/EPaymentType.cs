@@ -1,12 +1,14 @@
-namespace Domain;
+namespace Domain.Enums;
 
 public enum EPaymentType
 {
-    Boleto,
-    Debito,
-    DebitoParaClienteCreditoParaVendedor,
-    DebitoDescontoAutomaticoPorPeriodo,
-    Credito,
     Pix,
+    Debito,
+    Credito,
+    Boleto,
     ComeceAPagarAPartir, 
+    DebitoAssinaturaRecorrente,
+    
+    [Obsolete("Não lembro um exemplo.")]
+    DebitoParaClienteCreditoParaVendedor
 }

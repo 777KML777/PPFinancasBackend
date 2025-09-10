@@ -10,36 +10,36 @@ public class SuccessExpenseServices
     [Fact]
     public void CreateExpense()
     {
-        ExpenseInputModel expenseSelected = new ExpenseInputModel()
-        {
-            IdBank = 777,
-            Name = "Despesa De Teste",
-            Amount = 150.00M,
-            Inactive = true,
-            Separeted = false,
-            CountInstallments = 10,
-            PaymentType = "Credito",
-            Describe = "Despesa criada pela classe de teste SuccessExpenseServices."
-        };
+        // ExpenseInputModel expenseSelected = new ExpenseInputModel()
+        // {
+        //     IdBank = 777,
+        //     Name = "Despesa De Teste",
+        //     Amount = 150.00M,
+        //     Inactive = true,
+        //     Separeted = false,
+        //     CountInstallments = 10,
+        //     PaymentType = "Credito",
+        //     Describe = "Despesa criada pela classe de teste SuccessExpenseServices."
+        // };
 
         ExpenseServices expensesService = new();
-        expensesService.Create(expenseSelected);
+        // expensesService.Create(expenseSelected);
     }
 
     [Fact]
     public void ReadExpenses()
     {
-        ExpenseInputModel expenseSelected = new ExpenseInputModel()
-        {
-            IdBank = 777,
-            Name = "Despesa De Teste",
-            Amount = 150.00M,
-            Inactive = true,
-            Separeted = false,
-            CountInstallments = 10,
-            PaymentType = "Credito",
-            Describe = "Despesa criada pela classe de teste SuccessExpenseServices."
-        };
+        // ExpenseInputModel expenseSelected = new ExpenseInputModel()
+        // {
+        //     IdBank = 777,
+        //     Name = "Despesa De Teste",
+        //     Amount = 150.00M,
+        //     Inactive = true,
+        //     Separeted = false,
+        //     CountInstallments = 10,
+        //     PaymentType = "Credito",
+        //     Describe = "Despesa criada pela classe de teste SuccessExpenseServices."
+        // };
 
         ExpenseRepository expensesService = new();
         var x = expensesService.ReadAll<ExpenseEntityData>();

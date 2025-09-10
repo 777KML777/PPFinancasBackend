@@ -1,5 +1,3 @@
-using System.Reflection.Metadata.Ecma335;
-
 namespace Application.Dtos;
 
 public class BankDto
@@ -130,6 +128,7 @@ public class BankDto
         {
 
         }
+        public int IdExpense { get; set; }
         public string Nome { get; set; }
         public int NumeroParcela { get; set; }
         public int MesLancamento { get; set; }

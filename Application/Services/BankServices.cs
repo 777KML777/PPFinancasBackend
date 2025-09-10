@@ -58,126 +58,128 @@ public class BankServices : IBankServices
 
         // if (include)
         // {
-            bank.Expenses = _expenseServices.GetExpenseByIdBank(bank.Id);
-            // Aqui para simular o funcionamento correto eu tenho que adicionar essas despesas do banco ao Installment da entidade da linha 
-            // 46 que não existe ainda. Mesmo aqui não sendo um updtate da despesa. 
+        bank.Expenses = _expenseServices.GetExpenseByIdBank(bank.Id);
+        // Aqui para simular o funcionamento correto eu tenho que adicionar essas despesas do banco ao Installment da entidade da linha 
+        // 46 que não existe ainda. Mesmo aqui não sendo um updtate da despesa. 
 
-            // O cálculo a seguir foi histórico
-            bank.FaturaDoBanco.MenorDataFatura = bank.Expenses.Min(dt => dt.DatePurchase);
-            bank.FaturaDoBanco.MaiorDataFatura = bank.Expenses.Max(dt => dt.DateLastInstallments);
+        // O cálculo a seguir foi histórico
+        bank.FaturaDoBanco.MenorDataFatura = bank.Expenses.Min(dt => dt.DatePurchase);
+        bank.FaturaDoBanco.MaiorDataFatura = bank.Expenses.Max(dt => dt.DateLastInstallments);
 
-            var dataTeste = bank.FaturaDoBanco.MenorDataFatura.AddMonths(1);
+        var dataTeste = bank.FaturaDoBanco.MenorDataFatura.AddMonths(1);
 
-            bank.DataPagamento = new DateTime
-            (
-                bank.FaturaDoBanco.MenorDataFatura.Year,
-                bank.FaturaDoBanco.MenorDataFatura.Month,
-                10
-            );
+        bank.DataPagamento = new DateTime
+        (
+            bank.FaturaDoBanco.MenorDataFatura.Year,
+            bank.FaturaDoBanco.MenorDataFatura.Month,
+            10
+        );
 
-            // Todo os pagamentos feito antes do dia 10. Vai constar na fatura atual. 
-            // e após? Irá depender da forma de pagamento? Não. 
+        // Todo os pagamentos feito antes do dia 10. Vai constar na fatura atual. 
+        // e após? Irá depender da forma de pagamento? Não. 
 
-            var diferencaAnual = bank.FaturaDoBanco.MaiorDataFatura.Year - bank.FaturaDoBanco.MenorDataFatura.Year;
-            var diferencaMensal = bank.FaturaDoBanco.MaiorDataFatura.Month - bank.FaturaDoBanco.MenorDataFatura.Month;
+        var diferencaAnual = bank.FaturaDoBanco.MaiorDataFatura.Year - bank.FaturaDoBanco.MenorDataFatura.Year;
+        var diferencaMensal = bank.FaturaDoBanco.MaiorDataFatura.Month - bank.FaturaDoBanco.MenorDataFatura.Month;
 
 
-            if (diferencaAnual >= 0)
-                bank.FaturaDoBanco.TotalDeFaturas = (12 * diferencaAnual) + diferencaMensal;
-            else
-                bank.FaturaDoBanco.TotalDeFaturas = 0;
+        if (diferencaAnual >= 0)
+            bank.FaturaDoBanco.TotalDeFaturas = (12 * diferencaAnual) + diferencaMensal;
+        else
+            bank.FaturaDoBanco.TotalDeFaturas = 0;
 
-            int iteracao = 0;
+        int iteracao = 0;
 
-            // TODO: Implementar Read Include
-            List<InstallmentDto> installments = _installmentServices.Read();
+        // TODO: Implementar Read Include
+        List<InstallmentDto> installments = _installmentServices.Read();
 
-            bank.Expenses
+        bank.Expenses
+        .ForEach
+        (
+            expense => installments.Where(i => i.IdExpense == expense.Id).ToList()
             .ForEach
             (
-                expense => installments.Where(i => i.IdExpense == expense.Id).ToList()
-                .ForEach
-                (
-                    expense.Installments.Add
-                )
+                expense.Installments.Add
+            )
+        );
+
+        var xu = _installmentServices.Read()
+            .Where(e => e.ExpectedDate <= bank.DataPagamento.AddMonths(iteracao))
+            .ToList();
+
+        while (iteracao <= bank.FaturaDoBanco.TotalDeFaturas)
+        {
+
+            bank.Expenses.ForEach
+            (
+                expense =>
+                {
+                    if (iteracao == 0)
+                    {
+                        expense.Installments
+                                               .Where
+                                               (
+                                                   e => Convert.ToDateTime(e.ExpectedDate).Date <=
+                                                    bank.DataPagamento.AddMonths(iteracao)
+                                               )
+                                               .ToList()
+                                               .ForEach
+                                               (
+                                                   item => bank.FaturaDoBanco.Faturas.Add
+                                                   (
+                                                       new BankDto.FaturaDto
+                                                       {
+                                                           IdExpense = expense.Id,
+                                                           DataCompra = Convert.ToDateTime(item.ExpectedDate),
+                                                           Nome = expense.Name,
+                                                           NumeroParcela = item.Number,
+                                                           QuantidadeTotalParcelas = expense.CountInstallments,
+                                                           ValorParcela = expense.Amount,
+                                                           MesLancamento = iteracao + 1
+                                                       }
+                                                   )
+                                               );
+                    }
+
+                    else
+                    {
+                        var dataAnterior = bank.DataPagamento.AddMonths(iteracao - 1);
+
+                        expense.Installments
+                                               .Where
+                                               (
+                                                   e => Convert.ToDateTime(e.ExpectedDate).Date <= bank.DataPagamento.AddMonths(iteracao).Date && Convert.ToDateTime(e.ExpectedDate).Date >= dataAnterior.Date
+                                               )
+                                               .ToList()
+                                               .ForEach
+                                               (
+                                                   item => bank.FaturaDoBanco.Faturas.Add
+                                                   (
+                                                       new BankDto.FaturaDto
+                                                       {
+                                                           IdExpense = expense.Id,
+                                                           DataCompra = Convert.ToDateTime(item.ExpectedDate),
+                                                           Nome = expense.Name,
+                                                           NumeroParcela = item.Number,
+                                                           QuantidadeTotalParcelas = expense.CountInstallments,
+                                                           ValorParcela = expense.Amount,
+                                                           MesLancamento = iteracao + 1
+                                                       }
+                                                   )
+                                               );
+                    }
+
+                }
             );
 
-            var xu = _installmentServices.Read()
-                .Where(e => e.ExpectedDate <= bank.DataPagamento.AddMonths(iteracao))
-                .ToList();
+            iteracao++;
 
-            while (iteracao <= bank.FaturaDoBanco.TotalDeFaturas)
-            {
-
-                bank.Expenses.ForEach
-                (
-                    expense =>
-                    {
-                        if (iteracao == 0)
-                        {
-                            expense.Installments
-                                                   .Where
-                                                   (
-                                                       e => Convert.ToDateTime(e.ExpectedDate).Date <=
-                                                        bank.DataPagamento.AddMonths(iteracao)
-                                                   )
-                                                   .ToList()
-                                                   .ForEach
-                                                   (
-                                                       item => bank.FaturaDoBanco.Faturas.Add
-                                                       (
-                                                           new BankDto.FaturaDto
-                                                           {
-                                                               DataCompra = Convert.ToDateTime(item.ExpectedDate),
-                                                               Nome = expense.Name,
-                                                               NumeroParcela = item.Number,
-                                                               QuantidadeTotalParcelas = expense.CountInstallments,
-                                                               ValorParcela = expense.Amount,
-                                                               MesLancamento = iteracao + 1
-                                                           }
-                                                       )
-                                                   );
-                        }
-
-                        else
-                        {
-                            var dataAnterior = bank.DataPagamento.AddMonths(iteracao - 1);
-
-                            expense.Installments
-                                                   .Where
-                                                   (
-                                                       e => Convert.ToDateTime(e.ExpectedDate).Date <= bank.DataPagamento.AddMonths(iteracao).Date && Convert.ToDateTime(e.ExpectedDate).Date >= dataAnterior.Date
-                                                   )
-                                                   .ToList()
-                                                   .ForEach
-                                                   (
-                                                       item => bank.FaturaDoBanco.Faturas.Add
-                                                       (
-                                                           new BankDto.FaturaDto
-                                                           {
-                                                               DataCompra = Convert.ToDateTime(item.ExpectedDate),
-                                                               Nome = expense.Name,
-                                                               NumeroParcela = item.Number,
-                                                               QuantidadeTotalParcelas = expense.CountInstallments,
-                                                               ValorParcela = expense.Amount,
-                                                               MesLancamento = iteracao + 1
-                                                           }
-                                                       )
-                                                   );
-                        }
-
-                    }
-                );
-
-                iteracao++;
-
-            }
-            //     // TODO: Posso mostrar quantos por cento da fatura está paga.
-            //     // TODO: Exibir o número de parcelas restantes? 
-            //     // TODO: Mês anterior ao atual já é em atraso. 
-            //     // TODO: Antes disso e no mesmo mês do ano é em aberto
-            //     // TODO: Passa do dia 10 é fatura em atraso
-            //     // TODO: Desenvolver recursos para o sistema ir se consertando
+        }
+        //     // TODO: Posso mostrar quantos por cento da fatura está paga.
+        //     // TODO: Exibir o número de parcelas restantes? 
+        //     // TODO: Mês anterior ao atual já é em atraso. 
+        //     // TODO: Antes disso e no mesmo mês do ano é em aberto
+        //     // TODO: Passa do dia 10 é fatura em atraso
+        //     // TODO: Desenvolver recursos para o sistema ir se consertando
 
         // }
 
@@ -190,7 +192,7 @@ public class BankServices : IBankServices
     public void AddBank(BankInputModel bank) =>
         _repository.Create(MappingInputModelToEntity(bank));
 
-    public bool Update(BankInputModel input)
+    public bool Update(BankInputModel input, bool remover = true)
     {
         BankEntity entity = MappingEntityDataToEntity
         (
@@ -231,7 +233,7 @@ public class BankServices : IBankServices
         //         }
         //     );
 
-        
+
         // include no próprio parâmetro, sei lá. 
         _repository.Update
         (
@@ -315,4 +317,33 @@ public class BankServices : IBankServices
         return lst;
     }
 
+    BankDto IService<BankInputModel, BankDto, BankEntity, BankEntityData>.Create(BankInputModel input)
+    {
+        throw new NotImplementedException();
+    }
+
+    public BankDto Update(BankDto dto)
+    {
+        throw new NotImplementedException();
+    }
+
+    public BankEntity MappingDtoToEntity(BankDto dto)
+    {
+        throw new NotImplementedException();
+    }
+
+    BankInputModel IService<BankInputModel, BankDto, BankEntity, BankEntityData>.GetById(int id)
+    {
+        throw new NotImplementedException();
+    }
+
+    public bool Create(BankInputModel input, bool remover = true)
+    {
+        throw new NotImplementedException();
+    }
+
+    public BankDto GetById(int id, bool remover = true)
+    {
+        throw new NotImplementedException();
+    }
 }

@@ -35,7 +35,7 @@ public class ExtratoServices : IExtratoServices
         throw new NotImplementedException();
     }
 
-    public bool Update(ExtratoInputModel obj)
+    public bool Update(ExtratoInputModel obj, bool remover = true)
     {
         throw new NotImplementedException();
     }
@@ -159,6 +159,36 @@ public class ExtratoServices : IExtratoServices
         );
 
         return datas;
+    }
+
+    ExtratoDto IService<ExtratoInputModel, ExtratoDto, ExtratoEntity, ExtratoEntityData>.Create(ExtratoInputModel input)
+    {
+        throw new NotImplementedException();
+    }
+
+    public ExtratoDto Update(ExtratoDto dto)
+    {
+        throw new NotImplementedException();
+    }
+
+    public ExtratoEntity MappingDtoToEntity(ExtratoDto dto)
+    {
+        throw new NotImplementedException();
+    }
+
+    ExtratoInputModel IService<ExtratoInputModel, ExtratoDto, ExtratoEntity, ExtratoEntityData>.GetById(int id)
+    {
+        throw new NotImplementedException();
+    }
+
+    public bool Create(ExtratoInputModel input, bool remover = true)
+    {
+        throw new NotImplementedException();
+    }
+
+    public ExtratoDto GetById(int id, bool remover = true)
+    {
+        throw new NotImplementedException();
     }
 
     #endregion

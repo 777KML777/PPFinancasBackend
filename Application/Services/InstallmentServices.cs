@@ -36,7 +36,7 @@ public class InstallmentServices : IInstallmentServices
         return installments;
     }
 
-    public bool Update(InstallmentInputModel dto)
+    public bool Update(InstallmentInputModel dto, bool remover = true)
     {
         var installment = _installmentRepository
             .GetById<InstallmentEntity>(dto.Id) ?? throw new Exception("Nenhuma parcela encontrada!");
@@ -117,5 +117,35 @@ public class InstallmentServices : IInstallmentServices
         List<InstallmentEntity> lst = new();
         obj.ForEach(item => lst.Add(MappingEntityDataToEntity(item)));
         return lst;
+    }
+
+    public InstallmentEntity MappingDtoToEntity(InstallmentDto dto)
+    {
+        throw new NotImplementedException();
+    }
+
+    public InstallmentDto Update(InstallmentDto dto)
+    {
+        throw new NotImplementedException();
+    }
+
+    public InstallmentDto GetById(int id, bool remover = true)
+    {
+        throw new NotImplementedException();
+    }
+
+    InstallmentInputModel IService<InstallmentInputModel, InstallmentDto, InstallmentEntity, InstallmentEntityData>.GetById(int id)
+    {
+        throw new NotImplementedException();
+    }
+
+    InstallmentDto IService<InstallmentInputModel, InstallmentDto, InstallmentEntity, InstallmentEntityData>.Create(InstallmentInputModel input)
+    {
+        throw new NotImplementedException();
+    }
+
+    public bool Create(InstallmentInputModel input, bool remover = true)
+    {
+        throw new NotImplementedException();
     }
 }

@@ -1,7 +1,6 @@
 using Domain.Entities.Installment;
 using Domain.Entities.Bank;
 
-
 namespace Domain.Entities.Expense;
 
 /* 

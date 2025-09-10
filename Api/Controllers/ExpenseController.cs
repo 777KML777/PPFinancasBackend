@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Application.Services;
 using Application.Models;
+using Application.Dtos;
 
 namespace Api.Controllers;
 
@@ -8,16 +9,18 @@ namespace Api.Controllers;
 [Route("api/[controller]")]
 public class ExpenseController : ControllerBase
 {
-    private readonly ExpenseServices _expenseServices; 
+    private readonly ExpenseServices _expenseServices;
 
     public ExpenseController()
     {
         _expenseServices = new ExpenseServices();
     }
 
-    [HttpPut("{id}")]
-    public void Update (int id, ExpenseInputModel expense)
-    {
+    [HttpPut()]
+    public ExpenseDto Update(ExpenseDto expense) =>
         _expenseServices.Update(expense);
-    }
+
+    [HttpGet, Route("get-expense")]
+    public ExpenseInputModel GetById(int id) =>
+        _expenseServices.GetById(id);
 }

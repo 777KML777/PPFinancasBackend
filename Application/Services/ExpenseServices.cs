@@ -1,25 +1,32 @@
+using System.Reflection.Metadata.Ecma335;
 using Application.Dtos;
 using Application.Models;
+using Application.Selects;
 using Domain.Entities.Expense;
 using Domain.Entities.Installment;
 using Repository.JsonFile;
+using Repository.JsonFile.Repositories.Bank;
 
 namespace Application.Services;
 
 public class ExpenseServices : IExpenseServices
 {
-    private readonly IExpenseRepository _expenseRepository = new ExpenseRepository();
-    private readonly IInstallmentServices _installmentServices = new InstallmentServices();
+    private readonly IExpenseRepository _repository;
+    private readonly IBankServices _bankServices;
+    private readonly IInstallmentServices _installmentServices;
     public ExpenseServices()
     {
 
+        _repository = new ExpenseRepository();
+        _bankServices = new BankServices();
+        _installmentServices = new InstallmentServices();
     }
 
     public bool Create(ExpenseInputModel obj)
     {
         try
         {
-            ExpenseEntity expense = _expenseRepository.Create(MappingInputModelToEntity(obj));
+            ExpenseEntity expense = _repository.Create(MappingInputModelToEntity(obj));
             // expense.AddInstallments(obj.CountInstallments);
 
             expense.Installments.ToList().ForEach(
@@ -31,9 +38,9 @@ public class ExpenseServices : IExpenseServices
         }
         catch (Exception)
         {
-            _expenseRepository.Delete(
-                _expenseRepository.GetById<ExpenseEntityData>(
-                    _expenseRepository.GetLastId<ExpenseEntityData>()
+            _repository.Delete(
+                _repository.GetById<ExpenseEntityData>(
+                    _repository.GetLastId<ExpenseEntityData>()
                 )
             );
             // Deletar também os includes. Isso poderia ficar no Generic? 
@@ -59,11 +66,6 @@ public class ExpenseServices : IExpenseServices
         throw new NotImplementedException();
     }
 
-    public bool Update(ExpenseInputModel obj)
-    {
-        throw new NotImplementedException();
-    }
-
     public bool Delete(ExpenseInputModel obj)
     {
         throw new NotImplementedException();
@@ -72,7 +74,7 @@ public class ExpenseServices : IExpenseServices
     public List<ExpenseDto> GetExpenseByIdBank(int idBank)
     {
         List<ExpenseDto> lstExpenses = new List<ExpenseDto>();
-        _expenseRepository.GetAllByIdBank(idBank).ForEach
+        _repository.GetAllByIdBank(idBank).ForEach
         (
             x => lstExpenses.Add
             (
@@ -97,44 +99,43 @@ public class ExpenseServices : IExpenseServices
         return lstExpenses;
     }
 
+    #region CRUD OPERATION
 
-    public ExpenseEntity MappingInputModelToEntity(ExpenseInputModel obj)
+    public ExpenseDto Update(ExpenseDto dto)
     {
-
-        if (obj.Id > 0)
-        {
-            ExpenseEntity expenseEntity = new();
-            expenseEntity.AlterExpenseEntity
-            (
-                obj.Id,
-                obj.IdBank,
-                obj.Name,
-                obj.Amount,
-                obj.Describe,
-                obj.PaymentType,
-                obj.CountInstallments,
-                false, // TODO - rever isso aqui
-                false, // TODO - rever isso aqui
-                DateTime.Now, // TODO - rever isso aqui,
-                new List<InstallmentEntity>()
-            );
-
-            return expenseEntity;
-        }
-        else
-        {
-            ExpenseEntity expenseEntity = new
-            (
-                obj.Name,
-                obj.Amount,
-                obj.Describe,
-                obj.PaymentType,
-                obj.CountInstallments
-            );
-
-            return expenseEntity;
-        }
+        throw new NotImplementedException();
     }
+
+
+    #endregion
+
+    #region MAPPING OBJECT
+    public ExpenseInputModel GetById(int id)
+    {
+        List<BankDataList> bankDataLists = new();
+        var dto = MappingEntityToDto
+        (
+            MappingEntityDataToEntity
+            (
+                _repository.GetById<ExpenseEntityData>(id)
+            )
+        );
+
+        var banks = _bankServices.Read().Select(bank => new { bank.Id, bank.Name }).ToList();
+
+        banks.ForEach(item => bankDataLists.Add(new() { Id = item.Id, Name = item.Name }));
+
+        return
+            new ExpenseInputModel(dto, bankDataLists);
+    }
+    #endregion
+
+    #region MAPPING LIST OBJECTS
+    #endregion
+
+    #region COMMOM OPERATION 
+    #endregion
+
 
     public ExpenseDto MappingEntityToDto(ExpenseEntity entity)
     {
@@ -165,16 +166,6 @@ public class ExpenseServices : IExpenseServices
         );
     }
 
-    public ExpenseDto GetById(int id)
-    {
-        return MappingEntityToDto
-        (
-            MappingEntityDataToEntity
-            (
-                _expenseRepository.GetById<ExpenseEntityData>(id)
-            )
-        );
-    }
 
     public ExpenseEntityData MappingEntityToEntityData(ExpenseEntity obj)
     {
@@ -236,4 +227,77 @@ public class ExpenseServices : IExpenseServices
         obj.ForEach(item => lst.Add(MappingEntityDataToEntity(item)));
         return lst;
     }
+
+    ExpenseDto IService<ExpenseInputModel, ExpenseDto, ExpenseEntity, ExpenseEntityData>.Create(ExpenseInputModel input)
+    {
+        throw new NotImplementedException();
+    }
+
+
+
+    public ExpenseEntity MappingDtoToEntity(ExpenseDto dto)
+    {
+        throw new NotImplementedException();
+    }
+
+    public bool Create(ExpenseInputModel input, bool remover = true)
+    {
+        throw new NotImplementedException();
+    }
+
+    #region REMOVER 
+    public bool Update(ExpenseInputModel obj, bool remover = true)
+    {
+        throw new NotImplementedException();
+    }
+
+    public ExpenseDto GetById(int id, bool remover = true)
+    {
+        return MappingEntityToDto
+        (
+            MappingEntityDataToEntity
+            (
+                _repository.GetById<ExpenseEntityData>(id)
+            )
+        );
+    }
+    public ExpenseEntity MappingInputModelToEntity(ExpenseInputModel obj)
+    {
+        // if (obj.Id > 0)
+        // {
+        //     ExpenseEntity expenseEntity = new();
+        //     expenseEntity.AlterExpenseEntity
+        //     (
+        //         obj.Id,
+        //         obj.IdBank,
+        //         obj.Name,
+        //         obj.Amount,
+        //         obj.Describe,
+        //         obj.PaymentType,
+        //         obj.CountInstallments,
+        //         false, // TODO - rever isso aqui
+        //         false, // TODO - rever isso aqui
+        //         DateTime.Now, // TODO - rever isso aqui,
+        //         new List<InstallmentEntity>()
+        //     );
+
+        //     return expenseEntity;
+        // }
+        // else
+        // {
+        //     ExpenseEntity expenseEntity = new
+        //     (
+        //         obj.Name,
+        //         obj.Amount,
+        //         obj.Describe,
+        //         obj.PaymentType,
+        //         obj.CountInstallments
+        //     );
+
+        //     return expenseEntity;
+        // }
+
+        return new ExpenseEntity();
+    }
+    #endregion
 }
