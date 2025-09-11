@@ -9,16 +9,13 @@ namespace Application.Services;
 
 public class BankServices : IBankServices
 {
-    private readonly IBankRepository _repository;
-    private readonly IExtratoServices _extratoServices;
-    private readonly IExpenseServices _expenseServices;
-    private readonly IInstallmentServices _installmentServices;
+    private readonly IBankRepository _repository = new BankRepository();
+    private readonly IExtratoServices _extratoServices = new ExtratoServices();
+    private readonly IExpenseServices _expenseServices = new ExpenseServices();
+    private readonly IInstallmentServices _installmentServices = new InstallmentServices();
     public BankServices()
     {
-        _repository = new BankRepository();
-        _extratoServices = new ExtratoServices();
-        _expenseServices = new ExpenseServices();
-        _installmentServices = new InstallmentServices();
+
     }
 
     public bool Create(BankInputModel obj) => false;

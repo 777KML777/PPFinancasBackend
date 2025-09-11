@@ -1,7 +1,7 @@
-using System.Reflection.Metadata.Ecma335;
 using Application.Dtos;
 using Application.Models;
 using Application.Selects;
+using Domain.Entities.Bank;
 using Domain.Entities.Expense;
 using Domain.Entities.Installment;
 using Repository.JsonFile;
@@ -11,15 +11,13 @@ namespace Application.Services;
 
 public class ExpenseServices : IExpenseServices
 {
-    private readonly IExpenseRepository _repository;
-    private readonly IBankServices _bankServices;
-    private readonly IInstallmentServices _installmentServices;
+    private readonly IExpenseRepository _repository = new ExpenseRepository();
+    private readonly IBankRepository _bankRepository = new BankRepository();
+    private readonly IInstallmentServices _installmentServices = new InstallmentServices();
     public ExpenseServices()
     {
 
-        _repository = new ExpenseRepository();
-        _bankServices = new BankServices();
-        _installmentServices = new InstallmentServices();
+
     }
 
     public bool Create(ExpenseInputModel obj)
@@ -121,7 +119,7 @@ public class ExpenseServices : IExpenseServices
             )
         );
 
-        var banks = _bankServices.Read().Select(bank => new { bank.Id, bank.Name }).ToList();
+        var banks = _bankRepository.ReadAll<BankEntityData>().Select(bank => new { bank.Id, bank.Name }).ToList();
 
         banks.ForEach(item => bankDataLists.Add(new() { Id = item.Id, Name = item.Name }));
 

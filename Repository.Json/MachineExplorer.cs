@@ -9,7 +9,7 @@ public static class MachineExplorer
         if (OperatingSystem.IsMacOS())
             file = @"/" + nameRepository + ".json"/* "Data.json" */;
         else if (OperatingSystem.IsWindows())
-            file = @"\" + nameRepository /* + "Data.json" */;
+            file = @"\" + nameRepository + ".json";
 
         // var x = Environment.SystemDirectory;
         // var x2 = Environment.CommandLine;
@@ -17,7 +17,7 @@ public static class MachineExplorer
         string environment = Environment.CurrentDirectory;
         // var z = typeof(EndOfStreamException ).Assembly.FullName;  
         // string replaceProject = environment.Replace("/bin/Debug/net7.0", ""); /* TestProject */
-        string replaceProject = environment.Replace("/Api", "/Repository.Json");
+        string replaceProject = environment.Replace("Api", "Repository.Json");
         string fullPath = replaceProject + file;
 
         return fullPath;
