@@ -2,6 +2,8 @@
 using Domain.Entities.Extrato;
 using Domain.Enums;
 
+// Cadastrar cartão. 
+
 namespace Domain.Entities.Bank
 {
     public class BankEntity : Entity

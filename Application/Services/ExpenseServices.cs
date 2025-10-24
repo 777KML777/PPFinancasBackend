@@ -1,4 +1,5 @@
 using Application.Dtos;
+using Application.Extensions;
 using Application.Models;
 using Application.Selects;
 using Domain.Entities.Bank;
@@ -110,6 +111,8 @@ public class ExpenseServices : IExpenseServices
     #region MAPPING OBJECT
     public ExpenseInputModel GetById(int id)
     {
+        ExpenseEntity x = new ExpenseEntityData().ToEntity();
+        
         List<BankDataList> bankDataLists = new();
         var dto = MappingEntityToDto
         (
