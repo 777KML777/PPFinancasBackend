@@ -1,3 +1,8 @@
+25 De Outubro De 2025 
+    // IExpenseServices expense TODO: Dependency Injection
+    // Validações, retorno da API. 
+    
+
 Manter o sono em dia. 
     E plano para dar início à recuperação de Agosto. 
     Julho - Operação Um Passo Atrás 

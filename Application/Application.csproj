@@ -3,6 +3,7 @@
   <ItemGroup>
     <ProjectReference Include="..\Repository.JsonFile\Repository.JsonFile.csproj" />
     <ProjectReference Include="..\Domain\Domain.csproj" />
+    <ProjectReference Include="..\Services\Services.csproj" />
   </ItemGroup>
 
   <PropertyGroup>

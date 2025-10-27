@@ -1,26 +1,21 @@
-using Microsoft.AspNetCore.Mvc;
-using Application.Services;
-using Application.Models;
-using Application.Dtos;
-
 namespace Api.Controllers;
 
 [ApiController]
 [Route("api/[controller]")]
 public class ExpenseController : ControllerBase
 {
-    private readonly ExpenseServices _expenseServices;
+    private readonly IExpenseAppServices _expenseAppServices;
 
     public ExpenseController()
     {
-        _expenseServices = new ExpenseServices();
+        _expenseAppServices = new ExpenseAppServices();
     }
 
     [HttpPut()]
-    public ExpenseDto Update(ExpenseDto expense) =>
-        _expenseServices.Update(expense);
+    public ExpenseInputModel Update(int id) =>
+        _expenseAppServices.Update(id);
 
     [HttpGet, Route("get-expense")]
     public ExpenseInputModel GetById(int id) =>
-        _expenseServices.GetById(id);
+        _expenseAppServices.GetById(id);
 }

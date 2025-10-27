@@ -1,7 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Application.Services;
-using Application.Dtos;
-using Application.Models;
+using Services.Dtos;
+using Services.Models;
 
 namespace Api.Controllers;
 

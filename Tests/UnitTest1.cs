@@ -1,6 +1,6 @@
 using System.Diagnostics;
 using Application.Services;
-using Application.Dtos;
+using Services.Dtos;
 using Domain.Entities.Installment;
 using Microsoft.VisualStudio.TestPlatform.Utilities;
 using Xunit.Abstractions;
