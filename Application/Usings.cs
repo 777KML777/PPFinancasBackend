@@ -1,5 +1,10 @@
 global using Services;
 global using Services.Bank;
+global using Services.Dtos;
 global using Services.Models;
-global using Services.Interfaces; 
+global using Services.Expense;
+global using Services.Interfaces;
+global using Repository.JsonFile;
+global using Services.Installment;
 global using Application.Interfaces;
+global using Domain.Entities.TempFutureDebit;

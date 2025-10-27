@@ -12,13 +12,13 @@ public interface IService<TInputModel, TDto, TEntity, TEntityData>
     #region CRUD OPERATION
     TDto Create(TInputModel input);
     List<TDto> Read(bool inactived = false);
-    TDto Update(TDto dto);
+    TDto Update(TInputModel dto);
     bool Delete(TInputModel input);
 
     #endregion
 
     #region COMMOM OPERATIONS 
-    public ExpenseDto GetById(int id);
+    public TDto GetById(int id);
 
     #endregion
 

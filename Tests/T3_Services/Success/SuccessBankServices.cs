@@ -72,7 +72,7 @@ public class SuccessBankServices
         BankServices bankService = new();
         BankInputModel bank = new BankInputModel { Name = "BankOfTestUpgraded", Balance = 0.01M, Id = 777 };
 
-        if (bankService.Update(bank)) // É para atualizar o banco junto das despesas?
+        if (bankService.Update(bank) != null) // É para atualizar o banco junto das despesas?
             Printer.PrinterSuccessBankServices.UpdateBank(null, bank);
 
     }

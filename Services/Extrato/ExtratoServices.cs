@@ -164,7 +164,7 @@ public class ExtratoServices : IExtratoServices
         throw new NotImplementedException();
     }
 
-    public ExtratoDto Update(ExtratoDto dto)
+    public ExtratoDto Update(ExtratoInputModel dto)
     {
         throw new NotImplementedException();
     }
@@ -180,11 +180,6 @@ public class ExtratoServices : IExtratoServices
     }
 
     public ExtratoDto GetById(int id, bool remover = true)
-    {
-        throw new NotImplementedException();
-    }
-
-    ExpenseDto IService<ExtratoInputModel, ExtratoDto, ExtratoEntity, ExtratoEntityData>.GetById(int id)
     {
         throw new NotImplementedException();
     }

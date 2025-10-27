@@ -115,12 +115,7 @@ public class InstallmentServices : IInstallmentServices
         throw new NotImplementedException();
     }
 
-    public InstallmentDto Update(InstallmentDto dto)
-    {
-        throw new NotImplementedException();
-    }
-
-    public InstallmentDto GetById(int id, bool remover = true)
+    public InstallmentDto Update(InstallmentInputModel dto)
     {
         throw new NotImplementedException();
     }
@@ -131,11 +126,6 @@ public class InstallmentServices : IInstallmentServices
     }
 
     InstallmentDto IService<InstallmentInputModel, InstallmentDto, InstallmentEntity, InstallmentEntityData>.Create(InstallmentInputModel input)
-    {
-        throw new NotImplementedException();
-    }
-
-    ExpenseDto IService<InstallmentInputModel, InstallmentDto, InstallmentEntity, InstallmentEntityData>.GetById(int id)
     {
         throw new NotImplementedException();
     }

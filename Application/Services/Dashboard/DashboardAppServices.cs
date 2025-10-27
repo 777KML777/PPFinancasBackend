@@ -1,13 +1,3 @@
-using Services.Dtos;
-using Domain.Entities.Bank;
-using Domain.Entities.Expense;
-using Domain.Entities.Installment;
-using Repository.JsonFile;
-using Domain.Entities.TempFutureDebit;
-using Repository.JsonFile.Repositories.Bank;
-using Services.Installment;
-using Services.Expense;
-
 namespace Application.Services.Dashboard;
 
 public class DashboardAppServices
@@ -38,11 +28,11 @@ public class DashboardAppServices
         // Só chamar os respectivos MappingList
         List<BankDto> lstBanks = _bankServices.Read();
 
-        List<ExpenseDto> lstExpenses = _expenseServices.Read();
+        // List<ExpenseDto> lstExpenses = _expenseServices.Read();
 
         // List<InstallmentEntity> lstInstallments = _installmentServices.Read();
-        
-        List<TempFutureDebitsEntity> lstTemp = _tempRepo.ReadAll<TempFutureDebitsEntity>().ToList();
+
+        // List<TempFutureDebitsEntity> lstTemp = _tempRepo.ReadAll<TempFutureDebitsEntity>().ToList();
 
         // O que acontece se eu tentar passar uma entidade da diferente que tem que ser mapeada? 
         // Trocar o nome de Installments para apenas Installments
@@ -69,17 +59,8 @@ public class DashboardAppServices
         //     })
         // );
 
-        // // Total de cada banco
-        // lstBanks.ForEach(item =>
-        //     dash.Banks.Add(new BankDto
-        //     {
-        //         Id = item.Id,
-        //         Name = item.Name,
-        //         Balance = item.Balance,
-        //         CountExpenses = item.Expenses.Count(),
-        //         TotalExpenses = item.Expenses.Sum(x => x.Amount * x.CountInstallments),
-        //     })
-        // );
+        // Total de cada banco
+        dash.Banks = lstBanks;
 
         // dash.Banks.ForEach(item => item.CalculateFinalBalance());
 

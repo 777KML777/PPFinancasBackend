@@ -11,9 +11,14 @@ public class BankServices : IBankServices
         _repository = new BankRepository();
     }
 
-
+    #region "CRUD OPERATION" 
     public List<BankDto> Read(bool inactived = false) =>
-        _repository.ReadAll<BankEntity>().ToList().ToListDto();
+        _repository.ReadAll<BankEntityData>().ToList().ToListEntity().ToListDto();
+    #endregion 
+
+    #region "COMMOM OPERATIONS"
+
+    #endregion
 
     public BankDto GetById(int id)
     {
@@ -157,23 +162,70 @@ public class BankServices : IBankServices
     }
 
     //Para ser sincero Serialização tem que ficar aqui
-
-
     public bool Update(BankInputModel input, bool remover = true)
     {
-        BankEntity entity = MappingEntityDataToEntity
+
+
+        return true;
+    }
+
+    public bool Delete(BankInputModel dto) =>
+        throw new NotImplementedException();
+
+    public BankEntityData MappingEntityToEntityData(BankEntity obj)
+    {
+        return new BankEntityData
+        {
+            Id = obj.Id,
+            Balance = obj.Balance,
+            Name = obj.Name
+        };
+    }
+
+    public BankEntity MappingEntityDataToEntity(BankEntityData data)
+    {
+        BankEntity entity = new();
+        entity.AlterBankEntity
         (
-            _repository.GetById<BankEntityData>(input.Id)
+            data.Id,
+            data.Name,
+            data.Balance,
+            data.PaymentDay,
+            data.Avalaible
         );
+        return entity;
+    }
+
+
+    public List<BankEntityData> MappingListEntityToListEntityData(List<BankEntity> obj)
+    {
+        List<BankEntityData> lst = new();
+        obj.ForEach(item => lst.Add(MappingEntityToEntityData(item)));
+        return lst;
+    }
+
+    BankDto IService<BankInputModel, BankDto, BankEntity, BankEntityData>.Create(BankInputModel input)
+    {
+        throw new NotImplementedException();
+    }
+
+    public BankDto Update(BankInputModel input)
+    {
+        BankEntity entity = MappingEntityDataToEntity
+ (
+     _repository.GetById<BankEntityData>(input.Id)
+ );
+
+ // Por decisão é interessante retornar o input model e receber. 
 
         entity.AlterBankEntity
         (
             input.Id,
             input.Name,
             input.Balance,
-            input.PaymentDay,
-            input.Available,
-            (EOperacao)Enum.Parse(typeof(EOperacao), input.Operacao)
+            10, //input.PaymentDay,
+            true, //input.Available,
+            (EOperacao)Enum.Parse(typeof(EOperacao), /* input.Operacao */ "")
         );
 
         // Chamar serviço de criar extrato. 
@@ -221,51 +273,6 @@ public class BankServices : IBankServices
         // Eu teria que retornar um bank dto. A princípio 
         // eu vou fazer por aqui mesmo. 
 
-        return true;
-    }
-
-    public bool Delete(BankInputModel dto) =>
-        throw new NotImplementedException();
-
-    public BankEntityData MappingEntityToEntityData(BankEntity obj)
-    {
-        return new BankEntityData
-        {
-            Id = obj.Id,
-            Balance = obj.Balance,
-            Name = obj.Name
-        };
-    }
-
-    public BankEntity MappingEntityDataToEntity(BankEntityData data)
-    {
-        BankEntity entity = new();
-        entity.AlterBankEntity
-        (
-            data.Id,
-            data.Name,
-            data.Balance,
-            data.PaymentDay,
-            data.Avalaible
-        );
-        return entity;
-    }
-
-
-    public List<BankEntityData> MappingListEntityToListEntityData(List<BankEntity> obj)
-    {
-        List<BankEntityData> lst = new();
-        obj.ForEach(item => lst.Add(MappingEntityToEntityData(item)));
-        return lst;
-    }
-
-    BankDto IService<BankInputModel, BankDto, BankEntity, BankEntityData>.Create(BankInputModel input)
-    {
-        throw new NotImplementedException();
-    }
-
-    public BankDto Update(BankDto dto)
-    {
         throw new NotImplementedException();
     }
 
@@ -294,8 +301,4 @@ public class BankServices : IBankServices
         return bankDataLists;
     }
 
-    ExpenseDto IService<BankInputModel, BankDto, BankEntity, BankEntityData>.GetById(int id)
-    {
-        throw new NotImplementedException();
-    }
 }

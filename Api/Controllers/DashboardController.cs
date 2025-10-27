@@ -1,9 +1,3 @@
-using Microsoft.AspNetCore.Mvc; 
-using Application;
-using Application.Services;
-using Services.Dtos;
-using Application.Services.Dashboard;
-
 namespace Api.Controllers; 
 
 [ApiController]

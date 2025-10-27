@@ -56,7 +56,7 @@ public class ExpenseServices : IExpenseServices
     {
         throw new NotImplementedException();
     }
-    public ExpenseDto Update(ExpenseDto dto)
+    public ExpenseDto Update(ExpenseInputModel dto)
     {
         throw new NotImplementedException();
     }
