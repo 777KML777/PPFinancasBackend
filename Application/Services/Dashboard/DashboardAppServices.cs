@@ -25,13 +25,10 @@ public class DashboardAppServices
         _tempRepo = new TempFutureDebitsRepository();
     }
 
-    IInstallmentServices 
     // ITempFutureDebitsRepository _tempRepo = new TempFutureDebitsRepository();
     // IBankRepository _bankRepo = new BankRepository();
     // IExpenseRepository _expenseRepo = new ExpenseRepository();
     // IInstallmentRepository _installmentRepo = new InstallmentRepository();
-    ITempFutureDebitsRepository 
-
 
     public DashboardDto DashData()
     {
@@ -39,24 +36,11 @@ public class DashboardAppServices
         DashboardDto dash = new ();
 
         // Só chamar os respectivos MappingList
-        List<BankEntity> lstBanks = _bankServices.Read();
-        _bankServices.MappingListEntityDataToListEntity
-        (
-            _bankRepo.ReadAll<BankEntityData>().ToList()
-        );
+        List<BankDto> lstBanks = _bankServices.Read();
 
-        List<ExpenseEntity> lstExpenses =
-        _expenseServices.MappingListEntityDataToListEntity
-        (
-            _expenseRepo.ReadAll<ExpenseEntityData>().ToList()
+        List<ExpenseDto> lstExpenses = _expenseServices.Read();
 
-        );
-
-        List<InstallmentEntity> lstInstallments =
-        _installmentServices.MappingListEntityDataToListEntity
-        (
-            _installmentRepo.ReadAll<InstallmentEntityData>().ToList()
-        );
+        // List<InstallmentEntity> lstInstallments = _installmentServices.Read();
         
         List<TempFutureDebitsEntity> lstTemp = _tempRepo.ReadAll<TempFutureDebitsEntity>().ToList();
 
@@ -67,37 +51,37 @@ public class DashboardAppServices
         // Projeção
 
         // Totais Gerais
-        dash.TotalExpenses = lstTemp.Sum(bank => bank.Amount);
+        // dash.TotalExpenses = lstTemp.Sum(bank => bank.Amount);
 
-        //Primeiro a realidade
-        dash.TotalAvailableBalance = lstBanks.Where(b => b.Available).Sum(bank => bank.Balance);
-        dash.AvailableBalance = dash.TotalAvailableBalance - dash.TotalExpenses;
+        // //Primeiro a realidade
+        // dash.TotalAvailableBalance = lstBanks.Where(b => b.Available).Sum(bank => bank.Balance);
+        // dash.AvailableBalance = dash.TotalAvailableBalance - dash.TotalExpenses;
 
-        dash.TotalBalance = lstBanks.Sum(bank => bank.Balance);
-        dash.Balance = dash.TotalBalance - dash.TotalExpenses;
+        // dash.TotalBalance = lstBanks.Sum(bank => bank.Balance);
+        // dash.Balance = dash.TotalBalance - dash.TotalExpenses;
 
-        lstExpenses.ForEach(expenseRepo =>
-            lstBanks.ForEach(item =>
-            {
-                if (expenseRepo.IdBank == item.Id)
-                    item.AddExpensesToBanks(expenseRepo);
+        // lstExpenses.ForEach(expenseRepo =>
+        //     lstBanks.ForEach(item =>
+        //     {
+        //         if (expenseRepo.IdBank == item.Id)
+        //             item.AddExpensesToBanks(expenseRepo);
 
-            })
-        );
+        //     })
+        // );
 
-        // Total de cada banco
-        lstBanks.ForEach(item =>
-            dash.Banks.Add(new BankDto
-            {
-                Id = item.Id,
-                Name = item.Name,
-                Balance = item.Balance,
-                CountExpenses = item.Expenses.Count(),
-                TotalExpenses = item.Expenses.Sum(x => x.Amount * x.CountInstallments),
-            })
-        );
+        // // Total de cada banco
+        // lstBanks.ForEach(item =>
+        //     dash.Banks.Add(new BankDto
+        //     {
+        //         Id = item.Id,
+        //         Name = item.Name,
+        //         Balance = item.Balance,
+        //         CountExpenses = item.Expenses.Count(),
+        //         TotalExpenses = item.Expenses.Sum(x => x.Amount * x.CountInstallments),
+        //     })
+        // );
 
-        dash.Banks.ForEach(item => item.CalculateFinalBalance());
+        // dash.Banks.ForEach(item => item.CalculateFinalBalance());
 
         return dash;
     }

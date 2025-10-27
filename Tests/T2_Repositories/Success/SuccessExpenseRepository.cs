@@ -1,12 +1,14 @@
-using Services.Models;
-using Application.Services;
 using Domain.Entities.Expense;
 using Domain.Entities.Installment;
-using Microsoft.VisualBasic;
-using Repository.Json;
-using Tests.Printers;
+using Services.Interfaces;
+using Services.Expense;
+using Repository.JsonFile.Repositories.Expense;
+using Services.Installment;
+using Services;
+using Services.Extensions;
 
 namespace Tests.T2_Repositories.Success;
+
 public class SuccessExpenseRepository
 {
     static IExpenseServices _services = new ExpenseServices();
@@ -75,11 +77,8 @@ public class SuccessExpenseRepository
         // Como perceber se o usuário desejar atualizar os pagamentos também? 
         // Talvez seria interessante receber a listadepagamentos sim. Se for null entaõ eu chamado o addpayment.
 
-        ExpenseEntity entity = _services.MappingEntityDataToEntity
-        (
-            _repository.GetById<ExpenseEntityData>(14)
+        ExpenseEntity entity = _repository.GetById<ExpenseEntityData>(14).ToEntity();
         // id 9 = Asus Celular Manuntenção.
-        );
 
         entity.AlterExpenseEntity
         (
@@ -97,28 +96,24 @@ public class SuccessExpenseRepository
         );
 
         ExpenseEntity entityUpdated; // Ao obter o retorno as listas não vêm porque não há includes genéricos. 
-        entityUpdated = _services.MappingEntityDataToEntity
-         (
-             (ExpenseEntityData)_repository.Update<ExpenseEntityData> // Tipagem genérica. Obrigar tipo esperado.
-             (
-                 _services.MappingEntityToEntityData(entity)
-             //  ,
-             //  true // Implementar include genérico. 
-             )
-             .IncludeRange
-             (
-                    _services.MappingEntityToEntityData(entity),
-                    _installmentServices.MappingListEntityToListEntityData(entity.Installments.ToList())
+        entityUpdated = _repository.Update
+        (
+           (ExpenseEntityData) entity.ToEntityData()
+            .IncludeRange
+            (
+                entity.ToEntityData(),
+                entity.Installments.ToList().ToListEntityData()
+            )
+        )
+        .ToEntity();
 
-             )
-         //  .Include
-         //  (
-         //     _services.MappingEntityToEntityData(entity),
-         //     _installmentServices.MappingEntityToEntityData(entity.Installments.FirstOrDefault())
+        // pegar as leituras e testar com o pessoal da expedição. 
 
-         //  )
-
-         );
+        // entity.ToEntityData().IncludeRange
+        // (
+        //    entity.ToEntityData(),
+        //    entity.Installments.ToList().ToListEntityData()
+        // );
 
         // Adicionar em Kleus. 
         // Remover _installmentRepository daqui. 

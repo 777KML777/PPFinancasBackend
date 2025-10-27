@@ -27,6 +27,7 @@
     <ProjectReference Include="..\Repository.JsonFile\Repository.JsonFile.csproj" />
     <ProjectReference Include="..\Repository.Json\Repository.Json.csproj" />
     <ProjectReference Include="..\Application\Application.csproj" />
+    <ProjectReference Include="..\Services\Services.csproj" />
   </ItemGroup>
 
 </Project>

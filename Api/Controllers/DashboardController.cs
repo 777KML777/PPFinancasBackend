@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Mvc;
 using Application;
 using Application.Services;
 using Services.Dtos;
+using Application.Services.Dashboard;
 
 namespace Api.Controllers; 
 
@@ -10,11 +11,11 @@ namespace Api.Controllers;
 
 public class DashboardController : ControllerBase 
 {
-    private readonly DashboardServices _dashboardService;
+    private readonly DashboardAppServices _dashboardService;
 
     public DashboardController() 
     {
-        _dashboardService = new DashboardServices();
+        _dashboardService = new DashboardAppServices();
     }
 
     [HttpGet(Name = "dash-data")]

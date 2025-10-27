@@ -1,3 +1,5 @@
+using Application.Services.Expense;
+
 namespace Api.Controllers;
 
 [ApiController]

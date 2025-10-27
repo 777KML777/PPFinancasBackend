@@ -1,4 +1,3 @@
-using Services.Dtos;
 using Services.Models;
 using Domain.Entities.Expense;
 using Domain.Entities.Bank;
@@ -9,7 +8,7 @@ public static class Printer
 {
     public static class PrinterSuccessBankServices
     {
-        public static void GetByIdInclude(BankDto printerBank)
+        public static void GetByIdInclude(BankInputModel printerBank)
         {
             string content = $"PrinterSuccessBankServices - GetByIdInclude {DateTime.Now}";
 

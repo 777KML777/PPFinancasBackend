@@ -1,6 +1,7 @@
-using Services.Models;
-using Application.Services;
 using Domain.Entities.Expense;
+using Services.Interfaces;
+using Services.Expense;
+using Repository.JsonFile.Repositories.Expense;
 
 namespace Tests.Services.Success;
 public class SuccessExpenseServices

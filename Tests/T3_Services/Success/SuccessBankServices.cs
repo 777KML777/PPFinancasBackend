@@ -1,7 +1,8 @@
 using Services.Dtos;
 using Services.Models;
-using Application.Services;
 using Tests.Printers;
+using Services.Bank;
+using Services.Expense;
 
 namespace Tests.T3_Services.Success;
 
@@ -82,7 +83,7 @@ public class SuccessBankServices
         BankDto bank = _services.GetById(2); // Id = 2 Banco Santander.
         // Mostrar as faturas funcionando aqui. 
 
-        Printer.PrinterSuccessBankServices.GetByIdInclude(bank);
+        Printer.PrinterSuccessBankServices.GetByIdInclude(new BankInputModel());
     }
 
 }

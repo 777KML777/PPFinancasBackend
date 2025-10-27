@@ -101,12 +101,7 @@ public class InstallmentServices : IInstallmentServices
         obj.ForEach(item => lst.Add(MappingEntityToDto(item)));
         return lst;
     }
-    public List<InstallmentEntityData> MappingListEntityToListEntityData(List<InstallmentEntity> obj)
-    {
-        List<InstallmentEntityData> lst = new();
-        obj.ForEach(item => lst.Add(MappingEntityToEntityData(item)));
-        return lst;
-    }
+
 
     public List<InstallmentEntity> MappingListEntityDataToListEntity(List<InstallmentEntityData> obj)
     {

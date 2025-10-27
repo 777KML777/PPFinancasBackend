@@ -1,6 +1,7 @@
 using Services.Models;
 using Application.Services;
 using Tests.Printers;
+using Services.Bank;
 
 namespace Tests.Services.Validations;
 

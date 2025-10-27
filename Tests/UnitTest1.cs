@@ -1,10 +1,10 @@
-using System.Diagnostics;
-using Application.Services;
 using Services.Dtos;
 using Domain.Entities.Installment;
-using Microsoft.VisualStudio.TestPlatform.Utilities;
-using Xunit.Abstractions;
 using Domain.Entities.Expense;
+using Services.Expense;
+using Repository.JsonFile.Repositories.Expense;
+using Services.Extensions;
+using Application.Services.Dashboard;
 
 namespace Tests;
 
@@ -15,10 +15,7 @@ public class UnitTest1
     {
         ExpenseServices _services = new ExpenseServices();
         IExpenseRepository repository = new ExpenseRepository();
-        ExpenseEntity case1 = _services.MappingEntityDataToEntity
-        (
-            repository.GetById<ExpenseEntityData>(15)
-        );
+        ExpenseEntity case1 = repository.GetById<ExpenseEntityData>(15).ToEntity();
 
         IInstallmentRepository _installmentRepository = new InstallmentRepository();
         var Installments = _installmentRepository.GetAllPaidByIdExpenses(15);
@@ -43,7 +40,7 @@ public class UnitTest1
     [Fact]
     public void Dashboard()
     {
-        DashboardServices dashboardService = new();
+        DashboardAppServices dashboardService = new();
         DashboardDto dashboard = new();
 
         dashboard = dashboardService.DashData();
@@ -79,10 +76,7 @@ public class UnitTest1
     {
         ExpenseServices _services = new ExpenseServices();
         IExpenseRepository repository = new ExpenseRepository();
-        ExpenseEntity case1 = _services.MappingEntityDataToEntity
-        (
-            repository.GetById<ExpenseEntityData>(15)
-        );
+        ExpenseEntity case1 = repository.GetById<ExpenseEntityData>(15).ToEntity();
 
         IInstallmentRepository _installmentRepository = new InstallmentRepository();
         var Installments = _installmentRepository.GetAllPaidByIdExpenses(15);

@@ -28,11 +28,12 @@ public class BankMapper : IMappings<BankInputModel, BankDto, BankEntity, BankEnt
 
 
     #region "COLLECTIONS" 
-    public List<BankEntity> MappingListEntityDataToListEntity(List<BankEntityData> datas)
+    public List<BankEntity> MappingListEntityDataToListEntity(List<BankEntityData> obj)
     {
-        throw new NotImplementedException();
+        List<BankEntity> lst = new();
+        obj.ForEach(item => lst.Add(MappingEntityDataToEntity(item)));
+        return lst;
     }
-
     public List<BankDto> MappingListEntityToListDto(List<BankEntity> entities)
     {
         List<BankDto> lst = new();

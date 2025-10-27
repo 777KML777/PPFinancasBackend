@@ -259,13 +259,6 @@ public class BankServices : IBankServices
         return lst;
     }
 
-    public List<BankEntity> MappingListEntityDataToListEntity(List<BankEntityData> obj)
-    {
-        List<BankEntity> lst = new();
-        obj.ForEach(item => lst.Add(MappingEntityDataToEntity(item)));
-        return lst;
-    }
-
     BankDto IService<BankInputModel, BankDto, BankEntity, BankEntityData>.Create(BankInputModel input)
     {
         throw new NotImplementedException();
