@@ -3,28 +3,93 @@ namespace Services.Bank;
 public class BankServices : IBankServices
 {
     private readonly IBankRepository _repository;
-    // private readonly IExtratoServices _extratoServices = new ExtratoServices();
-    // private readonly IExpenseServices _expenseServices = new ExpenseServices();
-    // private readonly IInstallmentServices _installmentServices = new InstallmentServices();
     public BankServices()
     {
         _repository = new BankRepository();
     }
 
     #region "CRUD OPERATION" 
+    public BankDto Create(BankInputModel input)
+    {
+        throw new NotImplementedException();
+    }
     public List<BankDto> Read(bool inactived = false) =>
         _repository.ReadAll<BankEntityData>().ToList().ToListEntity().ToListDto();
+
+    public BankDto Update(BankInputModel input)
+    {
+        BankEntity entity = _repository.GetById<BankEntityData>(input.Id).ToEntity();
+
+        // Por decisão é interessante retornar o input model e receber. 
+
+        entity.AlterBankEntity
+        (
+            input.Id,
+            input.Name,
+            input.Balance,
+            10, //input.PaymentDay,
+            true, //input.Available,
+            (EOperacao)Enum.Parse(typeof(EOperacao), /* input.Operacao */ "")
+        );
+
+        // Chamar serviço de criar extrato. 
+        var extrato =
+            entity.Extrato
+                .MaxBy(ext => ext.DataTransacaoSistema);
+
+        //TODO: O ideal é chamar o include 
+        //TODO: Ver no teste como que se usa ele
+        //TODO: Talvez eu devesso usar async aqui. 
+
+        // if (extrato != null)
+        //     _extratoServices.Create
+        //     (
+        //         new ExtratoInputModel
+        //         {
+        //             IdBank = extrato.IdBank,
+        //             Operacao = extrato.Operacao.ToString(),
+        //             SaldoDoDia = extrato.SaldoDoDia,
+        //             SaldoAnterior = extrato.SaldoAnterior,
+        //             ValorTransacao = extrato.ValorTransacao,
+        //             DataUsuarioAlteracao = extrato.DataUsuarioAlteracao,
+        //             DataTransacaoSistema = extrato.DataTransacaoSistema,
+        //         }
+        //     );
+
+
+        // include no próprio parâmetro, sei lá. 
+        // _repository.Update
+        // (
+        //     MappingEntityToEntityData(entity)
+
+        // ).IncludeRange
+        // (
+        //     MappingEntityToEntityData(entity),
+        //     _extratoServices.MappingListEntityToListEntityData
+        //     (
+        //         entity.Extrato
+        //     )
+        // );
+
+        //  _services.MappingEntityToEntityData(entity),
+        //             _installmentServices.MappingListEntityToListEntityData(entity.Installments.ToList())
+
+        // Eu teria que retornar um bank dto. A princípio 
+        // eu vou fazer por aqui mesmo. 
+
+        throw new NotImplementedException();
+    }
+
+    public bool Delete(BankInputModel dto) =>
+        throw new NotImplementedException();
     #endregion 
 
     #region "COMMOM OPERATIONS"
-
-    #endregion
-
     public BankDto GetById(int id)
     {
         // Sim o repositório tem que trazer aqui a lista dos pagamentos na própria entidade que representa 
         // // o banco de dados
-        BankDto bank = MappingEntityDataToEntity(_repository.GetById<BankEntityData>(id)).ToDto();
+        BankDto bank = _repository.GetById<BankEntityData>(id).ToEntity().ToDto();
 
         // bank.Extratos = _extratoServices
         //     .GetExtratosByIdBank(bank.Id);
@@ -162,135 +227,9 @@ public class BankServices : IBankServices
     }
 
     //Para ser sincero Serialização tem que ficar aqui
-    public bool Update(BankInputModel input, bool remover = true)
-    {
+    #endregion
 
-
-        return true;
-    }
-
-    public bool Delete(BankInputModel dto) =>
-        throw new NotImplementedException();
-
-    public BankEntityData MappingEntityToEntityData(BankEntity obj)
-    {
-        return new BankEntityData
-        {
-            Id = obj.Id,
-            Balance = obj.Balance,
-            Name = obj.Name
-        };
-    }
-
-    public BankEntity MappingEntityDataToEntity(BankEntityData data)
-    {
-        BankEntity entity = new();
-        entity.AlterBankEntity
-        (
-            data.Id,
-            data.Name,
-            data.Balance,
-            data.PaymentDay,
-            data.Avalaible
-        );
-        return entity;
-    }
-
-
-    public List<BankEntityData> MappingListEntityToListEntityData(List<BankEntity> obj)
-    {
-        List<BankEntityData> lst = new();
-        obj.ForEach(item => lst.Add(MappingEntityToEntityData(item)));
-        return lst;
-    }
-
-    BankDto IService<BankInputModel, BankDto, BankEntity, BankEntityData>.Create(BankInputModel input)
-    {
-        throw new NotImplementedException();
-    }
-
-    public BankDto Update(BankInputModel input)
-    {
-        BankEntity entity = MappingEntityDataToEntity
- (
-     _repository.GetById<BankEntityData>(input.Id)
- );
-
- // Por decisão é interessante retornar o input model e receber. 
-
-        entity.AlterBankEntity
-        (
-            input.Id,
-            input.Name,
-            input.Balance,
-            10, //input.PaymentDay,
-            true, //input.Available,
-            (EOperacao)Enum.Parse(typeof(EOperacao), /* input.Operacao */ "")
-        );
-
-        // Chamar serviço de criar extrato. 
-        var extrato =
-            entity.Extrato
-                .MaxBy(ext => ext.DataTransacaoSistema);
-
-        //TODO: O ideal é chamar o include 
-        //TODO: Ver no teste como que se usa ele
-        //TODO: Talvez eu devesso usar async aqui. 
-
-        // if (extrato != null)
-        //     _extratoServices.Create
-        //     (
-        //         new ExtratoInputModel
-        //         {
-        //             IdBank = extrato.IdBank,
-        //             Operacao = extrato.Operacao.ToString(),
-        //             SaldoDoDia = extrato.SaldoDoDia,
-        //             SaldoAnterior = extrato.SaldoAnterior,
-        //             ValorTransacao = extrato.ValorTransacao,
-        //             DataUsuarioAlteracao = extrato.DataUsuarioAlteracao,
-        //             DataTransacaoSistema = extrato.DataTransacaoSistema,
-        //         }
-        //     );
-
-
-        // include no próprio parâmetro, sei lá. 
-        // _repository.Update
-        // (
-        //     MappingEntityToEntityData(entity)
-
-        // ).IncludeRange
-        // (
-        //     MappingEntityToEntityData(entity),
-        //     _extratoServices.MappingListEntityToListEntityData
-        //     (
-        //         entity.Extrato
-        //     )
-        // );
-
-        //  _services.MappingEntityToEntityData(entity),
-        //             _installmentServices.MappingListEntityToListEntityData(entity.Installments.ToList())
-
-        // Eu teria que retornar um bank dto. A princípio 
-        // eu vou fazer por aqui mesmo. 
-
-        throw new NotImplementedException();
-    }
-
-    public BankEntity MappingDtoToEntity(BankDto dto)
-    {
-        throw new NotImplementedException();
-    }
-
-    public bool Create(BankInputModel input, bool remover = true)
-    {
-        throw new NotImplementedException();
-    }
-
-    public BankDto GetById(int id, bool remover = true)
-    {
-        throw new NotImplementedException();
-    }
-
+    #region "SPECIFIC OPERATIONS"
     public List<BankDataList> GetDataList()
     {
         List<BankDataList> bankDataLists = new();
@@ -300,5 +239,6 @@ public class BankServices : IBankServices
 
         return bankDataLists;
     }
+    #endregion 
 
 }

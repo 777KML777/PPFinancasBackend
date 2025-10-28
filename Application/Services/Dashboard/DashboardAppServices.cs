@@ -22,13 +22,14 @@ public class DashboardAppServices
 
     public DashboardDto DashData()
     {
+        // Total de pagamentos já realizados
         // Total de todos os bancos separadamente. 
         DashboardDto dash = new ();
-
-        // Só chamar os respectivos MappingList
         List<BankDto> lstBanks = _bankServices.Read();
+        List<ExpenseDto> lstExpenses = _expenseServices.Read();
 
-        // List<ExpenseDto> lstExpenses = _expenseServices.Read();
+        // Calculando Totais
+        dash.TotalAvailableBalance = lstBanks.Sum(x => x.Balance); // Dinheiro que pode ser usado a qq momento.
 
         // List<InstallmentEntity> lstInstallments = _installmentServices.Read();
 

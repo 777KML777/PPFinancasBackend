@@ -7,6 +7,12 @@ public static class BankExtension
     #region "Objects" 
     public static BankDto ToDto(this BankEntity entity) =>
         _mapper.MappingEntityToDto(entity);
+
+    public static BankEntity ToEntity(this BankEntityData data) =>
+        _mapper.MappingEntityDataToEntity(data);
+
+    public static BankEntityData ToEntityData(this BankEntity entity) =>
+        _mapper.MappingEntityToEntityData(entity);
     #endregion 
 
     #region "Collections" 

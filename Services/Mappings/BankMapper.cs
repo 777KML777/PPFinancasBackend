@@ -16,14 +16,28 @@ public class BankMapper : IMappings<BankInputModel, BankDto, BankEntity, BankEnt
 
     public BankEntity MappingEntityDataToEntity(BankEntityData data)
     {
-        throw new NotImplementedException();
+        BankEntity entity = new();
+        entity.AlterBankEntity
+        (
+            data.Id,
+            data.Name,
+            data.Balance,
+            data.PaymentDay,
+            data.Avalaible
+        );
+        return entity;
     }
 
 
 
     public BankEntityData MappingEntityToEntityData(BankEntity entity)
     {
-        throw new NotImplementedException();
+        return new BankEntityData
+        {
+            Id = entity.Id,
+            Balance = entity.Balance,
+            Name = entity.Name
+        };
     }
 
 
