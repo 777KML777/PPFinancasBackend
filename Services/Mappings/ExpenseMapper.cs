@@ -133,13 +133,6 @@ public class ExpenseMapper : IMappings<ExpenseInputModel, ExpenseDto, ExpenseEnt
         obj.ForEach(item => lst.Add(item.ToEntity()));
         return lst;
     }
-
-    // public List<ExpenseEntityData> MappingListEntityToListEntityData(List<ExpenseEntity> obj)
-    // {
-    //     List<ExpenseEntityData> lst = new();
-    //     obj.ForEach(entity => lst.Add(entity.ToEntityData()));
-    //     return lst;
-    // }
     #endregion
 
 }

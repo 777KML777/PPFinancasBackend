@@ -5,7 +5,7 @@ public class BankMapper : IMappings<BankInputModel, BankDto, BankEntity, BankEnt
 
     #region "OBJECTS" 
     public BankDto MappingEntityToDto(BankEntity entity) =>
-        new(entity.Id, entity.Name, entity.Balance, entity.PaymentDay, entity.Expenses.Count, entity.TotalExpenses(), entity.LiquidedBalance());
+        new(entity.Id, entity.Name, entity.Available, entity.Balance, entity.PaymentDay, entity.Expenses.Count, entity.TotalExpenses(), entity.LiquidedBalance());
 
     #endregion
 

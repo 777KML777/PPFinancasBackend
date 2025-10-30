@@ -24,12 +24,31 @@ public class DashboardAppServices
     {
         // Total de pagamentos já realizados
         // Total de todos os bancos separadamente. 
+
         DashboardDto dash = new ();
         List<BankDto> lstBanks = _bankServices.Read();
         List<ExpenseDto> lstExpenses = _expenseServices.Read();
 
+        dash.Banks = lstBanks;
+
+        // Despesas ativas são despesas que não tem todos os pagamentos efetuados. 
+        // Por padrão as despesas que não tem prazo de validade serão incrementadas com base nos meses restantes do ano. 
+        // O que irá auxiliar no cálculo será a DataCriacao. A despesa irá se recalcular com base nessa informação. 
+        // Movimentações depende do extrato. 
+        
+        // Saldo final tem que desconsiderar os pagamentos efetuados. 
+
+        // E sobre o dinheiro assegurado? 
+
+        // Eu tenho que mostrar o saldo final do banco. 
+        
+
         // Calculando Totais
-        dash.TotalAvailableBalance = lstBanks.Sum(x => x.Balance); // Dinheiro que pode ser usado a qq momento.
+        dash.TotalAvailableBalance = lstBanks.Where(x => x.Available).Sum(x => x.Balance); // Dinheiro que pode ser usado a qq momento.
+        dash.TotalExpenses = lstExpenses.Sum(x => x.TotalExpense);
+        dash.TotalBalance = lstBanks.Sum(x => x.Balance);
+        dash.Balance = dash.TotalBalance - dash.TotalExpenses;
+        dash.AvailableBalance = dash.TotalAvailableBalance - dash.TotalExpenses;
 
         // List<InstallmentEntity> lstInstallments = _installmentServices.Read();
 
@@ -41,15 +60,6 @@ public class DashboardAppServices
         // O quanto eu evolui de um tempo para outro. 
         // Projeção
 
-        // Totais Gerais
-        // dash.TotalExpenses = lstTemp.Sum(bank => bank.Amount);
-
-        // //Primeiro a realidade
-        // dash.TotalAvailableBalance = lstBanks.Where(b => b.Available).Sum(bank => bank.Balance);
-        // dash.AvailableBalance = dash.TotalAvailableBalance - dash.TotalExpenses;
-
-        // dash.TotalBalance = lstBanks.Sum(bank => bank.Balance);
-        // dash.Balance = dash.TotalBalance - dash.TotalExpenses;
 
         // lstExpenses.ForEach(expenseRepo =>
         //     lstBanks.ForEach(item =>
@@ -61,7 +71,6 @@ public class DashboardAppServices
         // );
 
         // Total de cada banco
-        dash.Banks = lstBanks;
 
         // dash.Banks.ForEach(item => item.CalculateFinalBalance());
 

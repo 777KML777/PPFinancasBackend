@@ -17,6 +17,10 @@ public static class ExpenseExtension
 
 
     #region "Collections" 
-    
-    #endregion
+    public static List<ExpenseDto> ToListDto(this List<ExpenseEntity> entities) =>
+        _mapper.MappingListEntityToListDto(entities);
+
+    public static List<ExpenseEntity> ToListEntity(this List<ExpenseEntityData> datas) =>
+        _mapper.MappingListEntityDataToListEntity(datas);
+    #endregion 
 }

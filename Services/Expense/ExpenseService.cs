@@ -52,10 +52,8 @@ public class ExpenseServices : IExpenseServices
     {
         throw new NotImplementedException();
     }
-    public List<ExpenseDto> Read()
-    {
-        throw new NotImplementedException();
-    }
+    public List<ExpenseDto> Read(bool inactived = false) =>
+        _repository.ReadAll<ExpenseEntityData>().ToList().ToListEntity().ToListDto(); 
     public ExpenseDto Update(ExpenseInputModel dto)
     {
         throw new NotImplementedException();
@@ -81,7 +79,7 @@ public class ExpenseServices : IExpenseServices
     }
     #endregion
 
-    #region "OTHER OPERATIONS"
+    #region "SPECIFIC OPERATIONS"
     public List<ExpenseDto> GetExpenseByIdBank(int idBank)
     {
         List<ExpenseDto> lstExpenses = new List<ExpenseDto>();
@@ -104,11 +102,6 @@ public class ExpenseServices : IExpenseServices
         // lstExpenses.ForEach(x => x.SumInstallmentsAndTotalRemaning(x.Installments.Count));
 
         return lstExpenses;
-    }
-
-    public List<ExpenseDto> Read(bool inactived = false)
-    {
-        throw new NotImplementedException();
     }
 
     #endregion

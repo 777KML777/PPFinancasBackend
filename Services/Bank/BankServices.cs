@@ -3,9 +3,11 @@ namespace Services.Bank;
 public class BankServices : IBankServices
 {
     private readonly IBankRepository _repository;
+    private readonly IExpenseRepository _expenseRepository;
     public BankServices()
     {
         _repository = new BankRepository();
+        _expenseRepository = new ExpenseRepository();
     }
 
     #region "CRUD OPERATION" 
@@ -13,8 +15,19 @@ public class BankServices : IBankServices
     {
         throw new NotImplementedException();
     }
-    public List<BankDto> Read(bool inactived = false) =>
-        _repository.ReadAll<BankEntityData>().ToList().ToListEntity().ToListDto();
+
+    public List<BankDto> Read(bool inactived = false)
+    {
+        List<BankEntity> banks = _repository.ReadAll<BankEntityData>().ToList().ToListEntity();
+
+        // TODO: Substituir por um include. 
+        banks.ForEach(b => {
+            _expenseRepository.GetAllByIdBank(b.Id).ForEach(e => b.AddExpensesToBanks(e.ToEntity()));
+            
+        });
+        
+        return banks.ToListDto();
+    }
 
     public BankDto Update(BankInputModel input)
     {
@@ -239,6 +252,7 @@ public class BankServices : IBankServices
 
         return bankDataLists;
     }
-    #endregion 
+
+    #endregion
 
 }
