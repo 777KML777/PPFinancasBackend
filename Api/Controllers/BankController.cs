@@ -1,9 +1,3 @@
-using Microsoft.AspNetCore.Mvc;
-using Application.Services;
-using Services.Dtos;
-using Services.Models;
-using Services.Bank;
-
 namespace Api.Controllers;
 
 [ApiController]
@@ -11,11 +5,11 @@ namespace Api.Controllers;
 
 public class BankController : ControllerBase
 {
-    private readonly BankServices _bankServices = new BankServices();
+    private readonly IBankAppServices _bankServices = new BankAppServices();
 
     public BankController()
     {
-
+        
     }
 
     [HttpPost]
@@ -25,15 +19,14 @@ public class BankController : ControllerBase
         // Estou me distanciando muito do Backend - mas nesse momento faz-se um pouco necessário 
         // Futuramente ter a opção de criar o banco já com as despesas 
 
-        _bankServices.Create(obj);
+        // _bankServices.Create(obj);
     }
 
     [HttpPut()]
-    public void Update(BankInputModel obj) =>
-        _bankServices.Update(obj);
+    public void Update(BankInputModel obj) => Console.WriteLine("ha");
+        // _bankServices.Update(obj);
 
     [HttpGet("{id}")]
-    public BankDto Get(int id) =>
+    public BankInputModel Get(int id) =>
         _bankServices.GetById(id);
-
 }

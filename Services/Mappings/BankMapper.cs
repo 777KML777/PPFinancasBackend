@@ -27,9 +27,6 @@ public class BankMapper : IMappings<BankInputModel, BankDto, BankEntity, BankEnt
         );
         return entity;
     }
-
-
-
     public BankEntityData MappingEntityToEntityData(BankEntity entity)
     {
         return new BankEntityData
@@ -39,7 +36,6 @@ public class BankMapper : IMappings<BankInputModel, BankDto, BankEntity, BankEnt
             Name = entity.Name
         };
     }
-
 
     #region "COLLECTIONS" 
     public List<BankEntity> MappingListEntityDataToListEntity(List<BankEntityData> obj)

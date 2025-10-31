@@ -14,8 +14,8 @@ public static class Printer
 
             content = content.Insert(content.Length, "\n\n");
 
-            content = content.Insert(content.Length, $"\nNOME: {printerBank.Name}");
-            content = content.Insert(content.Length, $"\n\tBalance: {printerBank.Balance}");
+            content = content.Insert(content.Length, $"\nNOME: {printerBank.Banco.Name}");
+            content = content.Insert(content.Length, $"\n\tBalance: {printerBank.Banco.Balance}");
             content = content.Insert(content.Length, $"\n\tQuantidade De Despesas: {printerBank.Expenses.Count}");
             content = content.Insert(content.Length, $"\n\tTotal De Fatura {printerBank.FaturaDoBanco.TotalDeFaturas}");
             content = content.Insert(content.Length, $"\n\tTotal De Parcelas Do Banco {printerBank.FaturaDoBanco.Faturas.Count}"); 

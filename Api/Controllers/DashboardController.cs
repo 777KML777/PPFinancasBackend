@@ -36,16 +36,17 @@ public class DashboardController : ControllerBase
             Itens = new List<ItemProgresso>()
             {
                 // Pendentes
-                new() { Ordem = 2, Concluido = false, Nome = "Despesas Ativas", Descricao = "", Importancia = "Importante para preencher o card DTO.", },
-                new() { Ordem = 3, Concluido = false, Nome = "Saldo Final", Descricao = "", Importancia = "Importante para preencher o card DTO.", },
-                new() { Ordem = 1, Concluido = false, Nome = "Total Das Despesas", Descricao = "", Importancia = "Importante para preencher o card DTO.", },
-                new() { Ordem = 6, Concluido = false, Nome = "Despesa Por Banco", Descricao = "", Importancia = "Eu consigo completar o card.", },
                 new() { Ordem = 7, Concluido = false, Nome = "Parcelas Pagas", Descricao = "", Importancia = "Importante para preencher o card DTO.", },
                 new() { Ordem = 4, Concluido = false, Nome = "Documentar Saldos", Descricao = "", Importancia = "Importante para preencher o card DTO.", },
                 new() { Ordem = 5, Concluido = false, Nome = "Include?", Descricao = "", Importancia = "Importante para preencher o card DTO.", },
                 new() { Ordem = 8, Concluido = false, Nome = "Usar Porcentagem Concluida", Descricao = "", Importancia = "Importante para preencher o card DTO.", },
+                new() { Ordem = 8, Concluido = false, Nome = "Remover Comentarios", Descricao = "", Importancia = "Importante para preencher o card DTO.", },
                 // Concluídos
-                new() { Ordem = 6, Concluido = true, Nome = "Calcular Saldo Disponível", Descricao = "", Importancia = "Importante para preencher o card DTO.", }
+                new() { Ordem = 2, Concluido = true, Nome = "Despesas Ativas", Descricao = "", Importancia = "Importante para preencher o card DTO.", },
+                new() { Ordem = 6, Concluido = true, Nome = "Calcular Saldo Disponível", Descricao = "", Importancia = "Importante para preencher o card DTO.", },
+                new() { Ordem = 6, Concluido = true, Nome = "Despesa Por Banco", Descricao = "", Importancia = "Eu consigo completar o card.", },
+                new() { Ordem = 1, Concluido = true, Nome = "Total Das Despesas", Descricao = "", Importancia = "Importante para preencher o card DTO.", },
+                new() { Ordem = 3, Concluido = true, Nome = "Saldo Final", Descricao = "", Importancia = "Importante para preencher o card DTO.", }
             }
         };
 

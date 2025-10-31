@@ -2,8 +2,9 @@ namespace Services.Dtos;
 
 public class Progresso
 {
-    public int PorcentagemPendente { get; set; }
+    public DateTime DataCriacao { get; set; }
     public int QuantidadePendente { get; set; }
+    public int PorcentagemPendente { get; set; }
     public int QuantidadeConcluida { get; set; }
     public int PorcentagemConcluida { get; set; }
     public string Nome { get; set; } = string.Empty;

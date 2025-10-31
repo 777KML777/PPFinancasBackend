@@ -21,25 +21,26 @@ public class BankServices : IBankServices
         List<BankEntity> banks = _repository.ReadAll<BankEntityData>().ToList().ToListEntity();
 
         // TODO: Substituir por um include. 
-        banks.ForEach(b => {
+        banks.ForEach(b =>
+        {
             _expenseRepository.GetAllByIdBank(b.Id).ForEach(e => b.AddExpensesToBanks(e.ToEntity()));
-            
+
         });
-        
+
         return banks.ToListDto();
     }
 
     public BankDto Update(BankInputModel input)
     {
-        BankEntity entity = _repository.GetById<BankEntityData>(input.Id).ToEntity();
+        BankEntity entity = _repository.GetById<BankEntityData>(input.Banco.Id).ToEntity();
 
         // Por decisão é interessante retornar o input model e receber. 
 
         entity.AlterBankEntity
         (
-            input.Id,
-            input.Name,
-            input.Balance,
+            input.Banco.Id,
+            input.Banco.Name,
+            input.Banco.Balance,
             10, //input.PaymentDay,
             true, //input.Available,
             (EOperacao)Enum.Parse(typeof(EOperacao), /* input.Operacao */ "")
@@ -100,9 +101,23 @@ public class BankServices : IBankServices
     #region "COMMOM OPERATIONS"
     public BankDto GetById(int id)
     {
+        // TODO: Talvez eu não precisaria enviar o BankDto por já ter lá na WEB.
+        // TODO: Codigo de simulação de include está duplicado... 
+        // TODO: Distinguir os tipos de movimentações. 
+
+
+        // TODO: Substituir por um include. 
+
+
+        BankEntity bank = _repository.GetById<BankEntityData>(id).ToEntity();
+        List<ExpenseEntity> expenses = _expenseRepository.GetAllByIdBank(bank.Id).ToListEntity();
+
+        if (expenses.Any())
+            expenses.ForEach(bank.AddExpensesToBanks);
+
         // Sim o repositório tem que trazer aqui a lista dos pagamentos na própria entidade que representa 
         // // o banco de dados
-        BankDto bank = _repository.GetById<BankEntityData>(id).ToEntity().ToDto();
+
 
         // bank.Extratos = _extratoServices
         //     .GetExtratosByIdBank(bank.Id);
@@ -236,7 +251,7 @@ public class BankServices : IBankServices
 
         // bank.CalculaLancamento();
 
-        return bank;
+        return bank.ToDto();
     }
 
     //Para ser sincero Serialização tem que ficar aqui
