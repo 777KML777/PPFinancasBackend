@@ -33,7 +33,7 @@
             Expenses.Where(x => !x.Inactive).Sum(x => x.SumTotalExpense());
 
         public decimal LiquidedBalance() =>
-           Expenses.Where(x => !x.Inactive).Sum(x => Balance - x.SumTotalExpense());
+            Balance - TotalExpenses();
         public List<ExtratoEntity> Extrato = new();
         public IReadOnlyCollection<ExpenseEntity> Expenses { get { return _expenses.ToArray(); } }
 
