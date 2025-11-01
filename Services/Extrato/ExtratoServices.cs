@@ -18,7 +18,7 @@ public class ExtratoServices : IExtratoServices
             input.ToEntity().ToEntityData()
         );
 
-        return null;
+        return new();
     }
 
     public List<ExtratoDto> Read(bool inactived = false)

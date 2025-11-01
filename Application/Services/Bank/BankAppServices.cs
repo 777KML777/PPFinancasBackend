@@ -16,9 +16,11 @@ public class BankAppServices : IBankAppServices
     public BankInputModel GetById(int id)
     {
         BankDto banco = _services.GetById(id);
-        BankInputModel input = new(banco);
-
-        input.Extratos = _extratoServices.GetExtratosByIdBank(banco.Id);
+        BankInputModel input = new(banco)
+        {
+            Extratos = _extratoServices.GetExtratosByIdBank(banco.Id)
+        };
+        
         // input.Expenses = 
         // input.FaturaDoBanco = 
         // input.Lancamentos = 
