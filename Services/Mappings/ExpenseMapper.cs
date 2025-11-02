@@ -25,7 +25,7 @@ public class ExpenseMapper : IMappings<ExpenseInputModel, ExpenseDto, ExpenseEnt
             data.Inactive,
             data.Separeted,
             data.DatePurchase,
-            new List<Domain.Entities.Installment.InstallmentEntity>()
+            new List<InstallmentEntity>()
         );
         return entidade;
     }
