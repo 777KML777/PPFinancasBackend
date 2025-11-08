@@ -16,7 +16,7 @@ public record class BankDto
 // Pagamentos pendentes 
 // Pagamentos no Total
 // Despesas concluidas
-// Assegurado? 
+// Assegurado? h
 
 // Cartões / Menus. 
 
