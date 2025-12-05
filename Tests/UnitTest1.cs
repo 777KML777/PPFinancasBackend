@@ -2,7 +2,7 @@ using Services.Dtos;
 using Domain.Entities.Installment;
 using Domain.Entities.Expense;
 using Services.Expense;
-using Repository.JsonFile.Repositories.Expense;
+using Infra.Data.Repositories.Expense;
 using Services.Extensions;
 using Application.Services.Dashboard;
 

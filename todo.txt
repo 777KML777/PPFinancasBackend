@@ -128,7 +128,7 @@ Ideia do Cartão de crédito.
 Dia 13 de Julho. Semana 28 último. 
     Eu hoje levo um versículo bíblico a sério. De não confiar nos Homens porque eles podem te trair. Cara o que ocorreu hoje entre PSG e Chelsea foi inadmissível. Para mim é certeza que as coisas em pleno 2025 são tudo mainpuladas. Tudo. 
 
-    Junta também que eu acabei me rendendo a abordagem mais fácil pois estou demandando muito tempo tentando fazer de uma maneira foda o Repository.Json. 
+    Junta também que eu acabei me rendendo a abordagem mais fácil pois estou demandando muito tempo tentando fazer de uma maneira foda o StorageContextJson. 
 
     Essa semana que vai entrar 29. Eu vou mirar na Elegância ver se consigo ter alguma reanimada no ânimo... 
         Ler a bíblia 
@@ -151,7 +151,7 @@ Dia 13 de Julho. Semana 28 último.
         Trios, quartetos e assim por diante? Seria até difícil calcular (embora seria um desafio matemático). 
         Vale a pena gastar tempo com isso para manter a mente ocupada quando as principais obrigações estiverem concluídas. 
 
-    Atualizar a documentação do Repository.Json, informando que eu agora retorno o objeto criado. 
+    Atualizar a documentação do StorageContextJson, informando que eu agora retorno o objeto criado. 
     E que tenho uma pendência para não ter que criar classes espelhos como NomeClasseEntityData que tem as mesmas propriedades de uma classe NomeClasseEntity. Que fita hein. Tive que deixar isso assim por enquanto para não ter que ficar empacado e perdendo muito tempo com algo que eu posso contornar. 
 
     Caralho simplesmente hoje. 14/07 eu passei quase duas horas vendo vídeos no instagram que nao me levaram a lugar algum. 

@@ -14,7 +14,16 @@ builder.Services.AddCors(o => o.AddPolicy("MyPolicy", builder =>
    .AllowAnyHeader();
 }));
 
+NativeInjectorBootStrapper.Register(builder.Services);
+
 var app = builder.Build();
+
+// *** Getters Injections *** // 
+
+GetterInjectionServiceExtensionMapper.Constructor(app);
+GetterInjectionRepositoryExtensionMapper.Constructor(app);
+
+// *** Getters Injections *** // 
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())

@@ -1,15 +1,23 @@
-﻿global using Domain.Enums;
-global using Services.Dtos;
-global using Services.Models;
-global using Services.Selects;
-global using Services.Mappings;
+﻿#region "CURRENT ASSEMBLY - SERVICES"
+global using Services.Mappers;
 global using Services.Extensions;
 global using Services.Interfaces;
-global using Domain.Entities.Bank;
-global using Domain.Entities.Expense;
-global using Domain.Entities.Installment;
-global using Repository.JsonFile.Repositories.Bank;
-global using Repository.JsonFile.Repositories.Expense;
 
-global using Domain.Entities.Extrato;
-global using Repository.JsonFile.Repositories.Extrato;
+global using Services.Objects.Dtos;
+global using Services.Objects.Models;
+global using Services.Objects.Selects;
+
+#endregion
+
+#region "ASSEMBLIES REFERENCES"
+global using Domain.Enums;
+global using Domain.Interfaces;
+
+global using Infra.Data.Repositories;
+
+#endregion
+
+#region "PACKAGES" 
+global using Microsoft.AspNetCore.Builder;
+global using Microsoft.Extensions.DependencyInjection;
+#endregion

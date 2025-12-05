@@ -2,9 +2,9 @@ using Domain.Entities.Expense;
 using Domain.Entities.Installment;
 using Services.Interfaces;
 using Services.Expense;
-using Repository.JsonFile.Repositories.Expense;
+using Infra.Data.Repositories.Expense;
 using Services.Installment;
-using Services;
+using Services.Implementations;
 using Services.Extensions;
 
 namespace Tests.T2_Repositories.Success;
