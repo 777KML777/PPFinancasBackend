@@ -12,7 +12,7 @@ public class BankInputModel
     public BankDto Banco { get; set; }
     public DateTime DataPagamento { get; set; }
     public string Operacao { get; set; } = string.Empty;
-    public List<ExtratoDto> Extratos { get; set; } = new();
+    public IEnumerable<ExtratoDto> Extratos { get; set; }
     public List<ExpenseDto> Expenses { get; set; } = new List<ExpenseDto>();
     public FaturaDoBancoDto FaturaDoBanco { get; set; } = new FaturaDoBancoDto();
     public List<LancamentoDto> Lancamentos { get; set; } = new List<LancamentoDto>();

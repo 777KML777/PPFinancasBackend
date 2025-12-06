@@ -1,3 +1,4 @@
+
 namespace Services.Implementations;
 
 public class InstallmentServices : IInstallmentServices
@@ -6,7 +7,7 @@ public class InstallmentServices : IInstallmentServices
     // A filosofia é que o de fora sempre valida o de dentro. 
     // Generic Repository criar classes espelhos. Para poder trabalhar eficientemente
     // Com Get e private set; 
-    private readonly IInstallmentRepository _installmentRepository = new InstallmentRepository();
+    private readonly IInstallmentRepository _installmentRepository;
 
     public InstallmentServices()
     {
@@ -24,8 +25,8 @@ public class InstallmentServices : IInstallmentServices
     public List<InstallmentDto> Read()
     {
         List<InstallmentDto> installments = new();
-        List<InstallmentEntity> lsEntity = MappingListEntityDataToListEntity(_installmentRepository.ReadAll<InstallmentEntityData>().ToList());
-        installments = MappingListEntityToListDto(lsEntity);
+        // List<InstallmentEntity> lsEntity = MappingListEntityDataToListEntity(_installmentRepository.ReadAll<InstallmentEntityData>().ToList());
+        // installments = MappingListEntityToListDto(lsEntity);
 
         return installments;
     }
@@ -37,7 +38,7 @@ public class InstallmentServices : IInstallmentServices
 
         installment.AddPaymentDate();
 
-        _installmentRepository.Update(installment);
+        // _installmentRepository.Update(installment);
 
         return true;
     }
@@ -74,24 +75,24 @@ public class InstallmentServices : IInstallmentServices
         throw new NotImplementedException();
     }
 
-    public InstallmentEntityData MappingEntityToEntityData(InstallmentEntity obj)
-    {
-        return new() { Number = obj.Number, IdExpense = obj.IdExpense, PaymentDate = obj.PaymentDate };
-    }
+    // public InstallmentEntityData MappingEntityToEntityData(InstallmentEntity obj)
+    // {
+    //     return new() { Number = obj.Number, IdExpense = obj.IdExpense, PaymentDate = obj.PaymentDate };
+    // }
 
-    public InstallmentEntity MappingEntityDataToEntity(InstallmentEntityData obj)
-    {
-        InstallmentEntity entity = new();
-        entity.AlterInstallmentEntity
-        (
-            obj.Id,
-            obj.IdExpense,
-            obj.Number,
-            obj.ExpectedDate
-        );
+    // public InstallmentEntity MappingEntityDataToEntity(InstallmentEntityData obj)
+    // {
+    //     InstallmentEntity entity = new();
+    //     entity.AlterInstallmentEntity
+    //     (
+    //         obj.Id,
+    //         obj.IdExpense,
+    //         obj.Number,
+    //         obj.ExpectedDate
+    //     );
 
-        return entity;
-    }
+    //     return entity;
+    // }
 
     public List<InstallmentDto> MappingListEntityToListDto(List<InstallmentEntity> obj)
     {
@@ -101,12 +102,12 @@ public class InstallmentServices : IInstallmentServices
     }
 
 
-    public List<InstallmentEntity> MappingListEntityDataToListEntity(List<InstallmentEntityData> obj)
-    {
-        List<InstallmentEntity> lst = new();
-        obj.ForEach(item => lst.Add(MappingEntityDataToEntity(item)));
-        return lst;
-    }
+    // public List<InstallmentEntity> MappingListEntityDataToListEntity(List<InstallmentEntityData> obj)
+    // {
+    //     List<InstallmentEntity> lst = new();
+    //     obj.ForEach(item => lst.Add(MappingEntityDataToEntity(item)));
+    //     return lst;
+    // }
 
     public InstallmentEntity MappingDtoToEntity(InstallmentDto dto)
     {
@@ -123,12 +124,37 @@ public class InstallmentServices : IInstallmentServices
         throw new NotImplementedException();
     }
 
-    InstallmentDto IService<InstallmentInputModel, InstallmentDto, InstallmentEntity, InstallmentEntityData>.Create(InstallmentInputModel input)
+    // InstallmentDto IService<InstallmentInputModel, InstallmentDto, InstallmentEntity>.Create(InstallmentInputModel input)
+    // {
+    //     throw new NotImplementedException();
+    // }
+
+    public List<InstallmentDto> Read(bool inactived = false)
     {
         throw new NotImplementedException();
     }
 
-    public List<InstallmentDto> Read(bool inactived = false)
+    InstallmentDto IService<InstallmentInputModel, InstallmentDto, InstallmentEntity>.Create(InstallmentInputModel input)
+    {
+        throw new NotImplementedException();
+    }
+
+    InstallmentInputModel IService<InstallmentInputModel, InstallmentDto, InstallmentEntity>.GetById(int identifier)
+    {
+        throw new NotImplementedException();
+    }
+
+    IEnumerable<InstallmentDto> IService<InstallmentInputModel, InstallmentDto, InstallmentEntity>.Read()
+    {
+        return Read();
+    }
+
+    InstallmentInputModel IService<InstallmentInputModel, InstallmentDto, InstallmentEntity>.Update(InstallmentInputModel input)
+    {
+        throw new NotImplementedException();
+    }
+
+    public bool Delete(int identifier)
     {
         throw new NotImplementedException();
     }

@@ -1,6 +1,6 @@
 namespace Services.Mappers;
 
-public class ExtratoMapper : IMappings<ExtratoInputModel, ExtratoDto, ExtratoEntity>
+public class ExtratoServicesMapper : IExtratoServicesMapper
 {
     public ExtratoEntity MappingInputModelToEntity(ExtratoInputModel obj)
     {
@@ -11,18 +11,18 @@ public class ExtratoMapper : IMappings<ExtratoInputModel, ExtratoDto, ExtratoEnt
         throw new NotImplementedException();
     }
 
-    public ExtratoEntity MappingEntityDataToEntity(ExtratoEntityData data)
-    {
-        ExtratoEntity entity = new
-        (
-            (EOperacao)Enum.Parse(typeof(EOperacao), data.Operacao),
-            data.SaldoAnterior,
-            data.ValorTransacao
-        );
-        entity.LinkedIdBank(data.IdBank);
+    // public ExtratoEntity MappingEntityDataToEntity(ExtratoEntityData data)
+    // {
+    //     ExtratoEntity entity = new
+    //     (
+    //         (EOperacao)Enum.Parse(typeof(EOperacao), data.Operacao),
+    //         data.SaldoAnterior,
+    //         data.ValorTransacao
+    //     );
+    //     entity.LinkedIdBank(data.IdBank);
 
-        return entity;
-    }
+    //     return entity;
+    // }
 
     public ExtratoDto MappingEntityToDto(ExtratoEntity entity)
     {
@@ -40,34 +40,34 @@ public class ExtratoMapper : IMappings<ExtratoInputModel, ExtratoDto, ExtratoEnt
         return dto;
     }
 
-    public ExtratoEntityData MappingEntityToEntityData(ExtratoEntity entity)
-    {
-        ExtratoEntityData data = new()
-        {
-            IdBank = entity.IdBank,
-            Operacao = entity.Operacao.ToString(),
-            SaldoDoDia = entity.SaldoDoDia,
-            SaldoAnterior = entity.SaldoAnterior,
-            ValorTransacao = entity.ValorTransacao,
-            DataUsuarioAlteracao = entity.DataUsuarioAlteracao,
-            DataTransacaoSistema = entity.DataTransacaoSistema,
-        };
+    // public ExtratoEntityData MappingEntityToEntityData(ExtratoEntity entity)
+    // {
+    //     ExtratoEntityData data = new()
+    //     {
+    //         IdBank = entity.IdBank,
+    //         Operacao = entity.Operacao.ToString(),
+    //         SaldoDoDia = entity.SaldoDoDia,
+    //         SaldoAnterior = entity.SaldoAnterior,
+    //         ValorTransacao = entity.ValorTransacao,
+    //         DataUsuarioAlteracao = entity.DataUsuarioAlteracao,
+    //         DataTransacaoSistema = entity.DataTransacaoSistema,
+    //     };
 
-        return data;
-    }
+    //     return data;
+    // }
 
-    public List<ExtratoEntity> MappingListEntityDataToListEntity(List<ExtratoEntityData> datas)
-    {
-        List<ExtratoEntity> entities = new();
-        datas.ForEach(data => entities
-            .Add
-            (
-                data.ToEntity()
-            ));
-        return entities;
-    }
+    // public List<ExtratoEntity> MappingListEntityDataToListEntity(List<ExtratoEntityData> datas)
+    // {
+    //     List<ExtratoEntity> entities = new();
+    //     datas.ForEach(data => entities
+    //         .Add
+    //         (
+    //             data.ToEntity()
+    //         ));
+    //     return entities;
+    // }
 
-    public static IEnumerable<ExtratoDto> MappingEntityIEnumerableToDtoIEnumerable(IEnumerable<ExtratoEntity> entities)
+    new public IEnumerable<ExtratoDto> MappingEntityIEnumerableToDtoIEnumerable(IEnumerable<ExtratoEntity> entities)
     {
         List<ExtratoDto> dtos = new();
         entities
@@ -80,17 +80,22 @@ public class ExtratoMapper : IMappings<ExtratoInputModel, ExtratoDto, ExtratoEnt
         return dtos;
     }
 
-    public List<ExtratoEntityData> MappingEntityIEnumerableToDtoIEnumerable(List<ExtratoEntity> entities)
-    {
-        List<ExtratoEntityData> datas = new();
-        entities.ForEach
-        (
-            entity => datas.Add
-            (
-                entity.ToEntityData()
-            )
-        );
+    // public List<ExtratoEntityData> MappingEntityIEnumerableToDtoIEnumerable(List<ExtratoEntity> entities)
+    // {
+    //     List<ExtratoEntityData> datas = new();
+    //     entities.ForEach
+    //     (
+    //         entity => datas.Add
+    //         (
+    //             entity.ToEntityData()
+    //         )
+    //     );
 
-        return datas;
+    //     return datas;
+    // }
+
+    public List<ExtratoDto> MappingEntityListToDtoList(List<ExtratoEntity> entities)
+    {
+        throw new NotImplementedException();
     }
 }

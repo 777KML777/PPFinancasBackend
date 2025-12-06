@@ -10,7 +10,7 @@ public class DashboardController : ControllerBase
 
     public DashboardController()
     {
-        _dashboardService = new DashboardAppServices();
+        // _dashboardService = new DashboardAppServices();
     }
 
     [HttpGet(Name = "dash-data")]

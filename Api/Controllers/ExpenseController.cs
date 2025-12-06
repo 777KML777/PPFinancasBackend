@@ -8,7 +8,7 @@ public class ExpenseController : ControllerBase
 
     public ExpenseController()
     {
-        _expenseAppServices = new ExpenseAppServices();
+        // _expenseAppServices = new ExpenseAppServices();
     }
 
     [HttpPut()]

@@ -1,4 +1,6 @@
 ﻿#region "CURRENT ASSEMBLY - SERVICES"
+global using Services.Base.Interfaces;
+
 global using Services.Mappers;
 global using Services.Extensions;
 global using Services.Interfaces;
@@ -11,6 +13,7 @@ global using Services.Objects.Selects;
 
 #region "ASSEMBLIES REFERENCES"
 global using Domain.Enums;
+global using Domain.Entities;
 global using Domain.Interfaces;
 
 global using Infra.Data.Repositories;

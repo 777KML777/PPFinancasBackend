@@ -2,10 +2,8 @@
 #endregion
 
 #region "ASSEMBLIES REFERENCES"
+global using Application.Apps;
 global using Application.Interfaces;
-global using Application.Services.Bank;
-global using Application.Services.Expense;
-global using Application.Services.Dashboard;
 
 global using Services.Base.Class;
 global using Services.Objects.Dtos;

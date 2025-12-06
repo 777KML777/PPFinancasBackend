@@ -1,3 +1,4 @@
+
 namespace Services.Implementations;
 
 public class ExpenseServices : IExpenseServices
@@ -56,7 +57,7 @@ public class ExpenseServices : IExpenseServices
         throw new NotImplementedException();
     }
     public List<ExpenseDto> Read(bool inactived = false) =>
-        _repository.ReadAll<ExpenseEntityData>().ToList().ToListEntity().ToListDto();
+        /* _repository.ReadAll<ExpenseEntityData>().ToList().ToListEntity().ToListDto() */ new();
     public ExpenseDto Update(ExpenseInputModel dto)
     {
         throw new NotImplementedException();
@@ -72,8 +73,9 @@ public class ExpenseServices : IExpenseServices
     {
         try
         {
-            var data = _repository.GetById<ExpenseEntityData>(id);
-            return data.ToEntity().ToDto();
+            // var data = _repository.GetById<ExpenseEntityData>(id);
+            // return data.ToEntity().ToDto();
+            return null;
         }
         catch (Exception)
         {
@@ -84,7 +86,28 @@ public class ExpenseServices : IExpenseServices
 
     #region "SPECIFIC OPERATIONS"
     public List<ExpenseDto> GetExpenseByIdBank(int idBank) =>
-        _repository.GetAllByIdBank(idBank).ToList().ToListEntity().ToListDto();
+        // _repository.GetAllByIdBank(idBank).ToList().ToListEntity().ToListDto(); 
+        new();
+
+    ExpenseInputModel IService<ExpenseInputModel, ExpenseDto, ExpenseEntity>.GetById(int identifier)
+    {
+        throw new NotImplementedException();
+    }
+
+    public IEnumerable<ExpenseDto> Read()
+    {
+        throw new NotImplementedException();
+    }
+
+    ExpenseInputModel IService<ExpenseInputModel, ExpenseDto, ExpenseEntity>.Update(ExpenseInputModel input)
+    {
+        throw new NotImplementedException();
+    }
+
+    public bool Delete(int identifier)
+    {
+        throw new NotImplementedException();
+    }
 
     #endregion
 }

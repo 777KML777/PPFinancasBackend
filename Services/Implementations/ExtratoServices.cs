@@ -1,3 +1,5 @@
+using Infra.Data.Extensions;
+
 namespace Services.Implementations;
 
 public class ExtratoServices : IExtratoServices
@@ -18,7 +20,7 @@ public class ExtratoServices : IExtratoServices
     {
         _repository.Create
         (
-            input.ToEntity().ToEntityData()
+            input.ToEntity()
         );
 
         return new();
@@ -44,8 +46,28 @@ public class ExtratoServices : IExtratoServices
     {
         throw new NotImplementedException();
     }
-    public List<ExtratoDto> GetExtratosByIdBank(int idBank) =>
-        _repository.GetExtratosByIdBank(idBank).ToDtoEnumerable();
+    public IEnumerable<ExtratoDto> GetExtratosByIdBank(int idBank) =>
+        _repository.GetExtratosByIdBank(idBank).ToDtoIEnumerable();
+
+    ExtratoInputModel IService<ExtratoInputModel, ExtratoDto, ExtratoEntity>.GetById(int identifier)
+    {
+        throw new NotImplementedException();
+    }
+
+    public IEnumerable<ExtratoDto> Read()
+    {
+        throw new NotImplementedException();
+    }
+
+    ExtratoInputModel IService<ExtratoInputModel, ExtratoDto, ExtratoEntity>.Update(ExtratoInputModel input)
+    {
+        throw new NotImplementedException();
+    }
+
+    public bool Delete(int identifier)
+    {
+        throw new NotImplementedException();
+    }
 
     #endregion
 }

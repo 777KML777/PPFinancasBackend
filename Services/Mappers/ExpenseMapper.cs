@@ -1,6 +1,6 @@
 namespace Services.Mappers;
 
-public class ExpenseMapper : IMappings<ExpenseInputModel, ExpenseDto, ExpenseEntity, ExpenseEntityData>
+public class ExpenseServicesMapper : IExpenseServicesMapper
 {
     public ExpenseEntity MappingDtoToEntity(ExpenseDto dto)
     {
@@ -10,25 +10,25 @@ public class ExpenseMapper : IMappings<ExpenseInputModel, ExpenseDto, ExpenseEnt
     #region "Object" 
 
     #endregion 
-    public ExpenseEntity MappingEntityDataToEntity(ExpenseEntityData data)
-    {
-        ExpenseEntity entidade = new();
-        entidade.AlterExpenseEntity
-        (
-            data.Id,
-            data.IdBank,
-            data.Name,
-            data.Amount,
-            data.Describe,
-            data.PaymentType,
-            data.CountInstallments,
-            data.Inactive,
-            data.Separeted,
-            data.DatePurchase,
-            new List<InstallmentEntity>()
-        );
-        return entidade;
-    }
+    // public ExpenseEntity MappingEntityDataToEntity(ExpenseEntityData data)
+    // {
+    //     ExpenseEntity entidade = new();
+    //     entidade.AlterExpenseEntity
+    //     (
+    //         data.Id,
+    //         data.IdBank,
+    //         data.Name,
+    //         data.Amount,
+    //         data.Describe,
+    //         data.PaymentType,
+    //         data.CountInstallments,
+    //         data.Inactive,
+    //         data.Separeted,
+    //         data.DatePurchase,
+    //         new List<InstallmentEntity>()
+    //     );
+    //     return entidade;
+    // }
 
     public ExpenseDto MappingEntityToDto(ExpenseEntity entity)
     {
@@ -60,25 +60,25 @@ public class ExpenseMapper : IMappings<ExpenseInputModel, ExpenseDto, ExpenseEnt
         );
     }
 
-    public ExpenseEntityData MappingEntityToEntityData(ExpenseEntity entity)
-    {
-        return new()
-        {
-            Id = entity.Id,
-            IdBank = entity.IdBank,
-            Name = entity.Name,
-            Inactive = entity.Inactive,
-            Separeted = entity.Separeted,
-            Amount = entity.Amount,
-            Describe = entity.Describe,
-            PaymentType = entity.PaymentType,
-            CountInstallments = entity.CountInstallments,
-            DateLastInstallment = entity.DateLastInstallment,
-            DatePurchase = entity.DatePurchase,
-            DateFirstInstallment = entity.DateFirstInstallment,
-            Installments = new List<InstallmentEntityData>()
-        };
-    }
+    // public ExpenseEntityData MappingEntityToEntityData(ExpenseEntity entity)
+    // {
+    //     return new()
+    //     {
+    //         Id = entity.Id,
+    //         IdBank = entity.IdBank,
+    //         Name = entity.Name,
+    //         Inactive = entity.Inactive,
+    //         Separeted = entity.Separeted,
+    //         Amount = entity.Amount,
+    //         Describe = entity.Describe,
+    //         PaymentType = entity.PaymentType,
+    //         CountInstallments = entity.CountInstallments,
+    //         DateLastInstallment = entity.DateLastInstallment,
+    //         DatePurchase = entity.DatePurchase,
+    //         DateFirstInstallment = entity.DateFirstInstallment,
+    //         Installments = new List<InstallmentEntityData>()
+    //     };
+    // }
 
     public ExpenseEntity MappingInputModelToEntity(ExpenseInputModel obj)
     {
@@ -123,15 +123,20 @@ public class ExpenseMapper : IMappings<ExpenseInputModel, ExpenseDto, ExpenseEnt
     public List<ExpenseDto> MappingListEntityToListDto(List<ExpenseEntity> obj)
     {
         List<ExpenseDto> lst = new();
-        obj.ForEach(item => lst.Add(item.ToDto()));
+        obj.ForEach(item => lst.Add(/* item.ToDto() */null));
         return lst;
     }
 
-    public List<ExpenseEntity> MappingListEntityDataToListEntity(List<ExpenseEntityData> obj)
+    // public List<ExpenseEntity> MappingListEntityDataToListEntity(List<ExpenseEntityData> obj)
+    // {
+    //     List<ExpenseEntity> lst = new();
+    //     obj.ForEach(item => lst.Add(item.ToEntity()));
+    //     return lst;
+    // }
+
+    public List<ExpenseDto> MappingEntityListToDtoList(List<ExpenseEntity> entities)
     {
-        List<ExpenseEntity> lst = new();
-        obj.ForEach(item => lst.Add(item.ToEntity()));
-        return lst;
+        throw new NotImplementedException();
     }
     #endregion
 

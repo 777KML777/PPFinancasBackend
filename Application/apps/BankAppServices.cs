@@ -23,7 +23,7 @@ public class BankAppServices : IBankAppServices
         // 50% Feito. Cada objeto restante representa 20%. 
         // Terminando tudo fica 90% os outros 10% são ajustes. 
 
-        BankDto banco = _services.GetById(id);
+        BankDto banco = /* _services.GetById(id) */ null;
         BankInputModel input = new(banco)
         {
             Extratos = _extratoServices.GetExtratosByIdBank(banco.Id),

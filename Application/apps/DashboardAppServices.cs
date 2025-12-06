@@ -32,10 +32,10 @@ public class DashboardAppServices
         // Total de todos os bancos separadamente. 
 
         DashboardDto dash = new();
-        List<BankDto> lstBanks = _bankServices.Read();
-        List<ExpenseDto> lstExpenses = _expenseServices.Read();
+        // List<BankDto> lstBanks = _bankServices.Read();
+        // List<ExpenseDto> lstExpenses = _expenseServices.Read();
 
-        dash.Banks = lstBanks;
+        // dash.Banks = lstBanks;
 
         // Despesas ativas são despesas que não tem todos os pagamentos efetuados. 
         // Por padrão as despesas que não tem prazo de validade serão incrementadas com base nos meses restantes do ano. 
@@ -50,11 +50,11 @@ public class DashboardAppServices
 
 
         // Calculando Totais
-        dash.TotalAvailableBalance = lstBanks.Where(x => x.Available).Sum(x => x.Balance); // Dinheiro que pode ser usado a qq momento.
-        dash.TotalExpenses = lstExpenses.Sum(x => x.TotalExpense);
-        dash.TotalBalance = lstBanks.Sum(x => x.Balance);
-        dash.Balance = dash.TotalBalance - dash.TotalExpenses;
-        dash.AvailableBalance = dash.TotalAvailableBalance - dash.TotalExpenses;
+        // dash.TotalAvailableBalance = lstBanks.Where(x => x.Available).Sum(x => x.Balance); // Dinheiro que pode ser usado a qq momento.
+        // dash.TotalExpenses = lstExpenses.Sum(x => x.TotalExpense);
+        // dash.TotalBalance = lstBanks.Sum(x => x.Balance);
+        // dash.Balance = dash.TotalBalance - dash.TotalExpenses;
+        // dash.AvailableBalance = dash.TotalAvailableBalance - dash.TotalExpenses;
 
         // List<InstallmentEntity> lstInstallments = _installmentServices.Read();
 

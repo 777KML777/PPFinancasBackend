@@ -25,8 +25,8 @@ public static class NativeInjectorBootStrapper
         builder.AddScoped<IBankServicesMapper, BankServicesMapper>();
         builder.AddScoped<IExtratoServicesMapper, ExtratoServicesMapper>();
         builder.AddScoped<IExpenseServicesMapper, ExpenseServicesMapper>();
-        builder.AddScoped<IInstallmentServicesMapper, InstallmentServicesMapper>();
-        builder.AddScoped<ITempFutureDebitsServicesMapper, TempFutureDebitsServicesMapper>();
+        // builder.AddScoped<IInstallmentServicesMapper, InstallmentServicesMapper>();
+        // builder.AddScoped<ITempFutureDebitsServicesMapper, TempFutureDebitsServicesMapper>();
         #endregion
 
         #region "Repositories && RepositoryMappers"

@@ -1,6 +1,6 @@
 namespace Services.Interfaces; 
 
-public interface IInstallmentServices : IService<InstallmentInputModel, InstallmentDto, InstallmentEntity, InstallmentEntityData>
+public interface IInstallmentServices : IService<InstallmentInputModel, InstallmentDto, InstallmentEntity>
 {
     List<InstallmentDto> GetAllPaidByIdExpenses(int idExpenses);
 }

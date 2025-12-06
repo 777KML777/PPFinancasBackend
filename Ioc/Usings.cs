@@ -11,6 +11,7 @@ global using Infra.Data.Mappers;
 global using Infra.Data.Interfaces;
 global using Infra.Data.Repositories;
 
+global using Services.Mappers;
 global using Services.Interfaces;
 global using Services.Implementations;
 

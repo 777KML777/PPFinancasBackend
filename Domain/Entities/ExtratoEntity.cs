@@ -2,6 +2,7 @@ namespace Domain.Entities;
 
 public class ExtratoEntity : Entity
 {
+    public ExtratoEntity (){}
     public ExtratoEntity
     (
         EOperacao operacao,

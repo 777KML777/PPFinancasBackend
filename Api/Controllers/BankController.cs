@@ -5,7 +5,7 @@ namespace Api.Controllers;
 
 public class BankController : ControllerBase
 {
-    private readonly IBankAppServices _bankServices = new BankAppServices();
+    private readonly IBankAppServices _bankServices/*  = new BankAppServices() */;
 
     public BankController()
     {

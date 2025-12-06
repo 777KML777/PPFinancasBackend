@@ -10,6 +10,9 @@ public class ExtratoRepository : Repository, IExtratoRepository
 
     }
 
+    public ExtratoEntity Create(ExtratoEntity entity) => 
+        Create(entity.ToEntityData()).ToEntity();
+
     public IEnumerable<ExtratoEntity> GetExtratosByIdBank(int idBank) => 
         ReadAll<ExtratoEntityData>()
         .Where(e => e.IdBank == idBank)

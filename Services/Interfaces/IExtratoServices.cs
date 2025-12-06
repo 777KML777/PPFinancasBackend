@@ -1,7 +1,7 @@
 namespace Services.Interfaces;
 
-public interface IExtratoServices : IService<ExtratoInputModel, ExtratoDto, ExtratoEntity, ExtratoEntityData>
+public interface IExtratoServices : IService<ExtratoInputModel, ExtratoDto, ExtratoEntity>
 {
-    public List<ExtratoDto> GetExtratosByIdBank(int idBank); 
+    public IEnumerable<ExtratoDto> GetExtratosByIdBank(int idBank); 
 
 }

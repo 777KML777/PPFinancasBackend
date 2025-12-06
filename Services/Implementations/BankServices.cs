@@ -1,13 +1,18 @@
+
 namespace Services.Implementations;
 
 public class BankServices : IBankServices
 {
     private readonly IBankRepository _repository;
     private readonly IExpenseRepository _expenseRepository;
-    public BankServices()
+    public BankServices
+    (
+        IBankRepository repository, 
+        IExpenseRepository expenseRepository
+    )
     {
-        _repository = new BankRepository();
-        _expenseRepository = new ExpenseRepository();
+        _repository = repository;
+        _expenseRepository = expenseRepository;
     }
 
     #region "CRUD OPERATION" 
@@ -18,21 +23,21 @@ public class BankServices : IBankServices
 
     public List<BankDto> Read(bool inactived = false)
     {
-        List<BankEntity> banks = _repository.ReadAll<BankEntityData>().ToList().ToListEntity();
+        List<BankEntity> banks = /* _repository.ReadAll<BankEntityData>().ToList().ToListEntity() */ new();
 
         // TODO: Substituir por um include. 
         banks.ForEach(b =>
         {
-            _expenseRepository.GetAllByIdBank(b.Id).ForEach(e => b.AddExpensesToBanks(e.ToEntity()));
+            // _expenseRepository.GetAllByIdBank(b.Id).ForEach(e => b.AddExpensesToBanks(e.ToEntity()));
 
         });
 
-        return banks.ToListDto();
+        return /* banks.ToListDto(); */ new();
     }
 
     public BankDto Update(BankInputModel input)
     {
-        BankEntity entity = _repository.GetById<BankEntityData>(input.Banco.Id).ToEntity();
+        BankEntity entity = /* _repository.GetById<BankEntityData>(input.Banco.Id).ToEntity() */ new();
 
         // Por decisão é interessante retornar o input model e receber. 
 
@@ -109,11 +114,11 @@ public class BankServices : IBankServices
         // TODO: Substituir por um include. 
 
 
-        BankEntity bank = _repository.GetById<BankEntityData>(id).ToEntity();
-        List<ExpenseEntity> expenses = _expenseRepository.GetAllByIdBank(bank.Id).ToListEntity();
+        BankEntity bank = /* _repository.GetById<BankEntityData>(id).ToEntity() */ new();
+        // List<ExpenseEntity> expenses = _expenseRepository.GetAllByIdBank(bank.Id).ToListEntity();
 
-        if (expenses.Any())
-            expenses.ForEach(bank.AddExpensesToBanks);
+        // if (expenses.Any())
+        //     expenses.ForEach(bank.AddExpensesToBanks);
 
         // Sim o repositório tem que trazer aqui a lista dos pagamentos na própria entidade que representa 
         // // o banco de dados
@@ -262,10 +267,30 @@ public class BankServices : IBankServices
     {
         List<BankDataList> bankDataLists = new();
 
-        var banks = _repository.ReadAll<BankEntityData>().Select(bank => new { bank.Id, bank.Name }).ToList();
-        banks.ForEach(item => bankDataLists.Add(new() { Id = item.Id, Name = item.Name }));
+        // var banks = _repository.ReadAll<BankEntityData>().Select(bank => new { bank.Id, bank.Name }).ToList();
+        // banks.ForEach(item => bankDataLists.Add(new() { Id = item.Id, Name = item.Name }));
 
         return bankDataLists;
+    }
+
+    BankInputModel IService<BankInputModel, BankDto, BankEntity>.GetById(int identifier)
+    {
+        throw new NotImplementedException();
+    }
+
+    public IEnumerable<BankDto> Read()
+    {
+        throw new NotImplementedException();
+    }
+
+    BankInputModel IService<BankInputModel, BankDto, BankEntity>.Update(BankInputModel input)
+    {
+        throw new NotImplementedException();
+    }
+
+    public bool Delete(int identifier)
+    {
+        throw new NotImplementedException();
     }
 
     #endregion

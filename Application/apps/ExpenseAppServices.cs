@@ -19,6 +19,6 @@ public class ExpenseAppServices : IExpenseAppServices
         throw new NotImplementedException();
     }
     public ExpenseInputModel GetById(int id) =>
-        new(_expenseServices.GetById(id), _bankServices.GetDataList());
+        new(null/* _expenseServices.GetById(id) */, _bankServices.GetDataList());
 
 }
