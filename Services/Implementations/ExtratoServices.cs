@@ -1,12 +1,8 @@
-using Infra.Data.Extensions;
-
 namespace Services.Implementations;
 
 public class ExtratoServices : IExtratoServices
 {
-
     private readonly IExtratoRepository _repository;
-
     public ExtratoServices
     (
         IExtratoRepository repository
@@ -15,7 +11,22 @@ public class ExtratoServices : IExtratoServices
         _repository = repository;
     }
 
-    #region CRUD OPERATION 
+    #region RSO - Region Specific Operation
+    public IEnumerable<ExtratoDto> GetExtratosByIdBank(int idBank)
+    {
+        throw new NotImplementedException();
+    }
+    #endregion
+
+    #region RCO - Region Commom Operation
+    public ExtratoInputModel GetById(int identifier)
+    {
+        throw new NotImplementedException();
+    }
+
+    #endregion
+
+    #region CRUD Operations
     public ExtratoDto Create(ExtratoInputModel input)
     {
         _repository.Create
@@ -25,41 +36,9 @@ public class ExtratoServices : IExtratoServices
 
         return new();
     }
+    public IEnumerable<ExtratoDto> Read() => _repository.Read().ToDtoIEnumerable();
 
-    public List<ExtratoDto> Read(bool inactived = false)
-    {
-        throw new NotImplementedException();
-    }
-
-    public ExtratoDto Update(ExtratoInputModel dto)
-    {
-        throw new NotImplementedException();
-    }
-    public bool Delete(ExtratoInputModel obj)
-    {
-        throw new NotImplementedException();
-    }
-    #endregion
-
-    #region COMMOM OPERATION
-    public ExtratoDto GetById(int id)
-    {
-        throw new NotImplementedException();
-    }
-    public IEnumerable<ExtratoDto> GetExtratosByIdBank(int idBank) =>
-        _repository.GetExtratosByIdBank(idBank).ToDtoIEnumerable();
-
-    ExtratoInputModel IService<ExtratoInputModel, ExtratoDto, ExtratoEntity>.GetById(int identifier)
-    {
-        throw new NotImplementedException();
-    }
-
-    public IEnumerable<ExtratoDto> Read()
-    {
-        throw new NotImplementedException();
-    }
-
-    ExtratoInputModel IService<ExtratoInputModel, ExtratoDto, ExtratoEntity>.Update(ExtratoInputModel input)
+    public ExtratoInputModel Update(ExtratoInputModel input)
     {
         throw new NotImplementedException();
     }
@@ -68,6 +47,5 @@ public class ExtratoServices : IExtratoServices
     {
         throw new NotImplementedException();
     }
-
     #endregion
 }

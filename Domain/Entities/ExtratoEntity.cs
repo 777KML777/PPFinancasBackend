@@ -2,7 +2,25 @@ namespace Domain.Entities;
 
 public class ExtratoEntity : Entity
 {
-    public ExtratoEntity (){}
+    public ExtratoEntity() { }
+
+    public ExtratoEntity
+    (
+        EOperacao operacao,
+        decimal saldoAnterior,
+        decimal valorTransacao,
+        decimal saldoDoDia,
+        DateTime dataTransacaoSistema,
+        DateTime? dataUsuarioAlteracao,
+        int idBank
+
+    ) : this(operacao, saldoAnterior, valorTransacao, dataUsuarioAlteracao)
+    {
+        SaldoDoDia = saldoDoDia;
+        DataTransacaoSistema = dataTransacaoSistema;
+
+        LinkedIdBank(idBank);
+    }
     public ExtratoEntity
     (
         EOperacao operacao,

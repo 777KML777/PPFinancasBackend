@@ -7,16 +7,16 @@ public interface IRepository/* <TEntity> */
     #endregion
 
     #region RCO - Region Commom Operation
-    public int GetLastId<TEntity>();
-    public TEntity GetLast<TEntity>();
-    public TEntity GetById<TEntity>(int identifier);
+    protected int GetLastId<TEntity>();
+    protected TEntity GetLast<TEntity>();
+    protected TEntity GetById<TEntity>(int identifier);
     #endregion
 
-    #region CRUD Operations
-    protected TEntity Create<TEntity>(TEntity entity);
+    // Se eles não forem públicos eu teria que criar outro. 
+    #region CRUD Operations 
+    public TEntity Create<TEntity>(TEntity entity);
     protected IEnumerable<TEntity> ReadAll<TEntity>();
-    protected TEntity Update<TEntity>(TEntity entity);
-    protected bool Delete(int identifier);
-
+    public TEntity Update<TEntity>(TEntity entity);
+    public bool Delete(int identifier);
     #endregion
 }

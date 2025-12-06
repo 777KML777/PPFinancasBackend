@@ -33,10 +33,10 @@ public class InstallmentServices : IInstallmentServices
 
     public bool Update(InstallmentInputModel dto, bool remover = true)
     {
-        var installment = _installmentRepository
-            .GetById<InstallmentEntity>(dto.Id) ?? throw new Exception("Nenhuma parcela encontrada!");
+        // var installment = _installmentRepository
+        //     .GetById<InstallmentEntity>(dto.Id) ?? throw new Exception("Nenhuma parcela encontrada!");
 
-        installment.AddPaymentDate();
+        // installment.AddPaymentDate();
 
         // _installmentRepository.Update(installment);
 

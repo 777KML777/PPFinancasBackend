@@ -4,7 +4,7 @@ namespace StorageContextJson;
 
 // Retornar a entidade criada e não um boolean
 //Caminho para diferentes iniciadores 
-public abstract class GenericRepository : IGenericRepository/* <EntityData> */
+public class GenericRepository : IGenericRepository/* <EntityData> */
 {
     private string nameInclude = string.Empty;
     public T Create<T>(T entity)

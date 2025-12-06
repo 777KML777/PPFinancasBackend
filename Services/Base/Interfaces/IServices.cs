@@ -6,13 +6,13 @@ public interface IService<TInputModel, TDto, TEntity>
     #endregion
 
     #region RCO - Region commom operation
-    TInputModel GetById(int identifier);
+    public TInputModel GetById(int identifier);
     #endregion
 
     #region CRUD 
     public TDto Create(TInputModel input);
-    IEnumerable<TDto> Read();
-    TInputModel Update(TInputModel input);
-    bool Delete(int identifier);
+    public IEnumerable<TDto> Read();
+    public TInputModel Update(TInputModel input);
+    public bool Delete(int identifier);
     #endregion
 }

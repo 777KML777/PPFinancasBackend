@@ -1,6 +1,6 @@
 namespace Infra.Data.Mappings;
 
-public class ExtratoEntityData : EntityData
+internal class ExtratoEntityData : EntityData
 {
     public int IdBank { get; set; }
     public decimal SaldoDoDia { get; set; }

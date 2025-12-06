@@ -7,13 +7,13 @@ public class ExtratoRepository : Repository, IExtratoRepository
         IGenericRepository context
     ) : base(context)
     {
-
+        
     }
 
-    public ExtratoEntity Create(ExtratoEntity entity) => 
-        Create(entity.ToEntityData()).ToEntity();
+    public IEnumerable<ExtratoEntity> Read() => ReadAll<ExtratoEntityData>().ToEntityEnumerable();
 
-    public IEnumerable<ExtratoEntity> GetExtratosByIdBank(int idBank) => 
+
+    public IEnumerable<ExtratoEntity> GetExtratosByIdBank(int idBank) =>
         ReadAll<ExtratoEntityData>()
         .Where(e => e.IdBank == idBank)
         .OrderByDescending(e => e.Id)

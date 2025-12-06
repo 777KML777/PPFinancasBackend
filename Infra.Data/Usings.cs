@@ -8,6 +8,7 @@ global using Infra.Data.Extensions;
 #endregion
 
 #region "ASSEMBLIES REFERENCES"
+global using Domain.Enums;
 global using Domain.Entities;
 global using Domain.Interfaces;
 global using Domain.Base.Interfaces;
