@@ -16,8 +16,6 @@ global using Domain.Enums;
 global using Domain.Entities;
 global using Domain.Interfaces;
 
-global using Infra.Data.Extensions;
-
 #endregion
 
 #region "PACKAGES" 

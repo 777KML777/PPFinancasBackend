@@ -1,11 +1,13 @@
 namespace Application.Apps;
 
-public class DashboardAppServices
+public class DashboardAppServices : IDashboardAppServices
 {
     private readonly IBankServices _bankServices;
     private readonly IExpenseServices _expenseServices;
     private readonly IInstallmentServices _installmentServices;
-    private readonly ITempFutureDebitsRepository _tempRepo; // Remover isso aqui
+
+    // TODO: Remover esse ITempFutureDebitsRepository
+    private readonly ITempFutureDebitsRepository _tempRepo; 
 
     public DashboardAppServices
     (
@@ -20,22 +22,17 @@ public class DashboardAppServices
         _installmentServices = installmentServices;
         _tempRepo = tempRepo;
     }
-
-    // ITempFutureDebitsRepository _tempRepo = new TempFutureDebitsRepository();
-    // IBankRepository _bankRepo = new BankRepository();
-    // IExpenseRepository _expenseRepo = new ExpenseRepository();
-    // IInstallmentRepository _installmentRepo = new InstallmentRepository();
-
     public DashboardDto DashData()
     {
         // Total de pagamentos já realizados
+        // Quantoas pagamentos são feitas por mês. 
         // Total de todos os bancos separadamente. 
 
         DashboardDto dash = new();
-        // List<BankDto> lstBanks = _bankServices.Read();
+        IEnumerable<BankDto> lstBanks = _bankServices.Read();
         // List<ExpenseDto> lstExpenses = _expenseServices.Read();
 
-        // dash.Banks = lstBanks;
+        dash.Banks = lstBanks.ToList();
 
         // Despesas ativas são despesas que não tem todos os pagamentos efetuados. 
         // Por padrão as despesas que não tem prazo de validade serão incrementadas com base nos meses restantes do ano. 

@@ -21,7 +21,7 @@ public class BankServices : IBankServices
         throw new NotImplementedException();
     }
 
-    public List<BankDto> Read(bool inactived = false)
+    public IEnumerable<BankDto> Read()
     {
         List<BankEntity> banks = /* _repository.ReadAll<BankEntityData>().ToList().ToListEntity() */ new();
 
@@ -32,7 +32,7 @@ public class BankServices : IBankServices
 
         });
 
-        return /* banks.ToListDto(); */ new();
+        return null /* banks.ToListDto(); */ ;
     }
 
     public BankDto Update(BankInputModel input)
@@ -274,11 +274,6 @@ public class BankServices : IBankServices
     }
 
     BankInputModel IService<BankInputModel, BankDto, BankEntity>.GetById(int identifier)
-    {
-        throw new NotImplementedException();
-    }
-
-    public IEnumerable<BankDto> Read()
     {
         throw new NotImplementedException();
     }

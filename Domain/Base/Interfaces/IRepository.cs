@@ -1,6 +1,6 @@
 namespace Domain.Base.Interfaces;
 
-public interface IRepository/* <TEntity> */
+public interface IRepository
 {
     #region RSO - Region Specific Operation
     // depends of class will implement
@@ -12,7 +12,6 @@ public interface IRepository/* <TEntity> */
     protected TEntity GetById<TEntity>(int identifier);
     #endregion
 
-    // Se eles não forem públicos eu teria que criar outro. 
     #region CRUD Operations 
     public TEntity Create<TEntity>(TEntity entity);
     protected IEnumerable<TEntity> ReadAll<TEntity>();

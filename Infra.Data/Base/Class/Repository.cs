@@ -1,6 +1,6 @@
 namespace Infra.Data.Base.Class;
 
-public abstract class Repository : IRepository/* <Entity> */
+public abstract class Repository : IRepository
 {
     protected readonly IGenericRepository _context;
     public Repository

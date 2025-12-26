@@ -10,6 +10,7 @@ public static class NativeInjectorBootStrapper
         builder.AddScoped<IBankAppServices, BankAppServices>();
         builder.AddScoped<IExpenseAppServices, ExpenseAppServices>();
         builder.AddScoped<IExtratoAppServices, ExtratoAppServices>();
+        builder.AddScoped<IDashboardAppServices, DashboardAppServices>();
         builder.AddScoped<IInstallmentAppServices, InstallmentAppServices>();
         builder.AddScoped<ITempFutureDebitsAppServices, TempFutureDebitsAppServices>();
         #endregion 

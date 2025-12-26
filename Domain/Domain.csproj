@@ -1,9 +1,5 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
-  <ItemGroup>
-    <ProjectReference Include="..\StorageContextJson\StorageContextJson.csproj" />
-  </ItemGroup>
-
 <ItemGroup>
   <AssemblyAttribute Include="System.Runtime.CompilerServices.InternalsVisibleTo">
     <_Parameter1>StorageContextJson</_Parameter1>
