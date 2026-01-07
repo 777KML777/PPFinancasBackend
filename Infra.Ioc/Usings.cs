@@ -11,7 +11,7 @@ global using Infra.Data.Mappers;
 global using Infra.Data.Interfaces;
 global using Infra.Data.Repositories;
 
-global using Service.Mappers;
+global using Domain.Mappers;
 global using Domain.Interfaces;
 
 global using StorageContextJson;

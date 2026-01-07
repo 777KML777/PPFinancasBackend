@@ -5,10 +5,12 @@ public class BankRepository : Repository, IBankRepository
 {
     public BankRepository
     (
-        IGenericRepository context
-    ) : base(context)
+        IGenericRepository _context
+    ) : base(_context)
     {
 
     }
-    
+
+
+    public IEnumerable<BankEntity> Read() => ReadAll<BankEntityData>().ToEntityEnumerable();
 }

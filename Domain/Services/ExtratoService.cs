@@ -36,7 +36,7 @@ public class ExtratoService : IExtratoService
 
     //     return new();
     // }
-    public IEnumerable<ExtratoDto> Read() => _repository.Read().ToDtoIEnumerable();
+    public IEnumerable<ExtratoDto> Read() => _repository.Read().ToDtoEnumerable();
 
     public bool Delete(int identifier)
     {

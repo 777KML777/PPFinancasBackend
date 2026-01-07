@@ -7,7 +7,7 @@ public class InstallmentRepositoryMapper : IInstallmentRepositoryMapper
 
     #region RMC - Region Mapper Collection
     #endregion
-    public IEnumerable<InstallmentEntity> MappingEntityDataIEnumerableToEntityIEnumerable(IEnumerable<InstallmentEntityData> data)
+    public IEnumerable<InstallmentEntity> MappingEntityDataEnumerableToEntityEnumerable(IEnumerable<InstallmentEntityData> data)
     {
         throw new NotImplementedException();
     }
@@ -17,7 +17,7 @@ public class InstallmentRepositoryMapper : IInstallmentRepositoryMapper
         throw new NotImplementedException();
     }
 
-    public IEnumerable<InstallmentEntityData> MappingEntityIEnumerableToEntityDataIEnumerable(IEnumerable<InstallmentEntity> entity)
+    public IEnumerable<InstallmentEntityData> MappingEntityEnumerableToEntityDataEnumerable(IEnumerable<InstallmentEntity> entity)
     {
         throw new NotImplementedException();
     }

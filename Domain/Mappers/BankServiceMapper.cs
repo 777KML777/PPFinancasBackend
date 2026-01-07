@@ -2,7 +2,7 @@ using Domain.Dtos;
 using Domain.Extensions;
 using Domain.Interfaces;
 
-namespace Service.Mappers;
+namespace Domain.Mappers;
 
 public class BankServiceMapper : IBankServiceMapper
 {
@@ -18,56 +18,12 @@ public class BankServiceMapper : IBankServiceMapper
         throw new NotImplementedException();
     }
 
-    // public BankEntity MappingEntityDataToEntity(BankEntityData data)
-    // {
-    //     BankEntity entity = new();
-    //     entity.AlterBankEntity
-    //     (
-    //         data.Id,
-    //         data.Name,
-    //         data.Balance,
-    //         data.PaymentDay,
-    //         data.Avalaible
-    //     );
-    //     return entity;
-    // }
-    // public BankEntityData MappingEntityToEntityData(BankEntity entity)
-    // {
-    //     return new BankEntityData
-    //     {
-    //         Id = entity.Id,
-    //         Balance = entity.Balance,
-    //         Name = entity.Name
-    //     };
-    // }
-
     #region "COLLECTIONS" 
-    // public List<BankEntity> MappingListEntityDataToListEntity(List<BankEntityData> obj)
-    // {
-    //     List<BankEntity> lst = new();
-    //     obj.ForEach(item => lst.Add(MappingEntityDataToEntity(item)));
-    //     return lst;
-    // }
-    public List<BankDto> MappingListEntityToListDto(List<BankEntity> entities)
-    {
-        List<BankDto> lst = new();
-        entities.ForEach(item => lst.Add(item.ToDto()));
-        return lst;
-    }
-
-    // public BankEntity MappingInputModelToEntity(BankInputModel input)
-    // {
-    //     throw new NotImplementedException();
-    // }
-
-    public List<BankDto> MappingEntityListToDtoList(List<BankEntity> entities)
-    {
-        throw new NotImplementedException();
-    }
-
     public IEnumerable<BankDto> MappingEntityEnumerableToDtoEnumerable(IEnumerable<BankEntity> entities)
     {
-        throw new NotImplementedException();
+        List<BankDto> lst = new();
+        entities.ToList().ForEach(item => lst.Add(item.ToDto()));
+        return lst;
     }
     #endregion
 }

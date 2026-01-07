@@ -2,7 +2,7 @@
 using Domain.Dtos;
 using Domain.Interfaces;
 
-namespace Service.Mappers;
+namespace Domain.Mappers;
 
 public class InstallmentMapper : IInstallmentService
 {
@@ -46,12 +46,12 @@ public class InstallmentMapper : IInstallmentService
     //     throw new NotImplementedException();
     // }
 
-    // public List<InstallmentEntity> MappingListEntityDataToListEntity(List<InstallmentEntityData> datas)
+    // public List<InstallmentEntity> MappingEntityDataEnumerableToEntityEnumerable(List<InstallmentEntityData> datas)
     // {
     //     throw new NotImplementedException();
     // }
 
-    public List<InstallmentDto> MappingListEntityToListDto(List<InstallmentEntity> entities)
+    public List<InstallmentDto> MappingEntityEnumerableToDtoEnumerable(List<InstallmentEntity> entities)
     {
         throw new NotImplementedException();
     }

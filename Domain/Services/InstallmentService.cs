@@ -44,7 +44,7 @@ public class InstallmentService : IInstallmentService
     //     return entity;
     // }
 
-    // public List<InstallmentEntity> MappingListEntityDataToListEntity(List<InstallmentEntityData> obj)
+    // public List<InstallmentEntity> MappingEntityDataEnumerableToEntityEnumerable(List<InstallmentEntityData> obj)
     // {
     //     List<InstallmentEntity> lst = new();
     //     obj.ForEach(item => lst.Add(MappingEntityDataToEntity(item)));

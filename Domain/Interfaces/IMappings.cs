@@ -38,14 +38,14 @@ public interface IMappings<TInputModel, TDto, TEntity, TEntityData>
     /// </summary>
     /// <param name="obj">Objeto do repositório JSON</param>
     /// <returns>Entidade de domínio TEntity</returns>
-    List<TEntity> MappingListEntityDataToListEntity(List<TEntityData> datas);
+    List<TEntity> MappingEntityDataEnumerableToEntityEnumerable(List<TEntityData> datas);
 
     /// <summary>
     /// Usado para operações de leituras. (Get, GetById, Read...)
     /// </summary>
     /// <param name="entities">Objeto do repositório JSON</param>
     /// <returns>Entidade de domínio TEntity</returns>
-    List<TDto> MappingListEntityToListDto(List<TEntity> entities);
+    List<TDto> MappingEntityEnumerableToDtoEnumerable(List<TEntity> entities);
 
     #endregion
 }

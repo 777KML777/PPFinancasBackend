@@ -1,4 +1,4 @@
-using Service.Mappers;
+using Domain.Mappers;
 
 namespace Domain.Extensions;
 

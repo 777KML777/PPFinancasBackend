@@ -1,5 +1,7 @@
 using Domain.Dtos;
+using Domain.Extensions;
 using Domain.Interfaces;
+using System.Collections.ObjectModel;
 
 namespace Domain.Services;
 
@@ -9,7 +11,7 @@ public class BankService : IBankService
     private readonly IExpenseRepository _expenseRepository;
     public BankService
     (
-        IBankRepository repository, 
+        IBankRepository repository,
         IExpenseRepository expenseRepository
     )
     {
@@ -20,81 +22,25 @@ public class BankService : IBankService
     #region "CRUD OPERATION" 
     public IEnumerable<BankDto> Read()
     {
-        List<BankEntity> banks = /* _repository.ReadAll<BankEntityData>().ToList().ToListEntity() */ new();
+        ICollection<BankDto> banks = new Collection<BankDto>();
 
         // TODO: Substituir por um include. 
-        banks.ForEach(b =>
+        // TODO: IList não possui .ForEach (analisar depois)
+        List<BankEntity> entities = _repository.Read().ToList();
+        entities.ForEach(b =>
         {
-            // _expenseRepository.GetAllByIdBank(b.Id).ForEach(e => b.AddExpensesToBanks(e.ToEntity()));
+            _expenseRepository.GetAllByIdBank(b.Id)
+            .ToList()
+            .ForEach
+            (
+                e => b.AddExpensesToBanks(e)
+            );
 
+            banks.Add(b.ToDto());
         });
 
-        return null /* banks.ToListDto(); */ ;
+        return banks;
     }
-
-    // public BankDto Update(BankInputModel input)
-    // {
-    //     BankEntity entity = /* _repository.GetById<BankEntityData>(input.Banco.Id).ToEntity() */ new();
-
-    //     // Por decisão é interessante retornar o input model e receber. 
-
-    //     entity.AlterBankEntity
-    //     (
-    //         input.Banco.Id,
-    //         input.Banco.Name,
-    //         input.Banco.Balance,
-    //         10, //input.PaymentDay,
-    //         true, //input.Available,
-    //         (EOperacao)Enum.Parse(typeof(EOperacao), /* input.Operacao */ "")
-    //     );
-
-    //     // Chamar serviço de criar extrato. 
-    //     var extrato =
-    //         entity.Extrato
-    //             .MaxBy(ext => ext.DataTransacaoSistema);
-
-    //     //TODO: O ideal é chamar o include 
-    //     //TODO: Ver no teste como que se usa ele
-    //     //TODO: Talvez eu devesso usar async aqui. 
-
-    //     // if (extrato != null)
-    //     //     _extratoService.Create
-    //     //     (
-    //     //         new ExtratoInputModel
-    //     //         {
-    //     //             IdBank = extrato.IdBank,
-    //     //             Operacao = extrato.Operacao.ToString(),
-    //     //             SaldoDoDia = extrato.SaldoDoDia,
-    //     //             SaldoAnterior = extrato.SaldoAnterior,
-    //     //             ValorTransacao = extrato.ValorTransacao,
-    //     //             DataUsuarioAlteracao = extrato.DataUsuarioAlteracao,
-    //     //             DataTransacaoSistema = extrato.DataTransacaoSistema,
-    //     //         }
-    //     //     );
-
-
-    //     // include no próprio parâmetro, sei lá. 
-    //     // _repository.Update
-    //     // (
-    //     //     MappingEntityToEntityData(entity)
-
-    //     // ).IncludeRange
-    //     // (
-    //     //     MappingEntityToEntityData(entity),
-    //     //     _extratoService.MappingListEntityToListEntityData
-    //     //     (
-    //     //         entity.Extrato
-    //     //     )
-    //     // );
-
-    //     //  _Service.MappingEntityToEntityData(entity),
-    //     //             _installmentService.MappingListEntityToListEntityData(entity.Installments.ToList())
-
-    //     // Eu teria que retornar um bank dto. A princípio 
-    //     // eu vou fazer por aqui mesmo. 
-
-    //     throw new NotImplementedException();
-    // }
 
     #endregion 
 
@@ -281,11 +227,6 @@ public class BankService : IBankService
     }
 
     public BankDto Create(BankDto dto)
-    {
-        throw new NotImplementedException();
-    }
-
-    IEnumerable<BankDto> IService<BankDto, BankEntity>.Read()
     {
         throw new NotImplementedException();
     }

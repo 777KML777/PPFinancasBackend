@@ -1,7 +1,7 @@
 using Domain.Dtos;
 using Domain.Interfaces;
 
-namespace Service.Mappers;
+namespace Domain.Mappers;
 
 public class ExpenseServiceMapper : IExpenseServiceMapper
 {
@@ -63,25 +63,7 @@ public class ExpenseServiceMapper : IExpenseServiceMapper
         );
     }
 
-    // public ExpenseEntityData MappingEntityToEntityData(ExpenseEntity entity)
-    // {
-    //     return new()
-    //     {
-    //         Id = entity.Id,
-    //         IdBank = entity.IdBank,
-    //         Name = entity.Name,
-    //         Inactive = entity.Inactive,
-    //         Separeted = entity.Separeted,
-    //         Amount = entity.Amount,
-    //         Describe = entity.Describe,
-    //         PaymentType = entity.PaymentType,
-    //         CountInstallments = entity.CountInstallments,
-    //         DateLastInstallment = entity.DateLastInstallment,
-    //         DatePurchase = entity.DatePurchase,
-    //         DateFirstInstallment = entity.DateFirstInstallment,
-    //         Installments = new List<InstallmentEntityData>()
-    //     };
-    // }
+
 
     // public ExpenseEntity MappingInputModelToEntity(ExpenseInputModel obj)
     // {
@@ -123,25 +105,12 @@ public class ExpenseServiceMapper : IExpenseServiceMapper
     // }
 
     #region "Collections" 
-    public List<ExpenseDto> MappingListEntityToListDto(List<ExpenseEntity> obj)
+    public List<ExpenseDto> MappingEntityEnumerableToDtoEnumerable(List<ExpenseEntity> obj)
     {
         List<ExpenseDto> lst = new();
         obj.ForEach(item => lst.Add(/* item.ToDto() */null));
         return lst;
     }
-
-    // public List<ExpenseEntity> MappingListEntityDataToListEntity(List<ExpenseEntityData> obj)
-    // {
-    //     List<ExpenseEntity> lst = new();
-    //     obj.ForEach(item => lst.Add(item.ToEntity()));
-    //     return lst;
-    // }
-
-    public List<ExpenseDto> MappingEntityListToDtoList(List<ExpenseEntity> entities)
-    {
-        throw new NotImplementedException();
-    }
-
     public IEnumerable<ExpenseDto> MappingEntityEnumerableToDtoEnumerable(IEnumerable<ExpenseEntity> entities)
     {
         throw new NotImplementedException();

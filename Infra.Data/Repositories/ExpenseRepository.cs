@@ -11,11 +11,7 @@ public class ExpenseRepository : Repository, IExpenseRepository
 
     }
 
-    public ExpenseEntity GetById(int identifier) => _context.GetById<ExpenseEntityData>(identifier).ToEntity();
-    public IEnumerable<ExpenseEntity> GetAllByIdBank(int id)
-    {
-        throw new NotImplementedException();
-    }
-
-
+    public ExpenseEntity GetById(int identifier) => GetById<ExpenseEntityData>(identifier).ToEntity();
+    public IEnumerable<ExpenseEntity> GetAllByIdBank(int id) => 
+        ReadAll<ExpenseEntityData>().Where(e => e.IdBank.Equals(id)).ToEntityEnumerable();
 }

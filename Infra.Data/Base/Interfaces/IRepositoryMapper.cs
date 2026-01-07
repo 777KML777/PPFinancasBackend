@@ -19,7 +19,7 @@ public interface IRepositoryMapper<TEntity, TEntityData>
     #endregion
 
     #region RMC - Region Mapper Collection
-    public IEnumerable<TEntityData> MappingEntityIEnumerableToEntityDataIEnumerable(IEnumerable<TEntity> entity);
-    public IEnumerable<TEntity> MappingEntityDataIEnumerableToEntityIEnumerable(IEnumerable<TEntityData> data);
+    public IEnumerable<TEntityData> MappingEntityEnumerableToEntityDataEnumerable(IEnumerable<TEntity> entity);
+    public IEnumerable<TEntity> MappingEntityDataEnumerableToEntityEnumerable(IEnumerable<TEntityData> data);
     #endregion
 }

@@ -1,5 +1,5 @@
 using Domain.Dtos;
-using Service.Mappers;
+using Domain.Mappers;
 
 namespace Domain.Extensions;
 
@@ -22,12 +22,12 @@ public static class ExtatoServiceExtension
     #endregion
 
     #region "COLLECTIONS" 
-    public static IEnumerable<ExtratoDto> ToDtoIEnumerable(this IEnumerable<ExtratoEntity> entities) =>
-        _mapper.MappingEntityIEnumerableToDtoIEnumerable(entities);
+    public static IEnumerable<ExtratoDto> ToDtoEnumerable(this IEnumerable<ExtratoEntity> entities) =>
+        _mapper.MappingEntityEnumerableToDtoEnumerable(entities);
     // public static List<ExtratoEntityData> ToListEntityData(this List<ExtratoEntity> entities) =>
     //        _mapper.MappingListEntityToListEntityData(entities);
 
     // public static List<ExtratoEntity> ToListEntity(this List<ExtratoEntityData> datas) =>
-    //   _mapper.MappingListEntityDataToListEntity(datas);
+    //   _mapper.MappingEntityDataEnumerableToEntityEnumerable(datas);
     #endregion 
 }

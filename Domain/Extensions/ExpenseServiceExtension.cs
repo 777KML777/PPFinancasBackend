@@ -1,4 +1,4 @@
-using Service.Mappers;
+using Domain.Mappers;
 
 namespace Domain.Extensions;
 
@@ -20,9 +20,9 @@ public static class ExpenseExtension
 
     // #region "Collections" 
     // public static List<ExpenseDto> ToListDto(this List<ExpenseEntity> entities) =>
-    //     _mapper.MappingListEntityToListDto(entities);
+    //     _mapper.MappingEntityEnumerableToDtoEnumerable(entities);
 
     // public static List<ExpenseEntity> ToListEntity(this List<ExpenseEntityData> datas) =>
-    //     _mapper.MappingListEntityDataToListEntity(datas);
+    //     _mapper.MappingEntityDataEnumerableToEntityEnumerable(datas);
     // #endregion 
 }

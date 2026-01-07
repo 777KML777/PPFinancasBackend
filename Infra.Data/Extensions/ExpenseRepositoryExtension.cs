@@ -13,8 +13,8 @@ public static class ExpenseRepositoryExtension
     #endregion
 
     #region REC - Region Extension Collection
-    public static IEnumerable<ExpenseEntity> ToEntityIEnumerable(this IEnumerable<ExpenseEntityData> data) =>
-        _mapper.MappingEntityDataIEnumerableToEntityIEnumerable(data);
+    public static IEnumerable<ExpenseEntity> ToEntityEnumerable(this IEnumerable<ExpenseEntityData> data) =>
+        _mapper.MappingEntityDataEnumerableToEntityEnumerable(data);
     #endregion
 
 }

@@ -2,7 +2,7 @@ using Domain.Dtos;
 using Domain.Extensions;
 using Domain.Interfaces;
 
-namespace Service.Mappers;
+namespace Domain.Mappers;
 
 public class ExtratoServiceMapper : IExtratoServiceMapper
 {
@@ -60,7 +60,7 @@ public class ExtratoServiceMapper : IExtratoServiceMapper
     //     return data;
     // }
 
-    // public List<ExtratoEntity> MappingListEntityDataToListEntity(List<ExtratoEntityData> datas)
+    // public List<ExtratoEntity> MappingEntityDataEnumerableToEntityEnumerable(List<ExtratoEntityData> datas)
     // {
     //     List<ExtratoEntity> entities = new();
     //     datas.ForEach(data => entities
@@ -71,7 +71,7 @@ public class ExtratoServiceMapper : IExtratoServiceMapper
     //     return entities;
     // }
 
-    new public IEnumerable<ExtratoDto> MappingEntityIEnumerableToDtoIEnumerable(IEnumerable<ExtratoEntity> entities)
+    new public IEnumerable<ExtratoDto> MappingEntityEnumerableToDtoEnumerable(IEnumerable<ExtratoEntity> entities)
     {
         List<ExtratoDto> dtos = new();
         entities
@@ -84,7 +84,7 @@ public class ExtratoServiceMapper : IExtratoServiceMapper
         return dtos;
     }
 
-    // public List<ExtratoEntityData> MappingEntityIEnumerableToDtoIEnumerable(List<ExtratoEntity> entities)
+    // public List<ExtratoEntityData> MappingEntityEnumerableToDtoEnumerable(List<ExtratoEntity> entities)
     // {
     //     List<ExtratoEntityData> datas = new();
     //     entities.ForEach
@@ -103,8 +103,8 @@ public class ExtratoServiceMapper : IExtratoServiceMapper
         throw new NotImplementedException();
     }
 
-    public IEnumerable<ExtratoDto> MappingEntityEnumerableToDtoEnumerable(IEnumerable<ExtratoEntity> entities)
-    {
-        throw new NotImplementedException();
-    }
+    // public IEnumerable<ExtratoDto> MappingEntityEnumerableToDtoEnumerable(IEnumerable<ExtratoEntity> entities)
+    // {
+    //     throw new NotImplementedException();
+    // }
 }
