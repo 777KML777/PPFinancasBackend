@@ -5,7 +5,22 @@ public class ExpenseRepositoryMapper : IExpenseRepositoryMapper
     #region RMO - Region Mapper Objects
     public ExpenseEntity MappingEntityDataToEntity(ExpenseEntityData data)
     {
-        throw new NotImplementedException();
+        ExpenseEntity entidade = new();
+        entidade.AlterExpenseEntity
+        (
+            data.Id,
+            data.IdBank,
+            data.Name,
+            data.Amount,
+            data.Describe,
+            data.PaymentType,
+            data.CountInstallments,
+            data.Inactive,
+            data.Separeted,
+            data.DatePurchase,
+            new List<InstallmentEntity>()
+        );
+        return entidade;
     }
     public ExpenseEntityData MappingEntityToEntityData(ExpenseEntity entity)
     {

@@ -1,3 +1,4 @@
+using Domain.Dtos;
 using Domain.Mappers;
 
 namespace Domain.Extensions;
@@ -6,23 +7,13 @@ public static class ExpenseExtension
 {
     private static readonly ExpenseServiceMapper _mapper = new();
 
-    // #region "Object" 
-    // public static ExpenseEntity ToEntity(this ExpenseEntityData data) =>
-    //     _mapper.MappingEntityDataToEntity(data);    
+    #region "Object" 
+    public static ExpenseDto ToDto(this ExpenseEntity entity) =>
+        _mapper.MappingEntityToDto(entity);
+    #endregion
 
-    // public static ExpenseDto ToDto(this ExpenseEntity entity) =>
-    //     _mapper.MappingEntityToDto(entity);
-
-    // public static ExpenseEntityData ToEntityData(this ExpenseEntity entity) =>
-    //     _mapper.MappingEntityToEntityData(entity);
-    // #endregion
-
-
-    // #region "Collections" 
-    // public static List<ExpenseDto> ToListDto(this List<ExpenseEntity> entities) =>
-    //     _mapper.MappingEntityEnumerableToDtoEnumerable(entities);
-
-    // public static List<ExpenseEntity> ToListEntity(this List<ExpenseEntityData> datas) =>
-    //     _mapper.MappingEntityDataEnumerableToEntityEnumerable(datas);
-    // #endregion 
+    #region "Collections" 
+    public static IEnumerable<ExpenseDto> ToListDto(this IEnumerable<ExpenseEntity> entities) =>
+        _mapper.MappingEntityEnumerableToDtoEnumerable(entities);
+    #endregion 
 }
