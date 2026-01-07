@@ -6,22 +6,21 @@ namespace Api.Controllers;
 public class DashboardController : ControllerBase
 {
 
-    private readonly IDashboardAppServices _services;
+    private readonly IDashboardAppService _app;
 
     public DashboardController
     (
-        IDashboardAppServices services
+        IDashboardAppService app
     )
     {
-        _services = services;
+        _app = app;
     }
 
     [HttpGet()]
-    public DashboardDto Get() =>
-        _services.DashData();
-
+    public IActionResult Get() =>
+        Ok(_app.DashData());
 }
 
-// TODO: Dashboard precisa de Services? Visto que ele só irá agrupar funcionalidades de outros serviços? 
+// TODO: Dashboard precisa de Service? Visto que ele só irá agrupar funcionalidades de outros serviços? 
 // TODO: Anotar necessidade include no pacote ContextStorageJson. 
 // TODO: Application não tem que ter acesso ao repositório. 

@@ -1,24 +1,26 @@
+using Application.Inputs;
+
 namespace Api.Controllers;
 
 [ApiController]
 [Route("api/[controller]")]
 public class ExtratoController : ControllerBase
 {
-    private readonly IExtratoAppServices _appServices;
+    private readonly IExtratoAppService _AppService;
 
     public ExtratoController
     (
-        IExtratoAppServices appServices
+        IExtratoAppService AppService
     )
     {
-        _appServices = appServices;
+        _AppService = AppService;
     }
 
     [HttpGet()]
     public IEnumerable<ExtratoDto> Read() =>
-        _appServices.Read();
+        _AppService.Read();
 
     [HttpGet, Route("get-Extrato")]
     public ExtratoInputModel GetById(int id) =>
-        _appServices.GetById();
+        _AppService.GetById();
 }

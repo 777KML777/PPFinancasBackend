@@ -1,6 +1,6 @@
-namespace Application.Services.Dashboard;
+namespace Application.Service.Dashboard;
 
-public class DashboardAppServicesValidator
+public class DashboardAppServiceValidator
 {
     
 }

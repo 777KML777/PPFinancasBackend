@@ -1,12 +1,12 @@
 using Domain.Entities.Expense;
-using Services.Interfaces;
-using Services.Expense;
+using Domain.Interfaces;
+using Service.Expense;
 using Infra.Data.Repositories.Expense;
 
-namespace Tests.Services.Success;
-public class SuccessExpenseServices
+namespace Tests.Service.Success;
+public class SuccessExpenseService
 {
-    static IExpenseServices _services = new ExpenseServices();
+    static IExpenseService _Service = new ExpenseService();
 
     [Fact]
     public void CreateExpense()
@@ -20,10 +20,10 @@ public class SuccessExpenseServices
         //     Separeted = false,
         //     CountInstallments = 10,
         //     PaymentType = "Credito",
-        //     Describe = "Despesa criada pela classe de teste SuccessExpenseServices."
+        //     Describe = "Despesa criada pela classe de teste SuccessExpenseService."
         // };
 
-        ExpenseServices expensesService = new();
+        ExpenseService expensesService = new();
         // expensesService.Create(expenseSelected);
     }
 
@@ -39,7 +39,7 @@ public class SuccessExpenseServices
         //     Separeted = false,
         //     CountInstallments = 10,
         //     PaymentType = "Credito",
-        //     Describe = "Despesa criada pela classe de teste SuccessExpenseServices."
+        //     Describe = "Despesa criada pela classe de teste SuccessExpenseService."
         // };
 
         ExpenseRepository expensesService = new();
@@ -48,11 +48,11 @@ public class SuccessExpenseServices
     }
 
     // [Theory]
-    // [InlineData(_services.GetById(1))]
+    // [InlineData(_Service.GetById(1))]
     [Fact]
     public void UpdateExpenses()
     {
-        // ExpenseServices expensesService = new();
+        // ExpenseService expensesService = new();
         // var x = expensesService.GetById(1);
         // expensesService.Update(x)
         // ExpenseInputModel expenses = new ExpenseInputModel();
@@ -73,7 +73,7 @@ public class SuccessExpenseServices
         // Não posso perder tempo com isso. 
         // Terminar logo a fatura e ir testando conforme a demanda
         // Como contabilizar o tanto de teste feito e restantes? 
-        // ExpenseServices expensesService = new();
+        // ExpenseService expensesService = new();
         // var x = expensesService.GetById(1);
         // expensesService.Update(x)
         // ExpenseInputModel expenses = new ExpenseInputModel();

@@ -1,5 +1,5 @@
 25 De Outubro De 2025 
-    // IExpenseServices expense TODO: Dependency Injection
+    // IExpenseService expense TODO: Dependency Injection
     // Validações, retorno da API. 
     
 
@@ -88,7 +88,7 @@ Sobrescrever métodos ToString para não deixar o Printer cheio de linhas repeti
 Criar uma classe baseada na entidade para o RepositoryJson. O interessante talvez seja essa classe ser criada dinamicamente. E de alguma maneira eu teria que passar os valores para o construtor da classe original. Talvez num serviço mas de qualquer maneira todas as propriedades que foram replicadas para a classe de mapeameamento eu teria disponível. Pensar nisso futuramente. 
 
 // TODO - Remover método CalculateFinalBalance 
-    de BankDto e jogar no BankServices. 
+    de BankDto e jogar no BankService. 
 
 // TODO - Arrumar depois o BankDto. Ele não está usando o Record.  
 

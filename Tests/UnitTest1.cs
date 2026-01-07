@@ -1,10 +1,10 @@
-using Services.Dtos;
+using Service.Dtos;
 using Domain.Entities.Installment;
 using Domain.Entities.Expense;
-using Services.Expense;
+using Service.Expense;
 using Infra.Data.Repositories.Expense;
-using Services.Extensions;
-using Application.Services.Dashboard;
+using Service.Extensions;
+using Application.Service.Dashboard;
 
 namespace Tests;
 
@@ -13,7 +13,7 @@ public class UnitTest1
     [Fact]
     public void VerifyLatePayment()
     {
-        ExpenseServices _services = new ExpenseServices();
+        ExpenseService _Service = new ExpenseService();
         IExpenseRepository repository = new ExpenseRepository();
         ExpenseEntity case1 = repository.GetById<ExpenseEntityData>(15).ToEntity();
 
@@ -40,7 +40,7 @@ public class UnitTest1
     [Fact]
     public void Dashboard()
     {
-        DashboardAppServices dashboardService = new();
+        DashboardAppService dashboardService = new();
         DashboardDto dashboard = new();
 
         dashboard = dashboardService.DashData();
@@ -74,7 +74,7 @@ public class UnitTest1
     [Fact]
     public void CreateInstallments()
     {
-        ExpenseServices _services = new ExpenseServices();
+        ExpenseService _Service = new ExpenseService();
         IExpenseRepository repository = new ExpenseRepository();
         ExpenseEntity case1 = repository.GetById<ExpenseEntityData>(15).ToEntity();
 

@@ -16,6 +16,6 @@ public interface IRepository
     public TEntity Create<TEntity>(TEntity entity);
     protected IEnumerable<TEntity> ReadAll<TEntity>();
     public TEntity Update<TEntity>(TEntity entity);
-    public bool Delete(int identifier);
+    public bool Delete<TEntity>(int identifier);
     #endregion
 }

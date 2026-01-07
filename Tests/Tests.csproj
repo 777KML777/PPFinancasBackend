@@ -27,7 +27,7 @@
     <ProjectReference Include="..\Infra.Data\Infra.Data.csproj" />
     <ProjectReference Include="..\StorageContextJson\StorageContextJson.csproj" />
     <ProjectReference Include="..\Application\Application.csproj" />
-    <ProjectReference Include="..\Services\Services.csproj" />
+    <ProjectReference Include="..\Service\Service.csproj" />
   </ItemGroup>
 
 </Project>

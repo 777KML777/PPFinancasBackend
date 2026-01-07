@@ -44,7 +44,7 @@ public abstract class Repository : IRepository
     {
         throw new NotImplementedException();
     }
-    public bool Delete(int identifier)
+    public bool Delete<TEntity>(int identifier)
     {
         throw new NotImplementedException();
     }

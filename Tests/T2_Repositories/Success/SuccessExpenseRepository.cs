@@ -1,20 +1,20 @@
 using Domain.Entities.Expense;
 using Domain.Entities.Installment;
-using Services.Interfaces;
-using Services.Expense;
+using Domain.Interfaces;
+using Service.Expense;
 using Infra.Data.Repositories.Expense;
-using Services.Installment;
-using Services.Implementations;
-using Services.Extensions;
+using Service.Installment;
+using Service.Implementations;
+using Service.Extensions;
 
 namespace Tests.T2_Repositories.Success;
 
 public class SuccessExpenseRepository
 {
-    static IExpenseServices _services = new ExpenseServices();
+    static IExpenseService _Service = new ExpenseService();
     static IExpenseRepository _repository = new ExpenseRepository();
     static IInstallmentRepository _installmentRepository = new InstallmentRepository();
-    static IInstallmentServices _installmentServices = new InstallmentServices();
+    static IInstallmentService _installmentService = new InstallmentService();
 
     [Fact]
     public void CreateExpense()
@@ -28,10 +28,10 @@ public class SuccessExpenseRepository
         //     Separeted = false,
         //     CountInstallments = 10,
         //     PaymentType = "Credito",
-        //     Describe = "Despesa criada pela classe de teste SuccessExpenseServices."
+        //     Describe = "Despesa criada pela classe de teste SuccessExpenseService."
         // };
 
-        ExpenseServices expensesService = new();
+        ExpenseService expensesService = new();
         // expensesService.Create(expenseSelected);
     }
 
@@ -47,7 +47,7 @@ public class SuccessExpenseRepository
         //     Separeted = false,
         //     CountInstallments = 10,
         //     PaymentType = "Credito",
-        //     Describe = "Despesa criada pela classe de teste SuccessExpenseServices."
+        //     Describe = "Despesa criada pela classe de teste SuccessExpenseService."
         // };
 
         ExpenseRepository expensesService = new();
@@ -56,7 +56,7 @@ public class SuccessExpenseRepository
     }
 
     // [Theory]
-    // [InlineData(_services.GetById(1))]
+    // [InlineData(_Service.GetById(1))]
     [Fact]
     public void Repository_UpdateExpense_DatePurchase()
     {
@@ -117,7 +117,7 @@ public class SuccessExpenseRepository
 
         // Adicionar em Kleus. 
         // Remover _installmentRepository daqui. 
-        // Remover _installmentServices daqui. 
+        // Remover _installmentService daqui. 
         // Calcular a cobertura de testes. 
         // E em caso de rollback em update como é que ficaria? 
 
@@ -128,14 +128,14 @@ public class SuccessExpenseRepository
         //     installment => _installmentRepository
         //     .Update
         //     (
-        //         _installmentServices
+        //         _installmentService
         //         .MappingEntityToEntityData
         //         (installment)
         //     )
 
         // );
 
-        // Printer.PrinterSuccessExpenseServices.UpgradeEntity(entity, new ExpenseInputModel());
+        // Printer.PrinterSuccessExpenseService.UpgradeEntity(entity, new ExpenseInputModel());
         Assert.NotNull(entityUpdated);
     }
 }

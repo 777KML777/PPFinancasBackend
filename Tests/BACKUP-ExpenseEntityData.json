@@ -311,7 +311,7 @@
         "Inactive": false,
         "Separeted": false,
         "Amount": 150.00,
-        "Describe": "Despesa criada pela classe de teste SuccessExpenseServices.",
+        "Describe": "Despesa criada pela classe de teste SuccessExpenseService.",
         "Bank": null,
         "PaymentType": "Credito",
         "CountInstallments": 10,

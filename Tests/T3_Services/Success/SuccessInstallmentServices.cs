@@ -1,6 +1,6 @@
-namespace Tests.T3_Services.Success;
+namespace Tests.T3_Service.Success;
 
-public class SuccessInstallmentServices
+public class SuccessInstallmentService
 {
     [Fact]
     public void DefinirUmNome()
