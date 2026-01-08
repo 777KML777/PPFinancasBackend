@@ -3,6 +3,7 @@ using Application.Selects;
 namespace Application.Inputs;
 public record class ExpenseInputModel
 (
-    ExpenseDto Input, 
+    ExpenseDto Dto, 
+    BankSelect SelectedBank,
     IEnumerable<BankSelect> SelectsBank
 );

@@ -1,4 +1,5 @@
 using Domain.Dtos;
+using Domain.Extensions;
 using Domain.Interfaces;
 
 namespace Domain.Mappers;
@@ -49,7 +50,7 @@ public class ExpenseServiceMapper : IExpenseServiceMapper
     public IEnumerable<ExpenseDto> MappingEntityEnumerableToDtoEnumerable(IEnumerable<ExpenseEntity> entities)
     {
         List<ExpenseDto> lst = new();
-        entities.ToList().ForEach(item => lst.Add(/* item.ToDto() */null));
+        entities.ToList().ForEach(item => lst.Add(item.ToDto()));
         return lst;
     }
     #endregion

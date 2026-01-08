@@ -1,5 +1,6 @@
 
 using Domain.Dtos;
+using Domain.Extensions;
 using Domain.Interfaces;
 
 namespace Domain.Services;
@@ -57,7 +58,7 @@ public class ExpenseService : IExpenseService
     // }
 
     public List<ExpenseDto> Read(bool inactived = false) =>
-        /* _repository.ReadAll<ExpenseEntityData>().ToList().ToListEntity().ToListDto() */ new();
+        /* _repository.ReadAll<ExpenseEntityData>().ToList().ToListEntity().ToDtoEnumerable() */ new();
 
     #endregion
 
@@ -67,8 +68,7 @@ public class ExpenseService : IExpenseService
         try
         {
             var data = _repository.GetById(id);
-            // return data.ToEntity().ToDto();
-            return null;
+            return data.ToDto();
         }
         catch (Exception)
         {
@@ -79,7 +79,7 @@ public class ExpenseService : IExpenseService
 
     #region "SPECIFIC OPERATIONS"
     public List<ExpenseDto> GetExpenseByIdBank(int idBank) =>
-        // _repository.GetAllByIdBank(idBank).ToList().ToListEntity().ToListDto(); 
+        // _repository.GetAllByIdBank(idBank).ToList().ToListEntity().ToDtoEnumerable(); 
         new();
 
 

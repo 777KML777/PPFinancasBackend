@@ -6,18 +6,21 @@ namespace Api.Controllers;
 [Route("api/[controller]")]
 public class ExpenseController : ControllerBase
 {
-    private readonly IExpenseAppService _expenseAppService;
+    private readonly IExpenseAppService _app;
 
-    public ExpenseController()
+    public ExpenseController
+    (
+        IExpenseAppService app
+    )
     {
-        // _expenseAppService = new ExpenseAppService();
+        _app = app;
     }
 
     [HttpPut()]
-    public ExpenseInputModel Update(int id) =>
-        _expenseAppService.Update(id);
+    public ExpenseDto Update(ExpenseInputModel id) =>
+        _app.Update(id);
 
     [HttpGet, Route("get-expense")]
     public ExpenseInputModel GetById(int id) =>
-        _expenseAppService.GetById(id);
+        _app.GetById(id);
 }

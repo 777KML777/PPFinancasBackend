@@ -7,11 +7,14 @@ namespace Api.Controllers;
 
 public class BankController : ControllerBase
 {
-    private readonly IBankAppService _bankService/*  = new BankAppService() */;
+    private readonly IBankAppService _app/*  = new BankAppService() */;
 
-    public BankController()
+    public BankController
+    (
+        IBankAppService app 
+    )
     {
-        
+        _app = app;
     }
 
     [HttpPost]
@@ -21,14 +24,14 @@ public class BankController : ControllerBase
         // Estou me distanciando muito do Backend - mas nesse momento faz-se um pouco necessário 
         // Futuramente ter a opção de criar o banco já com as despesas 
 
-        // _bankService.Create(obj);
+        // _app.Create(obj);
     }
 
     [HttpPut()]
     public void Update(BankInputModel obj) => Console.WriteLine("ha");
-        // _bankService.Update(obj);
+        // _app.Update(obj);
 
     [HttpGet("{id}")]
     public BankInputModel Get(int id) =>
-        _bankService.GetById(id);
+        _app.GetById(id);
 }

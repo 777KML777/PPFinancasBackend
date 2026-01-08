@@ -25,11 +25,10 @@ public class BankAppService : IBankAppService
         // 50% Feito. Cada objeto restante representa 20%. 
         // Terminando tudo fica 90% os outros 10% são ajustes. 
 
-        BankDto banco = /* _service.GetById(id) */ null;
+        BankDto banco = _service.GetById(id); 
         BankInputModel input = new(banco)
         {
-            Extratos = _extratoService.GetExtratosByIdBank(banco.Id),
-            Expenses = _expenseService.GetExpenseByIdBank(banco.Id)
+            // Extratos = _extratoService.GetExtratosByIdBank(banco.Id),
         };
 
         // input.FaturaDoBanco = 

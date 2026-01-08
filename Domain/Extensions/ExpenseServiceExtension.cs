@@ -13,7 +13,9 @@ public static class ExpenseExtension
     #endregion
 
     #region "Collections" 
-    public static IEnumerable<ExpenseDto> ToListDto(this IEnumerable<ExpenseEntity> entities) =>
+    public static IEnumerable<ExpenseDto> ToDtoEnumerable(this IEnumerable<ExpenseEntity> entities) =>
         _mapper.MappingEntityEnumerableToDtoEnumerable(entities);
+    // public static IEnumerable<ExpenseDto> ToDtoEnumerable(this IReadOnlyCollection<ExpenseEntity> entities) =>
+    //     _mapper.MappingEntityEnumerableToDtoEnumerable(entities);
     #endregion 
 }

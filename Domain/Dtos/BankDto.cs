@@ -9,7 +9,9 @@ public record class BankDto
      int DiaPagamento,
      int CountExpenses,
      decimal TotalExpenses,
-     decimal LiquidedBalance
+     decimal LiquidedBalance,
+     string Image,
+     IEnumerable<ExpenseDto> Expenses
 );
 
 // Quantidade de pagamentos realizados. 

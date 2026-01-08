@@ -51,15 +51,9 @@ public class BankService : IBankService
         // TODO: Codigo de simulação de include está duplicado... 
         // TODO: Distinguir os tipos de movimentações. 
 
-
         // TODO: Substituir por um include. 
-
-
-        BankEntity bank = /* _repository.GetById<BankEntityData>(id).ToEntity() */ new();
-        // List<ExpenseEntity> expenses = _expenseRepository.GetAllByIdBank(bank.Id).ToListEntity();
-
-        // if (expenses.Any())
-        //     expenses.ForEach(bank.AddExpensesToBanks);
+        BankEntity bank = _repository.GetByIdInclude(id);
+        
 
         // Sim o repositório tem que trazer aqui a lista dos pagamentos na própria entidade que representa 
         // // o banco de dados
@@ -197,9 +191,9 @@ public class BankService : IBankService
 
         // bank.CalculaLancamento();
 
-        // return bank.ToDto();
+        return bank.ToDto();
 
-        return null;
+        // return null;
     }
 
     //Para ser sincero Serialização tem que ficar aqui
@@ -217,11 +211,6 @@ public class BankService : IBankService
     // }
 
     public bool Delete(int identifier)
-    {
-        throw new NotImplementedException();
-    }
-
-    BankDto IService<BankDto, BankEntity>.GetById(int identifier)
     {
         throw new NotImplementedException();
     }

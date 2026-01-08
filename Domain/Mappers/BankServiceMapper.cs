@@ -9,7 +9,19 @@ public class BankServiceMapper : IBankServiceMapper
 
     #region "OBJECTS" 
     public BankDto MappingEntityToDto(BankEntity entity) =>
-        new(entity.Id, entity.Name, entity.Available, entity.Balance, entity.PaymentDay, entity.Expenses.Count, entity.TotalExpenses(), entity.LiquidedBalance());
+        new
+        (
+            entity.Id, 
+            entity.Name, 
+            entity.Available, 
+            entity.Balance, 
+            entity.PaymentDay, 
+            entity.Expenses.Count, 
+            entity.TotalExpenses(), 
+            entity.LiquidedBalance(),
+            entity.Image,
+            entity.Expenses.ToDtoEnumerable()
+        );
 
     #endregion
 

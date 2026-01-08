@@ -1,0 +1,7 @@
+Um DTO é o espelho de uma entidade. Entretanto: 
+
+    1 - Ele não possui métodos. 
+    2 - Todas as suas propriedades são públicas. 
+    3 - Só recebera valores via construtor com a modificador "record"
+        3.1 - Isso garantirá a integridade do código. 
+    4 - Herança com record? Interessante. Analisar depois. 

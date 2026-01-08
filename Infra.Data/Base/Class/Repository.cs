@@ -15,10 +15,8 @@ public abstract class Repository : IRepository
     #endregion
 
     #region RCO - Region Commom Operation
-    public TEntity GetById<TEntity>(int identifier)
-    {
-        throw new NotImplementedException();
-    }
+    public TEntity GetById<TEntity>(int identifier) => 
+        _context.GetById<TEntity>(identifier);
 
     public TEntity GetLast<TEntity>()
     {

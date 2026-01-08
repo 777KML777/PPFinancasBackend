@@ -2,7 +2,6 @@
 
 public class BankEntity : Entity
 {
-
     private IList<ExpenseEntity> _expenses = new List<ExpenseEntity>();
 
     public BankEntity()
@@ -16,6 +15,7 @@ public class BankEntity : Entity
         decimal balance,
         int paymentDay,
         bool available = true
+
     )
     {
         Name = name;
@@ -25,6 +25,7 @@ public class BankEntity : Entity
     }
 
     public string Name { get; private set; }
+    public string Image { get; private set; }
     public int PaymentDay { get; private set; }
     public bool Available { get; private set; }
     public decimal Balance { get; private set; }
@@ -59,11 +60,14 @@ public class BankEntity : Entity
         decimal balance,
         int paymentDay,
         bool available = true,
+        string image = "",
         EOperacao operacao = EOperacao.NENHUMA
+        
     )
     {
         Id = id;
         Name = name;
+        Image = image;
         Available = available;
         PaymentDay = paymentDay;
 

@@ -13,25 +13,24 @@ public class BankInputModel
     public DateTime DataPagamento { get; set; }
     public string Operacao { get; set; } = string.Empty;
     public IEnumerable<ExtratoDto> Extratos { get; set; }
-    public List<ExpenseDto> Expenses { get; set; } = new List<ExpenseDto>();
     public FaturaDoBancoDto FaturaDoBanco { get; set; } = new FaturaDoBancoDto();
-    public List<LancamentoDto> Lancamentos { get; set; } = new List<LancamentoDto>();
+    public IEnumerable<LancamentoDto> Lancamentos { get; set; } 
 
-    public void CalculaLancamento()
-    {
-        int iteracao = 1;
-        while (iteracao <= FaturaDoBanco.TotalDeFaturas)
-        {
-            Lancamentos.Add
-            (
-                new LancamentoDto(FaturaDoBanco.MenorDataFatura, iteracao)
-            );
+    // public void CalculaLancamento()
+    // {
+    //     int iteracao = 1;
+    //     while (iteracao <= FaturaDoBanco.TotalDeFaturas)
+    //     {
+    //         Lancamentos.Add
+    //         (
+    //             new LancamentoDto(FaturaDoBanco.MenorDataFatura, iteracao)
+    //         );
 
-            iteracao++;
-        }
-    }
+    //         iteracao++;
+    //     }
+    // }
 
-    // public List<ExpenseInputModel> Expenses { get; set; }
+    // public IEnumerable<ExpenseInputModel> Expenses { get; set; }
 
     // public void Calculate()
     // {

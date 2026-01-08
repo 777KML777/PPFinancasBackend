@@ -13,7 +13,8 @@ public class BankRepositoryMapper : IBankRepositoryMapper
             data.Name,
             data.Balance,
             data.PaymentDay,
-            data.Avalaible
+            data.Avalaible,
+            data.Image
         );
         return entity;
     }
