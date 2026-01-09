@@ -16,7 +16,7 @@ public class InstallmentMapper : IInstallmentService
         throw new NotImplementedException();
     }
 
-    public List<InstallmentDto> GetAllPaidByIdExpenses(int idExpenses)
+    public IEnumerable<InstallmentDto> GetAllPaidByIdExpenses(int idExpenses)
     {
         throw new NotImplementedException();
     }
@@ -31,7 +31,7 @@ public class InstallmentMapper : IInstallmentService
     //     throw new NotImplementedException();
     // }
 
-    public List<InstallmentDto> MappingEntityListToDtoList(List<InstallmentEntity> entities)
+    public IEnumerable<InstallmentDto> MappingEntityEnumerableToDtoEnumerable(IEnumerable<InstallmentEntity> entities)
     {
         throw new NotImplementedException();
     }
@@ -46,16 +46,10 @@ public class InstallmentMapper : IInstallmentService
     //     throw new NotImplementedException();
     // }
 
-    // public List<InstallmentEntity> MappingEntityDataEnumerableToEntityEnumerable(List<InstallmentEntityData> datas)
+    // public IEnumerable<InstallmentEntity> MappingEntityDataEnumerableToEntityEnumerable(IEnumerable<InstallmentEntityData> datas)
     // {
     //     throw new NotImplementedException();
     // }
-
-    public List<InstallmentDto> MappingEntityEnumerableToDtoEnumerable(List<InstallmentEntity> entities)
-    {
-        throw new NotImplementedException();
-    }
-
     public IEnumerable<InstallmentDto> Read()
     {
         throw new NotImplementedException();
@@ -66,14 +60,19 @@ public class InstallmentMapper : IInstallmentService
         throw new NotImplementedException();
     }
 
+    List<InstallmentDto> IInstallmentService.GetAllPaidByIdExpenses(int idExpenses)
+    {
+        throw new NotImplementedException();
+    }
+
     InstallmentDto IService<InstallmentDto, InstallmentEntity>.GetById(int identifier)
     {
         throw new NotImplementedException();
     }
 
-    // public List<InstallmentEntityData> MappingListEntityToListEntityData(List<InstallmentEntity> obj)
+    // public IEnumerable<InstallmentEntityData> MappingListEntityToListEntityData(IEnumerable<InstallmentEntity> obj)
     // {
-    //     List<InstallmentEntityData> lst = new();
+    //     IEnumerable<InstallmentEntityData> lst = new();
     //     obj.ForEach(item => lst.Add(MappingEntityToEntityData(item)));
     //     return lst;
     // }

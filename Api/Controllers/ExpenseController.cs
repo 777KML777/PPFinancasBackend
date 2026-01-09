@@ -1,5 +1,3 @@
-using Application.Inputs;
-
 namespace Api.Controllers;
 
 [ApiController]
@@ -16,11 +14,23 @@ public class ExpenseController : ControllerBase
         _app = app;
     }
 
-    [HttpPut()]
-    public ExpenseDto Update(ExpenseInputModel id) =>
-        _app.Update(id);
+    [HttpPost()]
+    public ActionResult Create(ExpenseInputModel id) =>
+        Ok(_app.Create(id));
 
-    [HttpGet, Route("get-expense")]
-    public ExpenseInputModel GetById(int id) =>
-        _app.GetById(id);
+    [HttpGet()]
+    public ActionResult Read() =>
+        Ok(_app.Read());
+
+    [HttpPut()]
+    public ActionResult Update(ExpenseInputModel id) =>
+        Ok(_app.Update(id));
+
+    [HttpDelete()]
+    public ActionResult Delete(ExpenseInputModel id) =>
+        Ok(_app.Update(id));
+
+    [HttpGet("{id}")]
+    public ActionResult GetById(int id) =>
+        Ok(_app.GetById(id));
 }

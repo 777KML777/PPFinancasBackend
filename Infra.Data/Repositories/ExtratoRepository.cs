@@ -10,6 +10,7 @@ public class ExtratoRepository : Repository, IExtratoRepository
         
     }
 
+    
     public IEnumerable<ExtratoEntity> Read() => ReadAll<ExtratoEntityData>().ToEntityEnumerable();
 
 

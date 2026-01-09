@@ -8,6 +8,8 @@ public static class ExpenseExtension
     private static readonly ExpenseServiceMapper _mapper = new();
 
     #region "Object" 
+    public static ExpenseEntity ToEntity(this ExpenseDto dto) =>
+        _mapper.MappingDtoToEntity(dto);
     public static ExpenseDto ToDto(this ExpenseEntity entity) =>
         _mapper.MappingEntityToDto(entity);
     #endregion

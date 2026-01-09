@@ -24,6 +24,7 @@ public record class ExpenseDto
     // TODO: Dando certo eu jogo para cá.
     // fora do record porque eu preciso setar manualmente isso aqui. 
     public BankDto Bank { get; set; }
+
 }
 
 

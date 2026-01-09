@@ -60,7 +60,7 @@ public class ExtratoService : IExtratoService
 
     public ExtratoDto Update(ExtratoDto dto)
     {
-        throw new NotImplementedException();
+        throw new Exception();
     }
 
     #endregion

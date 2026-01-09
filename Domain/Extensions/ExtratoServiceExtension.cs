@@ -8,8 +8,8 @@ public static class ExtatoServiceExtension
     private static readonly ExtratoServiceMapper _mapper = new();
 
     #region 'OBJECTS'
-    // public static ExtratoEntity ToEntity(this ExtratoInputModel input) =>
-    //     _mapper.MappingInputModelToEntity(input);
+    public static ExtratoEntity ToEntity(this ExtratoDto dto) =>
+        _mapper.MappingDtoToEntity(dto);
 
     // public static ExtratoEntityData ToEntityData(this ExtratoEntity entity) =>
     //     _mapper.MappingEntityToEntityData(entity);

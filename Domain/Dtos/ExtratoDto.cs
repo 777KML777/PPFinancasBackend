@@ -1,12 +1,13 @@
 namespace Domain.Dtos;
 
-public class ExtratoDto
-{
-    public int IdBank { get; set; }
-    public decimal SaldoDoDia { get; set; }
-    public decimal SaldoAnterior { get; set; }
-    public decimal ValorTransacao { get; set; }
-    public DateTime DataUsuarioAlteracao { get; set; }
-    public DateTime DataTransacaoSistema { get; set; }
-    public string Operacao { get; set; } = string.Empty;
-}
+public record class ExtratoDto
+(
+    int Id,
+    int IdBank,
+    decimal SaldoDoDia,
+    decimal SaldoAnterior,
+    decimal ValorTransacao,
+    DateTime DataUsuarioAlteracao,
+    DateTime DataTransacaoSistema,
+    string Operacao
+);

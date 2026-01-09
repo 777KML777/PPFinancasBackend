@@ -30,16 +30,17 @@ public class ExtratoServiceMapper : IExtratoServiceMapper
 
     public ExtratoDto MappingEntityToDto(ExtratoEntity entity)
     {
-        ExtratoDto dto = new()
-        {
-            IdBank = entity.IdBank,
-            Operacao = entity.Operacao.ToString(),
-            SaldoDoDia = entity.SaldoDoDia,
-            SaldoAnterior = entity.SaldoAnterior,
-            ValorTransacao = entity.ValorTransacao,
-            DataUsuarioAlteracao = entity.DataUsuarioAlteracao,
-            DataTransacaoSistema = entity.DataTransacaoSistema,
-        };
+        ExtratoDto dto = new
+        (
+            entity.Id,
+            entity.IdBank,
+            entity.SaldoDoDia,
+            entity.SaldoAnterior,
+            entity.ValorTransacao,
+            entity.DataUsuarioAlteracao,
+            entity.DataTransacaoSistema,
+            entity.Operacao.ToString()
+        );
 
         return dto;
     }
@@ -71,7 +72,7 @@ public class ExtratoServiceMapper : IExtratoServiceMapper
     //     return entities;
     // }
 
-    new public IEnumerable<ExtratoDto> MappingEntityEnumerableToDtoEnumerable(IEnumerable<ExtratoEntity> entities)
+    public IEnumerable<ExtratoDto> MappingEntityEnumerableToDtoEnumerable(IEnumerable<ExtratoEntity> entities)
     {
         List<ExtratoDto> dtos = new();
         entities
@@ -98,7 +99,7 @@ public class ExtratoServiceMapper : IExtratoServiceMapper
     //     return datas;
     // }
 
-    public List<ExtratoDto> MappingEntityListToDtoList(List<ExtratoEntity> entities)
+    public List<ExtratoDto> MappingEntityEnumerableToDtoEnumerable(List<ExtratoEntity> entities)
     {
         throw new NotImplementedException();
     }

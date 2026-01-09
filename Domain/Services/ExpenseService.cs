@@ -56,19 +56,14 @@ public class ExpenseService : IExpenseService
 
     //     return true;
     // }
-
-    public List<ExpenseDto> Read(bool inactived = false) =>
-        /* _repository.ReadAll<ExpenseEntityData>().ToList().ToListEntity().ToDtoEnumerable() */ new();
-
     #endregion
 
     #region COMMOM OPERATION 
-    public ExpenseDto GetById(int id)
+    public ExpenseDto GetById(int identifier)
     {
         try
         {
-            var data = _repository.GetById(id);
-            return data.ToDto();
+            return _repository.GetById(identifier).ToDto();
         }
         catch (Exception)
         {
@@ -100,7 +95,11 @@ public class ExpenseService : IExpenseService
 
     public ExpenseDto Update(ExpenseDto dto)
     {
-        throw new NotImplementedException();
+        ExpenseEntity savedExpense = _repository.GetById(dto.Id);
+        // TODO: Salvar o objeto acima no tracker. 
+        var tracker = savedExpense;
+
+        return _repository.Update(dto.ToEntity()).ToDto();
     }
 
     #endregion
