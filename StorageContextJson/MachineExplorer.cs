@@ -4,6 +4,9 @@ public static class MachineExplorer
 {
     public static string GetFilePath(string nameRepository)
     {
+
+        nameRepository = "tb_" + nameRepository;
+        
         string file = "";
 
         if (OperatingSystem.IsMacOS())

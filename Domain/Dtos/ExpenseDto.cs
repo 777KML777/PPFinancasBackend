@@ -4,26 +4,28 @@ public record class ExpenseDto
 (
     int Id,
     int IdBank,
-    string Name,
+    string? Name,
     bool Inactive,
     bool Separeted,
     decimal Amount,
-    string Describe,
-    string PaymentType,
+    string? Describe,
+    string? PaymentType,
     decimal TotalExpense,
     int CountInstallments,
     int PayedInstallments,
     int RemainingInstallments,
     decimal TotalExpenseRemaining,
-    DateTime DatePurchase,
-    DateTime DateLastInstallments,
-    DateTime DateFirstInstallments,
-    List<InstallmentDto> Installments
+    DateTime? DatePurchase,
+    DateTime? DateLastInstallments,
+    DateTime? DateFirstInstallments,
+    List<InstallmentDto>? Installments
 )
 {
     // TODO: Dando certo eu jogo para cá.
     // fora do record porque eu preciso setar manualmente isso aqui. 
-    public BankDto Bank { get; set; }
+    public BankDto? Bank { get; set; } = null;
+
+    // TODO: Colocar os nullable no formulário também. 
 
 }
 
