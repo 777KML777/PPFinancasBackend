@@ -1,5 +1,3 @@
-using Application.Inputs;
-
 namespace Api.Controllers;
 
 [ApiController]
@@ -7,11 +5,11 @@ namespace Api.Controllers;
 
 public class BankController : ControllerBase
 {
-    private readonly IBankAppService _app/*  = new BankAppService() */;
+    private readonly IBankAppService _app;
 
     public BankController
     (
-        IBankAppService app 
+        IBankAppService app
     )
     {
         _app = app;
@@ -29,9 +27,9 @@ public class BankController : ControllerBase
 
     [HttpPut()]
     public void Update(BankInputModel obj) => Console.WriteLine("ha");
-        // _app.Update(obj);
+    // _app.Update(obj);
 
     [HttpGet("{id}")]
-    public BankInputModel Get(int id) =>
-        _app.GetById(id);
+    public ActionResult Get(int id) =>
+        Ok(_app.GetById(id));
 }

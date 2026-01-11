@@ -95,6 +95,12 @@ public class ExpenseService : IExpenseService
 
     public ExpenseDto Update(ExpenseDto dto)
     {
+        // TODO: Fazer todo o processo de recalculo. 
+        // TODO: Levar em consideração a forma de pagamento escolhida 
+
+        // TODO: Inserir no front essas informações. 
+        // TODO: Acrescenta mais campos. Como Descricao e por aí vai. 
+        
         ExpenseEntity savedExpense = _repository.GetById(dto.Id);
         // TODO: Salvar o objeto acima no tracker. 
         var tracker = savedExpense;

@@ -3,5 +3,6 @@ public record class ExpenseInputModel
 (
     ExpenseDto Dto, 
     BankSelect SelectedBank,
-    IEnumerable<BankSelect> SelectsBank
+    IEnumerable<BankSelect> SelectsBank,
+    IEnumerable<string> PaymentTypes
 );

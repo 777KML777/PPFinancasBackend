@@ -1,4 +1,6 @@
 using Domain.Base.Class;
+using Domain.Exceptions.Base;
+using Microsoft.AspNetCore.Diagnostics;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -35,6 +37,40 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseCors("MyPolicy");
+
+app.UseExceptionHandler(errorApp =>
+{
+    errorApp.Run(async context =>
+    {
+        var exception = context.Features
+            .Get<IExceptionHandlerFeature>()?
+            .Error;
+
+        context.Response.ContentType = "application/json";
+
+        if (exception is DomainException domainEx)
+        {
+            context.Response.StatusCode = StatusCodes.Status409Conflict;
+
+            var problem = new ProblemDetails
+            {
+                Status = StatusCodes.Status409Conflict,
+                Title = "Business rule violation",
+                Detail = domainEx.Message,
+                Extensions =
+                {
+                    ["code"] = domainEx.Code
+                }
+            };
+
+            await context.Response.WriteAsJsonAsync(problem);
+            return;
+        }
+
+        // fallback
+        context.Response.StatusCode = StatusCodes.Status500InternalServerError;
+    });
+});
 
 app.UseHttpsRedirection();
 

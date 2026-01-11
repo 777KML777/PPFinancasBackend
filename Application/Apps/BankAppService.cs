@@ -1,5 +1,3 @@
-using Application.Inputs;
-
 namespace Application.Apps;
 
 public class BankAppService : IBankAppService

@@ -1,4 +1,6 @@
 using Domain.Entities;
+using Domain.Enums;
+using Domain.Exceptions;
 using Domain.Extensions;
 
 namespace Application.Apps;
@@ -23,15 +25,12 @@ public class ExpenseAppService : IExpenseAppService
     }
     public ExpenseDto Create(ExpenseInputModel input)
     {
-        return null;
+        return _service.Create(input.Dto);
     }
     public ExpenseDto Update(ExpenseInputModel input)
     {
-        // TODO: Validar o banco selecionado. 
         BankDto bank = _bankService.GetById(input.SelectedBank.Id);
-
-        if (bank.Id > 0)
-            input.Dto.Bank = bank;
+        input.Dto.Bank = bank;
 
         return _service.Update(input.Dto);
     }
@@ -40,12 +39,23 @@ public class ExpenseAppService : IExpenseAppService
     {
         ExpenseDto dto = id.Equals(0) ? new ExpenseEntity().ToDto() : _service.GetById(id);
 
+        // Banks
         IEnumerable<BankSelect> selectsBank =
             _bankService.Read()
             .OrderBy(b => b.Name)
             .Select(o => new BankSelect { Id = o.Id, Name = o.Name });
+        BankSelect? bankSelected = selectsBank.FirstOrDefault(b => b.Id.Equals(dto.IdBank));
 
-        // TODO: Caso exista um banco selecionado passar ele.
-        return new(dto, null, selectsBank);
+        // Payments
+        IEnumerable<string> paymentTypes = new List<string>()
+        {
+            EPaymentType.Boleto.ToString(),
+            EPaymentType.Credito.ToString(),
+            EPaymentType.Debito.ToString(),
+            EPaymentType.Pix.ToString()
+        };
+        string selectedPaymentType = dto.PaymentType?.ToString() ?? "";
+
+        return new(dto, bankSelected ?? new(), selectsBank, paymentTypes);
     }
 }

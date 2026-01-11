@@ -8,7 +8,23 @@ public class ExpenseServiceMapper : IExpenseServiceMapper
 {
     public ExpenseEntity MappingDtoToEntity(ExpenseDto dto)
     {
-        throw new NotImplementedException();
+        // APRENDIZADO: Dereference nula é quando mais de um objeto pode estar nulo no mesmo acesso. 
+        ExpenseEntity entity = new();
+        entity.AlterExpenseEntity
+        (
+            dto.Id,
+            dto.Bank != null ? dto.Bank.Id : 0,
+            dto.Name ?? string.Empty,
+            dto.Amount,
+            dto.Describe ?? string.Empty,
+            dto.PaymentType ?? string.Empty,
+            dto.CountInstallments,
+            dto.Inactive,
+            false, // dto.Separated,
+            dto.DatePurchase ?? new DateTime(),
+            null ?? new List<InstallmentEntity>() // dto.Installments 
+        );
+        return entity;
     }
 
     #region "Object" 

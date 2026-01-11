@@ -1,4 +1,5 @@
 using Domain.Dtos;
+using Domain.Exceptions;
 using Domain.Extensions;
 using Domain.Interfaces;
 using System.Collections.ObjectModel;
@@ -47,13 +48,18 @@ public class BankService : IBankService
     #region "COMMOM OPERATIONS"
     public BankDto GetById(int id)
     {
+
+        if (id.Equals(0))
+            throw new BankDomainExceptionNotFound(id);
+        // TODO: Validar aqui se o banco existe ou não. 
+
         // TODO: Talvez eu não precisaria enviar o BankDto por já ter lá na WEB.
         // TODO: Codigo de simulação de include está duplicado... 
         // TODO: Distinguir os tipos de movimentações. 
 
         // TODO: Substituir por um include. 
         BankEntity bank = _repository.GetByIdInclude(id);
-        
+
 
         // Sim o repositório tem que trazer aqui a lista dos pagamentos na própria entidade que representa 
         // // o banco de dados

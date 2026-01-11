@@ -13,9 +13,9 @@ public interface IRepository
     #endregion
 
     #region CRUD Operations 
-    public TEntity Create<TEntity>(TEntity entity);
+    protected TEntity Create<TEntity>(TEntity entity);
     protected IEnumerable<TEntity> ReadAll<TEntity>();
-    public TEntity Update<TEntity>(TEntity entity);
-    public bool Delete<TEntity>(int identifier);
+    protected TEntity Update<TEntity>(TEntity entity);
+    protected bool Delete<TEntity>(int identifier);
     #endregion
 }

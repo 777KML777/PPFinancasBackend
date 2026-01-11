@@ -15,7 +15,7 @@ public abstract class Repository : IRepository
     #endregion
 
     #region RCO - Region Commom Operation
-    public TEntity GetById<TEntity>(int identifier) => 
+    public TEntity GetById<TEntity>(int identifier) =>
         _context.GetById<TEntity>(identifier);
 
     public TEntity GetLast<TEntity>()
@@ -30,18 +30,14 @@ public abstract class Repository : IRepository
     #endregion
 
     #region CRUD Operations
-    public TEntity Create<TEntity>(TEntity Tentity)
-    {
-        throw new NotImplementedException();
-    }
+    public TEntity Create<TEntity>(TEntity Tentity) =>
+        _context.Create(Tentity);
 
     public IEnumerable<TEntity> ReadAll<TEntity>() =>
         _context.ReadAll<TEntity>().AsEnumerable();
 
-    public TEntity Update<TEntity>(TEntity Tentity)
-    {
-        throw new NotImplementedException();
-    }
+    public TEntity Update<TEntity>(TEntity Tentity) =>
+        _context.Update(Tentity);
     public bool Delete<TEntity>(int identifier)
     {
         throw new NotImplementedException();

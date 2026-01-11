@@ -21,10 +21,12 @@ public class BankRepository : Repository, IBankRepository
         // INCLUDES
         if (bank != null)
         {
+            // TODO: Aparentemente usar OrderBy e OrderByDescending junto dá uma bugada.
             var expenses = ReadAll<ExpenseEntityData>()
                 .Where(x => x.IdBank == bank.Id)
-                .OrderBy(x => !x.Inactive)
-                .ToList();
+                .OrderBy(x => x.DateLastInstallment)
+                .OrderBy(x => x.Inactive)
+                .ToList(); // TODO: A leitura é de cima para baixo? 
             expenses.ForEach(e => bank.AddExpensesToBanks(e.ToEntity()));
 
             return bank;
