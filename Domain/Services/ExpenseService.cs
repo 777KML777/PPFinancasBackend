@@ -95,6 +95,11 @@ public class ExpenseService : IExpenseService
 
     public ExpenseDto Update(ExpenseDto dto)
     {
+        // TODO: 
+        /* 
+            Corrigir PIX. 
+            Credito se basear no vencimento do cartão. 
+        */ 
         // TODO: Fazer todo o processo de recalculo. 
         // TODO: Levar em consideração a forma de pagamento escolhida 
 

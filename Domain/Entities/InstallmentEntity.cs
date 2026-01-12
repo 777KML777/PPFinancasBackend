@@ -13,9 +13,25 @@ public class InstallmentEntity : Entity
         Number = number;
         ExpectedDate = expectedDate;
 
-        // Tem que gerar pagamento se for menor que o data de pagamento do banco
-        if (Convert.ToDateTime(expectedDate).Date < DateTime.Now.Date)
+        var data = DateTime.Now;
+
+        if (expectedDate != null)
+            data = (DateTime)expectedDate;
+
+        var mesAtual = new DateTime(DateTime.Now.Year, DateTime.Now.Month, 10).Date;
+        var mesPosterior = new DateTime(DateTime.Now.Year, DateTime.Now.AddMonths(1).Month, data.Day).Date;
+
+        // Tem que gerar pagamento se for mesAtual que o data de pagamento do banco
+
+        if (Convert.ToDateTime(expectedDate).Date < mesAtual)
             PaymentDate = ExpectedDate;
+        else
+        {
+            if (Convert.ToDateTime(expectedDate).Date > mesAtual
+                && Convert.ToDateTime(expectedDate).Date < mesPosterior)
+                PaymentDate = ExpectedDate;
+        }
+
     }
     new public int Id { get; private set; }
     public int Number { get; private set; }
@@ -24,45 +40,46 @@ public class InstallmentEntity : Entity
     public DateTime? PaymentDate { get; private set; }
     public DateTime? ExpectedDate { get; private set; }
     public ExpenseEntity Expense { get; private set; }
-    public void AddPaymentDate()
-    {
-        if (IdExpense <= 0)
-            throw new Exception("Não há despesa para adicionar pagamento!");
+    
+    // public void AddPaymentDate()
+    // {
+    //     if (IdExpense <= 0)
+    //         throw new Exception("Não há despesa para adicionar pagamento!");
 
-        if (Number <= 0)
-            throw new Exception($"Não foi possível adicionar pagamento na {Number}ª parcela ");
+    //     if (Number <= 0)
+    //         throw new Exception($"Não foi possível adicionar pagamento na {Number}ª parcela ");
 
-        // if (PaymentDate is not null)
-        //     throw new Exception($"Parcela paga em {PaymentDate}!");
+    //     // if (PaymentDate is not null)
+    //     //     throw new Exception($"Parcela paga em {PaymentDate}!");
 
-        //  
-        PaymentDate = DateTime.Now;
-    }
+    //     //  
+    //     PaymentDate = DateTime.Now;
+    // }
 
     // public void UpdatePaymentDate(DateTime newDate) =>
     //     UserPaymentDate = newDate; // depois validar se já existe outro pagamento com a data informada. 
     //     // Talvez a validação não fique aqui. 
 
-    public void AlterInstallmentEntity
-    (
-       int id,
-       int idExpense,
-       int number,
-       DateTime? expectedDate
-    )
-    {
-        Id = id;
-        IdExpense = idExpense;
-        Number = number;
-        ExpectedDate = expectedDate;
+    // public void AlterInstallmentEntity
+    // (
+    //    int id,
+    //    int idExpense,
+    //    int number,
+    //    DateTime? expectedDate
+    // )
+    // {
+    //     Id = id;
+    //     IdExpense = idExpense;
+    //     Number = number;
+    //     ExpectedDate = expectedDate;
 
-        // Tem que gerar pagamento se for menor que o data de pagamento do banco
-        if (Convert.ToDateTime(expectedDate).Date < DateTime.Now.Date)
-            PaymentDate = ExpectedDate;
-    }
+    //     // Tem que gerar pagamento se for menor que o data de pagamento do banco
+    //     if (Convert.ToDateTime(expectedDate).Date < DateTime.Now.Date)
+    //         PaymentDate = ExpectedDate;
+    // }
 
     // TODO: Remover esse método
-    public void LinkExpense(int idExpense) => 
+    public void LinkExpense(int idExpense) =>
         IdExpense = idExpense;
 
 }

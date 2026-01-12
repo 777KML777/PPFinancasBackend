@@ -1,11 +1,14 @@
+using Domain.Dtos;
 using Domain.Mappers;
 
 namespace Domain.Extensions;
 
 public static class InstallmentExtension
 {
-    private static readonly InstallmentMapper _mapper = new();
+    private static readonly InstallmentServiceMapper _mapper = new();
 
-    // public static List<InstallmentEntityData> ToListEntityData(this List<InstallmentEntity> entities) =>
-    //     _mapper.MappingListEntityToListEntityData(entities);
+    public static InstallmentDto ToDto(this InstallmentEntity entity) =>
+        _mapper.MappingEntityToDto(entity);
+    public static IEnumerable<InstallmentDto> ToDtoEnumerable(this IEnumerable<InstallmentEntity> entities) =>
+        _mapper.MappingEntityEnumerableToDtoEnumerable(entities);
 }

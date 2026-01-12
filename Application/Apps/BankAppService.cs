@@ -4,36 +4,43 @@ public class BankAppService : IBankAppService
 {
     private readonly IBankService _service;
     private readonly IExtratoService _extratoService;
+    private readonly IFaturaService _faturaService;
     private readonly IExpenseService _expenseService;
 
     public BankAppService
     (
         IBankService service,
         IExpenseService expenseService,
+        IFaturaService faturaService,
         IExtratoService extratoService
     )
     {
         _service = service;
+        _faturaService = faturaService;
         _extratoService = extratoService;
         _expenseService = expenseService;
     }
 
     public BankInputModel GetById(int id)
     {
-        // 50% Feito. Cada objeto restante representa 20%. 
-        // Terminando tudo fica 90% os outros 10% são ajustes. 
-
-        BankDto banco = _service.GetById(id); 
+        BankDto banco = _service.GetById(id);
         BankInputModel input = new(banco)
         {
-            // Extratos = _extratoService.GetExtratosByIdBank(banco.Id),
+            Fatura = _faturaService.Generate(banco)
         };
 
-        // input.FaturaDoBanco = 
-        // input.Lancamentos = 
+        List<Lancamento> lancamentos = new();
+        List<decimal> lancamentosMensal = new();
 
-        // input.Operacao = 
-        // input.DataPagamento = 
+        var testes = input.Fatura.Lancamentos.GroupBy(x => x.DataLancamento.Month);
+
+        foreach (var agrupado in testes)
+        {
+            lancamentosMensal.Add(agrupado.Sum(x => x.Valor));
+            // foreach (var item in agrupado)
+            // {
+            // }
+        }
 
         return input;
     }

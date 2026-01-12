@@ -20,6 +20,7 @@ public static class NativeInjectorBootStrapper
         #region "Service && ServiceMapper"
         // Service 
         builder.AddScoped<IBankService, BankService>();
+        builder.AddScoped<IFaturaService, FaturaService>();
         builder.AddScoped<IExpenseService, ExpenseService>();
         builder.AddScoped<IExtratoService, ExtratoService>();
         builder.AddScoped<IInstallmentService, InstallmentService>();

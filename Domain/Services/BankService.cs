@@ -51,15 +51,22 @@ public class BankService : IBankService
 
         if (id.Equals(0))
             throw new BankDomainExceptionNotFound(id);
-        // TODO: Validar aqui se o banco existe ou não. 
-
-        // TODO: Talvez eu não precisaria enviar o BankDto por já ter lá na WEB.
-        // TODO: Codigo de simulação de include está duplicado... 
-        // TODO: Distinguir os tipos de movimentações. 
 
         // TODO: Substituir por um include. 
         BankEntity bank = _repository.GetByIdInclude(id);
 
+        // TODO: 
+        /* 
+            Total em uma determinada forma de pagamento. 
+            Total de parcelas. Todas, ativas e inativas. 
+        */
+
+
+        return bank.ToDto();
+        // TODO: Distinguir os tipos de movimentações. 
+
+        // TODO: Codigo de simulação de include está duplicado. (x)
+        // TODO: Talvez eu não precisaria enviar o BankDto por já ter lá na WEB. (x)
 
         // Sim o repositório tem que trazer aqui a lista dos pagamentos na própria entidade que representa 
         // // o banco de dados
@@ -197,7 +204,6 @@ public class BankService : IBankService
 
         // bank.CalculaLancamento();
 
-        return bank.ToDto();
 
         // return null;
     }

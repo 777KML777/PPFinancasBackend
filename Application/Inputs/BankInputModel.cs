@@ -8,13 +8,15 @@ public class BankInputModel
     )
     {
         Banco = banco;
+        Fatura = new();
     }
     public BankDto Banco { get; set; }
-    public DateTime DataPagamento { get; set; }
-    public string Operacao { get; set; } = string.Empty;
-    public IEnumerable<ExtratoDto> Extratos { get; set; }
-    public FaturaDoBancoDto FaturaDoBanco { get; set; } = new FaturaDoBancoDto();
-    public IEnumerable<LancamentoDto> Lancamentos { get; set; } 
+    // public DateTime DataPagamento { get; set; }
+    // public string Operacao { get; set; } = string.Empty;
+    public FaturaDto Fatura { get; set; }
+    // public IEnumerable<ExtratoDto> Extratos { get; set; }
+    // public FaturaDoBancoDto FaturaDoBanco { get; set; } = new FaturaDoBancoDto();
+    // public IEnumerable<LancamentoDto> Lancamentos { get; set; } 
 
     // public void CalculaLancamento()
     // {

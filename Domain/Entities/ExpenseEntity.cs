@@ -76,8 +76,10 @@ public class ExpenseEntity : Entity
     }
     public decimal SumTotalExpense() =>
         Inactive == false ? Amount * CountInstallments : 0;
+    public decimal SumTotalRemainingExpense() =>
+        Inactive == false ? Amount * CountRemainingInstallments() : 0;
     public int CountPaidInstallments() =>
-        Installments.Where(i => i.PaymentDate != null).Count();
+        Installments.Count(i => i.PaymentDate != null);
     public int CountRemainingInstallments() =>
         CountInstallments - CountPaidInstallments();
 

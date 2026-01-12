@@ -53,11 +53,11 @@ public class ExpenseServiceMapper : IExpenseServiceMapper
             entity.CountInstallments,
             entity.CountPaidInstallments(),
             entity.CountRemainingInstallments(),
-            entity.SumTotalExpense() - entity.CountRemainingInstallments() * entity.CountInstallments,
+            entity.SumTotalExpense() - (entity.Amount * (entity.CountInstallments - entity.CountRemainingInstallments())),
             entity.DatePurchase,
             entity.DateLastInstallment,
             entity.DateFirstInstallment,
-            new List<InstallmentDto>()
+            entity.Installments.ToDtoEnumerable().ToList()
         // installments
         );
     }

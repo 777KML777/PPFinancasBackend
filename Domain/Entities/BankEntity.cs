@@ -33,6 +33,24 @@ public class BankEntity : Entity
     public decimal TotalExpenses() =>
         Expenses.Where(x => !x.Inactive).Sum(x => x.SumTotalExpense());
 
+    // TODO: Passar por parâmetro o PaymentType
+    public decimal TotalByPaymentType(EPaymentType ept, bool currentlyMonth = false)
+    {
+        decimal total = 0;
+
+        if (currentlyMonth)
+            total = Expenses.Where(x => !x.Inactive
+            && x.PaymentType.Equals(ept.ToString())
+            && x.CountRemainingInstallments() > 0) // Talvez seja necessário senão inativar automaticamente. Replicar embaixo.
+            .Sum(x => x.Amount);
+
+        else
+            total = Expenses.Where(x => !x.Inactive && x.PaymentType.Equals(ept.ToString())).Sum(x => x.SumTotalRemainingExpense());
+
+        return total;
+    }
+
+
     public decimal LiquidedBalance() =>
         Balance - TotalExpenses();
     public List<ExtratoEntity> Extrato = new();
@@ -62,7 +80,7 @@ public class BankEntity : Entity
         bool available = true,
         string image = "",
         EOperacao operacao = EOperacao.NENHUMA
-        
+
     )
     {
         Id = id;

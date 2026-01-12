@@ -1,10 +1,12 @@
 
+using System.Collections.ObjectModel;
 using Domain.Dtos;
+using Domain.Extensions;
 using Domain.Interfaces;
 
 namespace Domain.Mappers;
 
-public class InstallmentMapper : IInstallmentService
+public class InstallmentServiceMapper : IInstallmentServiceMapper
 {
     public InstallmentDto Create(InstallmentDto dto)
     {
@@ -33,13 +35,13 @@ public class InstallmentMapper : IInstallmentService
 
     public IEnumerable<InstallmentDto> MappingEntityEnumerableToDtoEnumerable(IEnumerable<InstallmentEntity> entities)
     {
-        throw new NotImplementedException();
+        ICollection<InstallmentDto> dto = new Collection<InstallmentDto>();
+        entities.ToList().ForEach(item => dto.Add(item.ToDto()));
+        return dto;
     }
 
-    public InstallmentDto MappingEntityToDto(InstallmentEntity entity)
-    {
-        throw new NotImplementedException();
-    }
+    public InstallmentDto MappingEntityToDto(InstallmentEntity entity) =>
+        new(0, entity.IdExpense, entity.Number, entity.ExpectedDate, entity.PaymentDate);
 
     // public InstallmentEntityData MappingEntityToEntityData(InstallmentEntity entity)
     // {
@@ -56,16 +58,6 @@ public class InstallmentMapper : IInstallmentService
     }
 
     public InstallmentDto Update(InstallmentDto dto)
-    {
-        throw new NotImplementedException();
-    }
-
-    List<InstallmentDto> IInstallmentService.GetAllPaidByIdExpenses(int idExpenses)
-    {
-        throw new NotImplementedException();
-    }
-
-    InstallmentDto IService<InstallmentDto, InstallmentEntity>.GetById(int identifier)
     {
         throw new NotImplementedException();
     }

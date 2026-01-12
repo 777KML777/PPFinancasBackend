@@ -43,11 +43,6 @@ public class ExtratoService : IExtratoService
         throw new NotImplementedException();
     }
 
-    IEnumerable<ExtratoDto> IExtratoService.GetExtratosByIdBank(int idBank)
-    {
-        throw new NotImplementedException();
-    }
-
     public ExtratoDto GetById(int identifier)
     {
         throw new NotImplementedException();

@@ -20,6 +20,11 @@ public class BankServiceMapper : IBankServiceMapper
             entity.TotalExpenses(), 
             entity.LiquidedBalance(),
             entity.Image,
+            entity.TotalByPaymentType(EPaymentType.Credito, true),
+            entity.TotalByPaymentType(EPaymentType.Pix, true),
+            entity.TotalByPaymentType(EPaymentType.Credito),
+            entity.TotalByPaymentType(EPaymentType.Pix),
+            
             entity.Expenses.ToDtoEnumerable()
         );
 
