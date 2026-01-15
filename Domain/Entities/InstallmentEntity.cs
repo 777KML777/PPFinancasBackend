@@ -21,9 +21,7 @@ public class InstallmentEntity : Entity
         var mesAtual = new DateTime(DateTime.Now.Year, DateTime.Now.Month, 10).Date;
         var mesPosterior = new DateTime(DateTime.Now.Year, DateTime.Now.AddMonths(1).Month, data.Day).Date;
 
-        // Tem que gerar pagamento se for mesAtual que o data de pagamento do banco
-
-        if (Convert.ToDateTime(expectedDate).Date < mesAtual)
+        if (Convert.ToDateTime(expectedDate).Date <= mesAtual)
             PaymentDate = ExpectedDate;
         else
         {

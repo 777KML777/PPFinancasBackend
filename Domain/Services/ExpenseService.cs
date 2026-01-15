@@ -90,7 +90,7 @@ public class ExpenseService : IExpenseService
 
     public ExpenseDto Create(ExpenseDto dto)
     {
-        throw new NotImplementedException();
+        return _repository.Create(dto.ToEntity()).ToDto();
     }
 
     public ExpenseDto Update(ExpenseDto dto)

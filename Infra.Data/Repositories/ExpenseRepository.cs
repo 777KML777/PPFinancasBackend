@@ -11,6 +11,7 @@ public class ExpenseRepository : Repository, IExpenseRepository
 
     }
 
+    public ExpenseEntity Create(ExpenseEntity entity) => Create(entity.ToEntityData()).ToEntity();
     public ExpenseEntity Update(ExpenseEntity entity) => Update(entity.ToEntityData()).ToEntity();
 
     public ExpenseEntity GetById(int identifier) => GetById<ExpenseEntityData>(identifier).ToEntity();

@@ -25,7 +25,7 @@
     },
     {
         "Name": "C6 Bank Cart\u00E3o Ren",
-        "Image": "/bank-mercado-livre.png",
+        "Image": "/banco-c6-bank.webp",
         "Avalaible": true,
         "PaymentDay": 10,
         "Balance": 36924.47,
@@ -33,7 +33,7 @@
     },
     {
         "Name": "C6 Bank",
-        "Image": "/bank-mercado-livre.png",
+        "Image": "/banco-c6-bank.webp",
         "Avalaible": true,
         "PaymentDay": 10,
         "Balance": 516.18,
@@ -41,7 +41,7 @@
     },
     {
         "Name": "PagSeguro",
-        "Image": "/bank-mercado-livre.png",
+        "Image": "/banco-pag-bank.webp",
         "Avalaible": true,
         "PaymentDay": 10,
         "Balance": 9875.29,
@@ -49,7 +49,7 @@
     },
     {
         "Name": "FGTS",
-        "Image": "/bank-mercado-livre.png",
+        "Image": "/fgts.webp",
         "Avalaible": false,
         "PaymentDay": 10,
         "Balance": 35022.16,
@@ -65,7 +65,7 @@
     },
     {
         "Name": "Mercado Pago",
-        "Image": "/bank-mercado-livre.png",
+        "Image": "/banco-mercado-pago.webp",
         "Avalaible": true,
         "PaymentDay": 0,
         "Balance": 10004.00,

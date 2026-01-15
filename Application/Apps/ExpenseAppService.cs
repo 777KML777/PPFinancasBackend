@@ -23,15 +23,16 @@ public class ExpenseAppService : IExpenseAppService
     {
         return null;
     }
+
+    private BankDto BankValidate(int id) => _bankService.GetById(id);
     public ExpenseDto Create(ExpenseInputModel input)
     {
+        input.Dto.Bank = BankValidate(input.SelectedBank.Id);
         return _service.Create(input.Dto);
     }
     public ExpenseDto Update(ExpenseInputModel input)
     {
-        BankDto bank = _bankService.GetById(input.SelectedBank.Id);
-        input.Dto.Bank = bank;
-
+        input.Dto.Bank = BankValidate(input.SelectedBank.Id);
         return _service.Update(input.Dto);
     }
 

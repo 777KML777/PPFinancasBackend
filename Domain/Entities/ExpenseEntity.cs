@@ -37,6 +37,9 @@ public class ExpenseEntity : Entity
 
         DatePurchase = DateTime.Now;
 
+        // nubank fecha dia 1 
+        // santander fecha dia 2
+        // mercado pago 5
         AddInstallments();
         // Inativar automaticamente com base nas parcelas pagas. 
     }
@@ -58,22 +61,37 @@ public class ExpenseEntity : Entity
 
     private void AddInstallments()
     {
-        int number = 1;
-        while (number <= CountInstallments)
+        int numberInstallment = 1;
+        while (numberInstallment <= CountInstallments)
         {
             InstallmentEntity installment;
 
             if (CountInstallments > 1)
-                installment = new InstallmentEntity(number, DatePurchase.AddMonths(number));
+            {
+                // DAY 10 = Vencimento do cartão. 
+                DateTime date = DatePurchase.AddMonths(numberInstallment);
+                installment = new InstallmentEntity(numberInstallment, new DateTime(date.Year, date.Month, 10));
+            }
             else
-                installment = new InstallmentEntity(number, DatePurchase);
+            {
+                if (PaymentType.Equals(EPaymentType.Credito.ToString()))
+                    installment = new InstallmentEntity(numberInstallment, new DateTime(DateFirstInstallment.Year, DateFirstInstallment.Month, 10));
+                else
+                    installment = new InstallmentEntity(numberInstallment, new DateTime(DatePurchase.Year, DatePurchase.Month, 10));
+            }
 
             installment.LinkExpense(Id);
             _installments.Add(installment);
-            number++;
+            numberInstallment++;
         }
 
     }
+
+    // 1 = Mp; 2 = St; 3 = Nb;
+    private int DiaVencimentoCartao() =>
+        IdBank == 1 ? 5 : IdBank == 2 ? 2 : IdBank == 3 ? 5 : 0;
+
+
     public decimal SumTotalExpense() =>
         Inactive == false ? Amount * CountInstallments : 0;
     public decimal SumTotalRemainingExpense() =>
@@ -109,12 +127,38 @@ public class ExpenseEntity : Entity
         CountInstallments = countInstallments;
         DatePurchase = datePurchase;
 
-        // Criar um método aqui talvez para usar isso também no construtor.
-        DateFirstInstallment = CountInstallments > 1 ?
-            DatePurchase.AddMonths(1) : DatePurchase;
 
-        DateLastInstallment = CountInstallments > 1 ?
-            DatePurchase.AddMonths(CountInstallments) : DatePurchase;
+        // TODO: Aqui colocar o dia de fechamento. 
+
+        // Criar um método aqui talvez para usar isso também no construtor.
+
+
+        if (PaymentType.Equals(EPaymentType.Credito.ToString()))
+        {
+            int vencimento = DiaVencimentoCartao();
+
+            // O ano está chumbado em DatePurchase.Year jogar o add months em uma variável. 
+
+            if (DatePurchase.Day > vencimento)
+            {
+                DateFirstInstallment = new DateTime(DatePurchase.Year, datePurchase.AddMonths(1).Month, 10);
+                var data = DatePurchase.AddMonths(CountInstallments);
+                DateLastInstallment = new DateTime(data.Year, data.Month, 10);
+
+            }
+            else
+            {
+                DateFirstInstallment = new DateTime(DatePurchase.Year, datePurchase.Month, 10);
+                var data = DatePurchase.AddMonths(CountInstallments - 1);
+                DateLastInstallment = new DateTime(data.Year, data.Month, 10);
+            }
+        }
+        else
+        {
+            // Despesas que não são de créditos não precisam se basear no vencimento do cartão. 
+            DateFirstInstallment = DatePurchase;
+            DateLastInstallment = DatePurchase.AddMonths(CountInstallments);
+        }
 
         // Isso aqui existe para já calcular automaticamente as parcelas
         // As parcelas existem mas vem como zero. 
