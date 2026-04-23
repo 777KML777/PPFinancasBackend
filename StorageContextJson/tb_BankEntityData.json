@@ -24,11 +24,11 @@
         "Id": 4
     },
     {
-        "Name": "C6 Bank Cart\u00E3o Ren",
-        "Image": "/banco-c6-bank.webp",
+        "Name": "Para Gastar",
+        "Image": "/",
         "Avalaible": true,
         "PaymentDay": 10,
-        "Balance": 36924.47,
+        "Balance": 19200,
         "Id": 5
     },
     {
