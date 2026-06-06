@@ -1,15 +1,15 @@
-// using Services.Dtos;
-// using Services.Models;
+// using Service.Dtos;
+// using Service.Models;
 // using Tests.Printers;
-// using Services.Bank;
-// using Services.Expense;
+// using Service.Bank;
+// using Service.Expense;
 
-// namespace Tests.T3_Services.Success;
+// namespace Tests.T3_Service.Success;
 
-// public class SuccessBankServices
+// public class SuccessBankService
 // {
-//     BankServices _services = new();
-//     ExpenseServices _expenseServices = new();
+//     BankService _Service = new();
+//     ExpenseService _expenseService = new();
 
 //     [Fact]
 //     public void CalculandoMeses()
@@ -69,21 +69,21 @@
 //     {
 //         // Selecionar o número da parcela. 
 //         // Se a lista estiver vazia então eu faço nada. 
-//         BankServices bankService = new();
+//         BankService bankService = new();
 //         BankInputModel bank = new BankInputModel { Banco = new BankDto {Name = "BankOfTestUpgraded", Balance = 0.01M, Id = 777 }};
 
 //         if (bankService.Update(bank) != null) // É para atualizar o banco junto das despesas?
-//             Printer.PrinterSuccessBankServices.UpdateBank(null, bank);
+//             Printer.PrinterSuccessBankService.UpdateBank(null, bank);
 
 //     }
 
 //     [Fact]
 //     public void GetByIdInclude()
 //     {
-//         BankDto bank = _services.GetById(2); // Id = 2 Banco Santander.
+//         BankDto bank = _Service.GetById(2); // Id = 2 Banco Santander.
 //         // Mostrar as faturas funcionando aqui. 
 
-//         Printer.PrinterSuccessBankServices.GetByIdInclude(new BankInputModel());
+//         Printer.PrinterSuccessBankService.GetByIdInclude(new BankInputModel());
 //     }
 
 // }

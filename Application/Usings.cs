@@ -1,10 +1,18 @@
-global using Services;
-global using Services.Bank;
-global using Services.Dtos;
-global using Services.Models;
-global using Services.Expense;
-global using Services.Interfaces;
-global using Repository.JsonFile;
-global using Services.Installment;
+#region "CURRENT ASSEMBLY - API"
+#endregion
+
+#region "ASSEMBLIES REFERENCES"
+// Application
+global using Application.Inputs;
+global using Application.Selects;
 global using Application.Interfaces;
-global using Domain.Entities.TempFutureDebit;
+// Domain
+global using Domain.Dtos;
+global using Domain.Interfaces;
+#endregion 
+
+#region "PACKAGES" 
+#endregion
+
+#region ".NET SYSTEM" 
+#endregion

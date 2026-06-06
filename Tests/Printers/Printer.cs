@@ -1,4 +1,4 @@
-using Services.Models;
+using Service.Models;
 using Domain.Entities.Expense;
 using Domain.Entities.Bank;
 
@@ -6,11 +6,11 @@ namespace Tests.Printers;
 
 public static class Printer
 {
-    public static class PrinterSuccessBankServices
+    public static class PrinterSuccessBankService
     {
         public static void GetByIdInclude(BankInputModel printerBank)
         {
-            string content = $"PrinterSuccessBankServices - GetByIdInclude {DateTime.Now}";
+            string content = $"PrinterSuccessBankService - GetByIdInclude {DateTime.Now}";
 
             content = content.Insert(content.Length, "\n\n");
 
@@ -110,7 +110,7 @@ public static class Printer
 
             File.WriteAllText
                     (
-                        "/Users/klebermirandalima/Projetos/PPFinancasBackend/Tests/Logs/LOG-PrinterSuccessBankServicesGetByIdInclude.txt",
+                        "/Users/klebermirandalima/Projetos/PPFinancasBackend/Tests/Logs/LOG-PrinterSuccessBankServiceGetByIdInclude.txt",
                          content
                     );
         }
@@ -135,19 +135,19 @@ public static class Printer
             // content = content.Insert(content.Length, $"{dashboard.TotalCountExpenses}");
             // content = content.Insert(content.Length, "\n==================================================");
 
-            File.WriteAllText("/Users/klebermirandalima/Projetos/PPFinancasBackend/Tests/SuccessBankServices.txt", content);
+            File.WriteAllText("/Users/klebermirandalima/Projetos/PPFinancasBackend/Tests/SuccessBankService.txt", content);
         }
 
 
         public static void PrintUpdateBankIdNonExistent(Exception ex)
         {
-            string content = $"ValidationsBankServices.UpdateBankIdNonExistent - PrintUpdateBankIdNonExistent";
+            string content = $"ValidationsBankService.UpdateBankIdNonExistent - PrintUpdateBankIdNonExistent";
             content = content.Insert(content.Length, $"\n {ex.Message}");
-            File.WriteAllText("/Users/klebermirandalima/Projetos/PPFinancasBackend/Tests/Logs/LOG-ValidationsBankServices.PrintUpdateBankIdNonExistent.txt", content);
+            File.WriteAllText("/Users/klebermirandalima/Projetos/PPFinancasBackend/Tests/Logs/LOG-ValidationsBankService.PrintUpdateBankIdNonExistent.txt", content);
         }
     }
 
-    public static class PrinterSuccessExpenseServices
+    public static class PrinterSuccessExpenseService
     {
         public static void UpgradeEntity(ExpenseEntity oldExpenses, ExpenseInputModel newExpenses)
         {
@@ -170,7 +170,7 @@ public static class Printer
 
             });
 
-            File.WriteAllText("/Users/klebermirandalima/Projetos/PPFinancasBackend/Tests/SuccessExpenseServices.txt", content);
+            File.WriteAllText("/Users/klebermirandalima/Projetos/PPFinancasBackend/Tests/SuccessExpenseService.txt", content);
         }
 
     }

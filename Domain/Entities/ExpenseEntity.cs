@@ -1,0 +1,195 @@
+namespace Domain.Entities;
+
+/* 
+    Parcelas: 
+    --- ValorTotal / QtdDeParcelas 
+    --- [Abordagem atual]  ValorDaParcela * QtdDeParcelas 
+*/
+
+// Na hora da criação eu posso passar os pagamentos?
+public class ExpenseEntity : Entity
+{
+    private readonly IList<InstallmentEntity> _installments;
+
+    public ExpenseEntity()
+    {
+        _installments = new List<InstallmentEntity>();
+    }
+
+    public ExpenseEntity
+    (
+        string name,
+        decimal amount,
+        string describe,
+        string paymentType,
+        int countInstallments,
+        bool inactive = false,
+        bool separated = false
+    )
+    {
+        Name = name;
+        Amount = amount;
+        Inactive = inactive;
+        Describe = describe;
+        Separeted = separated;
+        PaymentType = paymentType;
+        CountInstallments = countInstallments;
+
+        DatePurchase = DateTime.Now;
+
+        // nubank fecha dia 1 
+        // santander fecha dia 2
+        // mercado pago 5
+        AddInstallments();
+        // Inativar automaticamente com base nas parcelas pagas. 
+    }
+
+    new public int Id { get; private set; }
+    public int IdBank { get; private set; } // Método
+    public string Name { get; private set; } // Passado no construtor
+    public bool Inactive { get; private set; } // Passado no construtor
+    public bool Separeted { get; private set; } // Passado no construtor
+    public decimal Amount { get; private set; } // Passado no construtor
+    public string Describe { get; private set; } // Passado no construtor
+    public BankEntity Bank { get; private set; } // Entity
+    public string PaymentType { get; private set; } // Passado no construtor
+    public int CountInstallments { get; private set; } // Passado no construtor
+    public DateTime DateLastInstallment { get; private set; } // Calculado
+    public DateTime DatePurchase { get; private set; } // Usuário que atualiza
+    public DateTime DateFirstInstallment { get; private set; } // Calculado
+    public IReadOnlyCollection<InstallmentEntity> Installments { get { return _installments.ToArray(); } }
+
+    private void AddInstallments()
+    {
+        int numberInstallment = 1;
+        while (numberInstallment <= CountInstallments)
+        {
+            InstallmentEntity installment;
+
+            if (CountInstallments > 1)
+            {
+                // DAY 10 = Vencimento do cartão. 
+                DateTime date = DatePurchase.AddMonths(numberInstallment);
+                installment = new InstallmentEntity(numberInstallment, new DateTime(date.Year, date.Month, 10));
+            }
+            else
+            {
+                if (PaymentType.Equals(EPaymentType.Credito.ToString()))
+                    installment = new InstallmentEntity(numberInstallment, new DateTime(DateFirstInstallment.Year, DateFirstInstallment.Month, 10));
+                else
+                    installment = new InstallmentEntity(numberInstallment, new DateTime(DatePurchase.Year, DatePurchase.Month, 10));
+            }
+
+            installment.LinkExpense(Id);
+            _installments.Add(installment);
+            numberInstallment++;
+        }
+
+    }
+
+    // 1 = Mp; 2 = St; 3 = Nb;
+    private int DiaVencimentoCartao() =>
+        IdBank == 1 ? 5 : IdBank == 2 ? 2 : IdBank == 3 ? 5 : 0;
+
+
+    public decimal SumTotalExpense() =>
+        Inactive == false ? Amount * CountInstallments : 0;
+    public decimal SumTotalRemainingExpense() =>
+        Inactive == false ? Amount * CountRemainingInstallments() : 0;
+    public int CountPaidInstallments() =>
+        Installments.Count(i => i.PaymentDate != null);
+    public int CountRemainingInstallments() =>
+        CountInstallments - CountPaidInstallments();
+
+    public void AlterExpenseEntity
+    (
+        int id,
+        int idBank,
+        string name,
+        decimal amount,
+        string describe,
+        string paymentType,
+        int countInstallments,
+        bool inactive,
+        bool separated,
+        DateTime datePurchase,
+        List<InstallmentEntity> installments
+    )
+    {
+        Id = id;
+        Name = name;
+        IdBank = idBank;
+        Amount = amount;
+        Inactive = inactive;
+        Describe = describe;
+        Separeted = separated;
+        PaymentType = paymentType;
+        CountInstallments = countInstallments;
+        DatePurchase = datePurchase;
+
+
+        // TODO: Aqui colocar o dia de fechamento. 
+
+        // Criar um método aqui talvez para usar isso também no construtor.
+
+
+        if (PaymentType.Equals(EPaymentType.Credito.ToString()))
+        {
+            int vencimento = DiaVencimentoCartao();
+
+            // O ano está chumbado em DatePurchase.Year jogar o add months em uma variável. 
+
+            if (DatePurchase.Day > vencimento)
+            {
+                DateFirstInstallment = new DateTime(DatePurchase.Year, datePurchase.AddMonths(1).Month, 10);
+                var data = DatePurchase.AddMonths(CountInstallments);
+                DateLastInstallment = new DateTime(data.Year, data.Month, 10);
+
+            }
+            else
+            {
+                DateFirstInstallment = new DateTime(DatePurchase.Year, datePurchase.Month, 10);
+                var data = DatePurchase.AddMonths(CountInstallments - 1);
+                DateLastInstallment = new DateTime(data.Year, data.Month, 10);
+            }
+        }
+        else
+        {
+            // Despesas que não são de créditos não precisam se basear no vencimento do cartão. 
+            DateFirstInstallment = DatePurchase;
+            DateLastInstallment = DatePurchase.AddMonths(CountInstallments);
+        }
+
+        // Isso aqui existe para já calcular automaticamente as parcelas
+        // As parcelas existem mas vem como zero. 
+        // e se eu alterei como vai funcionar? 
+
+        // MappingEntityDataToEntity esse cara não precisa instanciar a lista. 
+        // Enquanto o ReadInclude não estiver pronto eu vou ter que associar pelo serviço.
+        if (installments.Count == 0)
+            AddInstallments();
+        // else 
+        // {
+        //     if (installments.Count >= Installments.Count)
+        //         installments.ForEach
+        //         (
+        //             item =>
+        //             // Installments.FirstOrDefault(x => x.Id == item.Id).Num    ber = item.Number
+        //         );
+        // }
+
+    }
+}
+
+/* 
+    Os pagamentos em atraso após a confirmação de pagamento serão sistematizados com a data do último pagamento por padrão. 
+    O usuário se quiser depois poderá atualizar a data para ficar correto. PaymentDate, SystemPaymentDate, ter um UpdatePaymentDate? 
+
+    Quem deve verificar quantos pagamentos faltam? Entidade, repositório ou serviço?
+        Se for a entidade ela terá que ser puxada com include, por conta dos pagamentos serem outra entidade.
+         Caso o include não seja realizado, será impossível saber a última data de pagamento. 
+
+    Afinal, fazer uma consulta no banco e buscar tudo de uma única vez. Ou ir por etapas? 
+    Afinal, inserir no banco tudo de uma vez ou ir em parcela? Para esta eu acredito que inserir tudo de uma vez é a melhor 
+     opção. 
+*/

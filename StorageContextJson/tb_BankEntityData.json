@@ -1,0 +1,74 @@
+[
+    {
+        "Name": "Santander",
+        "Image": "/banco-santander.webp",
+        "Avalaible": true,
+        "PaymentDay": 10,
+        "Balance": 7358.98,
+        "Id": 2
+    },
+    {
+        "Name": "Nubank",
+        "Image": "/banco-nubank.webp",
+        "Avalaible": true,
+        "PaymentDay": 10,
+        "Balance": 252.30,
+        "Id": 3
+    },
+    {
+        "Name": "PicPay",
+        "Image": "/banco-picpay.webp",
+        "Avalaible": true,
+        "PaymentDay": 10,
+        "Balance": 574.24,
+        "Id": 4
+    },
+    {
+        "Name": "Para Gastar",
+        "Image": "/",
+        "Avalaible": true,
+        "PaymentDay": 10,
+        "Balance": 19200,
+        "Id": 5
+    },
+    {
+        "Name": "C6 Bank",
+        "Image": "/banco-c6-bank.webp",
+        "Avalaible": true,
+        "PaymentDay": 10,
+        "Balance": 516.18,
+        "Id": 6
+    },
+    {
+        "Name": "PagSeguro",
+        "Image": "/banco-pag-bank.webp",
+        "Avalaible": true,
+        "PaymentDay": 10,
+        "Balance": 9875.29,
+        "Id": 7
+    },
+    {
+        "Name": "FGTS",
+        "Image": "/fgts.webp",
+        "Avalaible": false,
+        "PaymentDay": 10,
+        "Balance": 35022.16,
+        "Id": 8
+    },
+    {
+        "Name": "BankOfTestUpgraded",
+        "Image": "/bank-mercado-livre.png",
+        "Avalaible": false,
+        "PaymentDay": 10,
+        "Balance": 0.01,
+        "Id": 777
+    },
+    {
+        "Name": "Mercado Pago",
+        "Image": "/banco-mercado-pago.webp",
+        "Avalaible": true,
+        "PaymentDay": 0,
+        "Balance": 10004.00,
+        "Id": 1
+    }
+]

@@ -1,5 +1,5 @@
-namespace Tests.Services.Validations;
-public class ValidationsExpenseServices
+namespace Tests.Service.Validations;
+public class ValidationsExpenseService
 {
     [Fact]
     public void CreateExpense() 

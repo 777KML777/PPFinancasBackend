@@ -4,18 +4,33 @@ namespace Api.Controllers;
 [Route("api/[controller]")]
 public class ExpenseController : ControllerBase
 {
-    private readonly IExpenseAppServices _expenseAppServices;
+    private readonly IExpenseAppService _app;
 
-    public ExpenseController()
+    public ExpenseController
+    (
+        IExpenseAppService app
+    )
     {
-        _expenseAppServices = new ExpenseAppServices();
+        _app = app;
     }
 
-    [HttpPut()]
-    public ExpenseInputModel Update(int id) =>
-        _expenseAppServices.Update(id);
+    [HttpPost()]
+    public ActionResult Create(ExpenseInputModel id) =>
+        Ok(_app.Create(id));
 
-    [HttpGet, Route("get-expense")]
-    public ExpenseInputModel GetById(int id) =>
-        _expenseAppServices.GetById(id);
+    [HttpGet()]
+    public ActionResult Read() =>
+        Ok(_app.Read());
+
+    [HttpPut()]
+    public ActionResult Update(ExpenseInputModel id) =>
+        Ok(_app.Update(id));
+
+    [HttpDelete()]
+    public ActionResult Delete(ExpenseInputModel id) =>
+        Ok(_app.Update(id));
+
+    [HttpGet("{id}")]
+    public ActionResult GetById(int id) =>
+        Ok(_app.GetById(id));
 }

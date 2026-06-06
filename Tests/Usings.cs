@@ -1,3 +1,3 @@
 global using Xunit;
 global using Domain;
-global using Repository.JsonFile;
+global using Infra.Data;
