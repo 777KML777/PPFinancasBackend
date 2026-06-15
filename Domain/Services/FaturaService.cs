@@ -18,7 +18,6 @@ public class FaturaService : IFaturaService
     public FaturaDto Generate(BankDto banco)
     {
         FaturaDto dto = new();
-        var teste = EPaymentType.Credito.ToString();
         var despesas = banco.Expenses.Where(e => e.PaymentType.Equals(EPaymentType.Credito.ToString())).ToList();
 
         foreach (var item in despesas)
@@ -30,19 +29,23 @@ public class FaturaService : IFaturaService
             else
                 parcelas = new List<InstallmentDto>();
 
+            int parcela = item.PayedInstallments + 1;
             foreach (var item2 in parcelas)
             {
+                
                 dto.Lancamentos.Add
                 (
                     new()
                     {
                         Nome = item.Name ?? "",
                         Valor = item.Amount,
-                        ParcelaAtual = item.PayedInstallments + 1,
+                        ParcelaAtual = parcela,
                         TotalParcelas = item.CountInstallments,
                         DataLancamento = item2.ExpectedDate != null ? (DateTime)item2.ExpectedDate : DateTime.Now
                     }
                 );
+
+                parcela++;
             }
 
         }
